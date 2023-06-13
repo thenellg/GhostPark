@@ -270,17 +270,6 @@ public class PlayerController : MonoBehaviour {
 			hasKey = false;
 		}
 
-		//if layer switch exists, reset it
-		GameObject temp;
-        if (GameObject.FindGameObjectWithTag("LayerSwitch"))
-        {
-			temp = GameObject.FindGameObjectWithTag("LayerSwitch");
-			if (temp.GetComponent<layerSwitch>())
-				temp.GetComponent<layerSwitch>().resetLayers();
-			else
-				temp.GetComponent<directionalLayerSwap>().resetLayers();
-		}
-
 		//Resets all breakable objects
 		foreach (Transform platform in breakables)
 			platform.gameObject.SetActive(true);
