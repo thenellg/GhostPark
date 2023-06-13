@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2142694979
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b2f1aa237b745864aa3ca9f269201bb0, type: 3}
   m_Color: {r: 0.072037436, g: 1, b: 0.015686274, a: 0.53333336}
@@ -122,10 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85732872e590cd04bacfd572726d7999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
-  player: {fileID: 0}
-  gravity: {x: 0.48, y: 0}
-  dashSpeed: 3.75
+  setActive: 0
   down: 0
   up: 0
   left: 0

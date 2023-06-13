@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 	public bool downwardDash = false;
 
 	public Color colorA = new Color32(230, 230, 230, 255);
-	public Color colorB = new Color32(25, 25, 25, 255);
 
 	public bool hasKey = false;
 	[SerializeField] private bool areDead = false;
@@ -42,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 	public Image reset;
 	//public SpriteRenderer background;
 	public SpriteRenderer backgroundA;
-	public SpriteRenderer backgroundB;
 
 	public TextMeshProUGUI visDeathCounter;
 	public string levelPlayerPref;
@@ -73,7 +71,6 @@ public class PlayerController : MonoBehaviour {
 	void setBackground()
     {
 		backgroundA.color = colorA;
-		backgroundB.color = colorB;
 	}
 
     void Update()
@@ -125,20 +122,6 @@ public class PlayerController : MonoBehaviour {
             {
 				hold = false;
             }
-		}
-
-		//Adjusting objects to colors that don't auto adjust
-		if (this.GetComponent<colorSwap>().whiteStuff.activeSelf)
-		{
-			visDeathCounter.color = colorB;
-			reset.color = colorA;
-			//background.color = colorA;
-		}
-		else
-		{
-			visDeathCounter.color = colorA;
-			reset.color = colorB;
-			//background.color = colorB;
 		}
 	}
 
