@@ -217,6 +217,11 @@ public class PlayerController : MonoBehaviour {
 				this.GetComponentInChildren<key>().followSpot = collision.transform;
 			}
 		}
+
+        if (controller._dashing && collision.gameObject.GetComponent<possessionObject>())
+        {
+			collision.gameObject.GetComponent<possessionObject>().setUp();
+		}
 	}
 
     private void OnCollisionExit2D(Collision2D collision)

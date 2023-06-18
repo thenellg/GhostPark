@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MovingPlatform
+  - Breakable
+  - Key
+  - Box
+  - Death
+  - Spring
+  - Door
+  - Wall
+  - camSwap
+  - Fan
+  - Possession
   layers:
   - Default
   - TransparentFX
