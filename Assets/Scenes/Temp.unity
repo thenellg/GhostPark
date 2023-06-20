@@ -762,6 +762,7 @@ MonoBehaviour:
   active: 0
   showingArrow: 0
   arrow: {fileID: 0}
+  through: 0
 --- !u!1 &308156531
 GameObject:
   m_ObjectHideFlags: 0
@@ -4383,6 +4384,7 @@ MonoBehaviour:
   active: 0
   showingArrow: 0
   arrow: {fileID: 0}
+  through: 0
 --- !u!1001 &1536048148
 PrefabInstance:
   m_ObjectHideFlags: 0

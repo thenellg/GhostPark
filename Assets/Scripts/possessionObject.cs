@@ -12,6 +12,8 @@ public class possessionObject : MonoBehaviour
     public bool showingArrow = false;
     public GameObject arrow;
 
+    public bool through = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,9 @@ public class possessionObject : MonoBehaviour
         player.transform.localScale = Vector3.zero;
         //setting this object to active controller
         active = true;
+
+        if (through)
+            dashOut();
     }
 
     public void dashOut()
