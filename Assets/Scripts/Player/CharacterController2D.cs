@@ -301,7 +301,8 @@ public class CharacterController2D : MonoBehaviour
 		_dashing = false;
 		m_PlayerController.downwardDash = false;
 		PlayerAnim.SetBool("dashing", false);
-
+		if (m_Settings.infiniteDash)
+			canDash = true;
 	}
 
 	public void deadSFX(AudioClip deathSFX)

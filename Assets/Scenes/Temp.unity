@@ -5976,14 +5976,8 @@ MonoBehaviour:
   activeLevel: 0
   downSmashUnlock: 0
   dashUnlock: 1
-  castleCollectibles: 0
-  castleCollected: 0
-  castleCurrentCam: 0
-  castleBeaten: 0
-  spaceCollectibles: 0
-  spaceCollected: 0
-  spaceCurrentCam: 0
-  spaceBeaten: 0
+  infiniteDash: 1
+  invincibility: 1
 --- !u!4 &2069281847
 Transform:
   m_ObjectHideFlags: 0

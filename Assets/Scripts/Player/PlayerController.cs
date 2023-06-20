@@ -141,15 +141,18 @@ public class PlayerController : MonoBehaviour {
 
 		if (collision.tag == "Death")
 		{
-			if (!areDead)
+			if (!controller.m_Settings.invincibility || (controller.m_Settings.invincibility && collision.GetComponent<deathObject>().typeOfObject == 0))
 			{
-				areDead = true;
-				canMove = false;
-				UIAnimation.SetTrigger("Died");
-				this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-				deathSFX = collision.GetComponent<deathObject>().sendDeathAudio();
-				Invoke("onDeath", 0.4f);
-				//onDeath();
+				if (!areDead)
+				{
+					areDead = true;
+					canMove = false;
+					UIAnimation.SetTrigger("Died");
+					this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+					deathSFX = collision.GetComponent<deathObject>().sendDeathAudio();
+					Invoke("onDeath", 0.4f);
+					//onDeath();
+				}
 			}
 		}
 

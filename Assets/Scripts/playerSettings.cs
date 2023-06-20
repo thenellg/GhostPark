@@ -11,17 +11,9 @@ public class playerSettings : MonoBehaviour
     public bool downSmashUnlock = false;
     public bool dashUnlock = true;
 
-    [Header("Castle Level")]
-    public int castleCollectibles;
-    public int castleCollected = 0;
-    public int castleCurrentCam;
-    public bool castleBeaten = false;
-
-    [Header("Space Level")]
-    public int spaceCollectibles;
-    public int spaceCollected = 0;
-    public int spaceCurrentCam;
-    public bool spaceBeaten = false;
+    [Header("Accessibility")]
+    public bool infiniteDash;
+    public bool invincibility;
 
     // Start is called before the first frame update
     void Start()
