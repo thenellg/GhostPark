@@ -46,6 +46,7 @@ public class key : MonoBehaviour
                 keyAnim.SetTrigger("Fade");
                 inPosition = true;
                 door.GetComponent<Door>().unlocked();
+                this.transform.parent = FindObjectOfType<PlayerController>().transform;
                 Invoke("boom", 1.35f);
                 end = false;
             }
@@ -71,5 +72,10 @@ public class key : MonoBehaviour
         this.GetComponent<BoxCollider2D>().enabled = true;
         following = false;
         inPosition = false;
+    }
+
+    public void resetParent()
+    {
+        this.transform.parent = parent;
     }
 }

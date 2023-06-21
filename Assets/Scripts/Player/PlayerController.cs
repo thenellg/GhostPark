@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour {
 				this.GetComponentInChildren<key>().speed = 8;
 				controller.stopVelocity();
 				this.GetComponentInChildren<key>().followSpot = collision.transform;
+				this.GetComponentInChildren<key>().resetParent();
 			}
 		}
 
