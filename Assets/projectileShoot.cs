@@ -7,9 +7,9 @@ public class projectileShoot : MonoBehaviour
     public BoxCollider2D triggerArea;
     public GameObject projectile;
     public GameObject originPoint;
+    public bool consistent = false;
 
     public int interval;
-    public bool intervalActive = false;
     public bool directionLeft = true;
     public bool active = false;
 
@@ -17,16 +17,37 @@ public class projectileShoot : MonoBehaviour
     private int count = 0;
     public int possessionInterval;
 
+    public enum projectileType
+    {
+        fireball,
+        fallingRock
+    }
+    public projectileType m_projectileType;
+
     // Start is called before the first 1frame update
     void Start()
     {
-        triggerArea = GetComponent<BoxCollider2D>();
+        if (consistent)
+        {
+            active = true;
+            instantiateProjectile();
+        }
     }
 
     public void instantiateProjectile()
     {
         GameObject _projectile = Instantiate(projectile);
-        //Set necessities for fireball
+
+        if (m_projectileType == projectileType.fireball)
+        {
+            if (directionLeft)
+                _projectile.GetComponent<fireball>().speed *= -1;
+            //Set necessities for fireball
+        }
+        else if (m_projectileType == projectileType.fallingRock)
+        {
+
+        }
 
         if (possessable)
         {
@@ -35,6 +56,7 @@ public class projectileShoot : MonoBehaviour
             {
                 projectile.AddComponent<possessionObject>();
                 count = 0;
+                _projectile.GetComponent<SpriteRenderer>().color = Color.green;
             }
 
         }
@@ -50,7 +72,7 @@ public class projectileShoot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && !consistent)
         {
             active = true;
             Invoke("instantiateProjectile",1f);
@@ -59,7 +81,7 @@ public class projectileShoot : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && !consistent)
         {
             active = false;
         }

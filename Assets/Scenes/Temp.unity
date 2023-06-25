@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 117566977}
   - component: {fileID: 117566978}
   m_Layer: 0
-  m_Name: Fireball Trigger
+  m_Name: Projectile Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,14 +355,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerArea: {fileID: 0}
-  fireball: {fileID: 0}
+  projectile: {fileID: 4939842176680306043, guid: 34fe724e33837af4e886789a900d9c93, type: 3}
   originPoint: {fileID: 162609932}
+  consistent: 1
   interval: 2
-  intervalActive: 0
   directionLeft: 1
   active: 0
-  possessable: 0
+  possessable: 1
   possessionInterval: 4
+  m_projectileType: 0
 --- !u!212 &117566979
 SpriteRenderer:
   m_ObjectHideFlags: 0
