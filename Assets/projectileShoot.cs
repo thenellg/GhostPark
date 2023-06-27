@@ -55,7 +55,7 @@ public class projectileShoot : MonoBehaviour
             count++;
             if(count == possessionInterval)
             {
-                projectile.AddComponent<possessionObject>();
+                _projectile.AddComponent<possessionObject>();
                 count = 0;
                 _projectile.GetComponent<SpriteRenderer>().color = Color.green;
             }

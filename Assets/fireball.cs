@@ -38,6 +38,11 @@ public class fireball : MonoBehaviour
                 GetComponent<possessionObject>().dashOut();
                 temp.onDeath();
             }
+
+            else if (collision.gameObject.tag != "Player" && !GetComponent<possessionObject>().active)
+            {
+                Destroy(this.gameObject);
+            }
         }
         else if (collision.gameObject.tag == "Player")
         {
