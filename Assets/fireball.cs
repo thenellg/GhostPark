@@ -39,11 +39,13 @@ public class fireball : MonoBehaviour
                 temp.onDeath();
             }
         }
+        else if (collision.gameObject.tag == "Player")
+        {
+            temp.onDeath();
+            Destroy(this.gameObject);
+        }
         else
         {
-            if (collision.gameObject.tag == "Player")
-                temp.onDeath();
-
             Destroy(this.gameObject);
         }
 
