@@ -7,11 +7,13 @@ public class fireball : MonoBehaviour
     public int speed;
     public bool directionLeft;
     public Rigidbody2D m_Rigidbody2D;
+    public Transform parent;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        transform.parent = GameObject.Find("Spawning Hazards").transform;
     }
 
     // Update is called once per frame
@@ -22,6 +24,29 @@ public class fireball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject);
+        PlayerController temp = FindObjectOfType<PlayerController>();
+
+        if (GetComponent<possessionObject>())
+        {
+            if (collision.gameObject.tag == "Player" && !temp.controller._dashing)
+            {
+                FindObjectOfType<PlayerController>().onDeath();
+            }
+
+            else if (collision.gameObject.tag != "Player" && GetComponent<possessionObject>().active)
+            {
+                GetComponent<possessionObject>().dashOut();
+                temp.onDeath();
+            }
+        }
+        else
+        {
+            if (collision.gameObject.tag == "Player")
+                temp.onDeath();
+
+            Destroy(this.gameObject);
+        }
+
+
     }
 }

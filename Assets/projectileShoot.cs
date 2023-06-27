@@ -9,7 +9,8 @@ public class projectileShoot : MonoBehaviour
     public GameObject originPoint;
     public bool consistent = false;
 
-    public int interval;
+    public float interval;
+    public float timePassed;
     public bool directionLeft = true;
     public bool active = false;
 

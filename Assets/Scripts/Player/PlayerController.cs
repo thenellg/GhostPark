@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 
 	public key _key;
 	public GameObject items;
+	public GameObject hazards;
 	private Transform[] objects;
 	public CinemachineVirtualCamera startCam;
 	public CinemachineBrain camBrain;
@@ -282,6 +283,11 @@ public class PlayerController : MonoBehaviour {
 		//Resets all breakable objects
 		foreach (Transform platform in breakables)
 			platform.gameObject.SetActive(true);
+
+		while (hazards.transform.childCount > 0)
+		{
+			DestroyImmediate(hazards.transform.GetChild(0).gameObject);
+		}
 
 		//resets hanging boxes
 		downwardDash = false;

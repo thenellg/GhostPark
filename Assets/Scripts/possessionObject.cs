@@ -38,7 +38,11 @@ public class possessionObject : MonoBehaviour
 
     public void setUp()
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
+        if (GetComponent<BoxCollider2D>())
+            GetComponent<BoxCollider2D>().isTrigger = true;
+        else if (GetComponent<CircleCollider2D>())
+            GetComponent<CircleCollider2D>().isTrigger = true ;
+
         scale = player.transform.localScale;
 
         //disabling normal player activity
@@ -70,6 +74,9 @@ public class possessionObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        GetComponent<BoxCollider2D>().isTrigger = false;
+        if(GetComponent<BoxCollider2D>())
+            GetComponent<BoxCollider2D>().isTrigger = false;
+        else if (GetComponent<CircleCollider2D>())
+            GetComponent<CircleCollider2D>().isTrigger = false;
     }
 }
