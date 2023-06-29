@@ -63,13 +63,17 @@ public class possessionObject : MonoBehaviour
     public void dashOut()
     {
         player.canMove = true;
+        active = false;
 
         player.controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
         player.controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         player.transform.localScale = scale;
         player.transform.parent = null;
+        
         player.controller.dashing();
+        //player.controller.Move(0f, false, true, false, false);
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
