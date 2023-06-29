@@ -63,8 +63,6 @@ public class CharacterController2D : MonoBehaviour
 	public Vector2 fanForce;
 
 	[Header("Gravity")]
-	public bool forcedGrav = false;
-	public string gravDirection = "up";
 	public float tempGravScale;
 
 	private void Awake()
@@ -167,7 +165,11 @@ public class CharacterController2D : MonoBehaviour
 
 		if (holdingWall)
         {
-			m_Rigidbody2D.gravityScale = tempGravScale;
+			if (m_Rigidbody2D.gravityScale > 0)
+				m_Rigidbody2D.gravityScale = tempGravScale;
+			else
+				m_Rigidbody2D.gravityScale = -tempGravScale;
+
 			m_Rigidbody2D.velocity = Vector2.zero;
 			holdingWall = false;
 		}
@@ -186,14 +188,11 @@ public class CharacterController2D : MonoBehaviour
 
 		m_Rigidbody2D.velocity = new Vector2(0, 0);
 
-		if (gravDirection == "up")
+		if (m_Rigidbody2D.gravityScale > 0)
 			m_Rigidbody2D.AddForce(new Vector2(0, m_JumpForce));
-		else if (gravDirection == "down")
+		else
 			m_Rigidbody2D.AddForce(new Vector2(0, -m_JumpForce));
-		else if (gravDirection == "left")
-			m_Rigidbody2D.AddForce(new Vector2(m_JumpForce, 0));
-		else if (gravDirection == "right")
-			m_Rigidbody2D.AddForce(new Vector2(-m_JumpForce, 0));
+
 	}
 
 	/*
@@ -231,63 +230,13 @@ public class CharacterController2D : MonoBehaviour
 		PlayerAnim.SetTrigger("Dash");
 		PlayerAnim.SetBool("dashing", true);
 
-		if (gravDirection == "up")
-		{
-			if (dashVector.y > 0.5f)
-				m_Rigidbody2D.AddForce(dashVector * temp, ForceMode2D.Impulse);
-			else
-			{
-				if (forcedGrav)
-					temp = 8f;
-				m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
-
-			}
-			if (dashVector.x < 0.5 && dashVector.y < 0)
-				m_PlayerController.downwardDash = true;
-		}
-
-		else if (gravDirection == "down")
-        {
-			if (dashVector.y < 0.5f)
-				m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
-			else
-			{
-				if (forcedGrav)
-					temp = 8f;
-				m_Rigidbody2D.AddForce(dashVector * temp, ForceMode2D.Impulse);
-
-			}
-			if (dashVector.x < 0.5 && dashVector.y < 0)
-				m_PlayerController.downwardDash = true;
-		}
-		else if (gravDirection == "left")
-		{
-			if (dashVector.y < 0.5f)
-				m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
-			else
-			{
-				if (forcedGrav)
-					temp = 8f;
-				m_Rigidbody2D.AddForce(dashVector * temp, ForceMode2D.Impulse);
-
-			}
-			if (dashVector.y < 0.5 && dashVector.x < 0)
-				m_PlayerController.downwardDash = true;
-		}
-		else if (gravDirection == "right")
-		{
-			if (dashVector.y < 0.5f)
-				m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
-			else
-			{
-				if (forcedGrav)
-					temp = 8f;
-				m_Rigidbody2D.AddForce(dashVector * temp, ForceMode2D.Impulse);
-
-			}
-			if (dashVector.y < 0.5 && dashVector.x < 0)
-				m_PlayerController.downwardDash = true;
-		}
+		if (dashVector.y > 0.5f)
+			m_Rigidbody2D.AddForce(dashVector * temp, ForceMode2D.Impulse);
+		else
+			m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
+		
+		if (dashVector.x < 0.5 && dashVector.y < 0)
+			m_PlayerController.downwardDash = true;
 
 		jumpCounter = 0;
 
@@ -364,21 +313,6 @@ public class CharacterController2D : MonoBehaviour
 				else
 					targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 
-				if (gravDirection == "right")
-                {
-					if (crouch)
-						targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, move * 3f);                                                 // Move the character by finding the target velocity
-					else
-						targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, move * 10f);
-				}
-				else if (gravDirection == "left")
-                {
-					if (crouch)
-						targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, -move * 3f);                                                 // Move the character by finding the target velocity
-					else
-						targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, -move * 10f);
-				}
-
 				//====================================================================
 				// Need to update to account for 4 directions of gravity
 				//====================================================================
@@ -441,39 +375,13 @@ public class CharacterController2D : MonoBehaviour
 			//Wall Jump needs tob e adjusted for 4 dimensions
 			if (m_FacingRight)
 			{
-				if (gravDirection == "left")
-				{
-					wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(0f, -wallDistance), wallDistance, m_WhatIsGround);
-					Debug.DrawRay(transform.position, new Vector2(0, -wallDistance), Color.red);
-				}
-				else if(gravDirection == "right")
-                {
-					wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(0f, wallDistance), wallDistance, m_WhatIsGround);
-					Debug.DrawRay(transform.position, new Vector2(0, wallDistance), Color.red);
-				}
-				else
-				{
-					wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0f), wallDistance, m_WhatIsGround);
-					Debug.DrawRay(transform.position, new Vector2(wallDistance, 0), Color.red);
-				}
+				wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0f), wallDistance, m_WhatIsGround);
+				Debug.DrawRay(transform.position, new Vector2(wallDistance, 0), Color.red);
 			}
 			else
 			{
-				if (gravDirection == "left")
-				{
-					wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(0f, wallDistance), wallDistance, m_WhatIsGround);
-					Debug.DrawRay(transform.position, new Vector2(0, wallDistance), Color.red);
-				}
-				else if (gravDirection == "right")
-				{
-					wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(0f, -wallDistance), wallDistance, m_WhatIsGround);
-					Debug.DrawRay(transform.position, new Vector2(0, -wallDistance), Color.red);
-				}
-				else
-				{
-					wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0f), wallDistance, m_WhatIsGround);
-					Debug.DrawRay(transform.position, new Vector2(-wallDistance, 0), Color.red);
-				}
+				wallCheckHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0f), wallDistance, m_WhatIsGround);
+				Debug.DrawRay(transform.position, new Vector2(-wallDistance, 0), Color.red);
 			}
 
 			if (wallCheckHit && !m_Grounded && Input.GetAxis("Horizontal") != 0)
@@ -497,48 +405,22 @@ public class CharacterController2D : MonoBehaviour
 			//holdingWall = false;
 			if (isWallSliding && !jump && !dash)
 			{
-				if (m_Rigidbody2D.gravityScale < 0)
-				{
-					if (holdingWall && wallHoldTimer > 0f && m_Rigidbody2D.velocity.y >= 0f)
-                    {
-						m_Rigidbody2D.velocity = Vector2.zero;
-						m_Rigidbody2D.gravityScale = 0f;
-						wallHoldTimer -= Time.deltaTime;
-					}
-                    else
-                    {
-						m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, Mathf.Clamp(-m_Rigidbody2D.velocity.y, -wallSlideSpeed, float.MaxValue));
-						m_Rigidbody2D.gravityScale = tempGravScale;
-					}
-				}
-                else if (m_Rigidbody2D.gravityScale > 0)
-                {
-					if (holdingWall && wallHoldTimer > 0f && m_Rigidbody2D.velocity.y <= 0f)
-					{
-						m_Rigidbody2D.velocity = Vector2.zero;
-						m_Rigidbody2D.gravityScale = 0f;
-						wallHoldTimer -= Time.deltaTime;
-					}
-					else
-					{
-						m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, Mathf.Clamp(m_Rigidbody2D.velocity.y, wallSlideSpeed, float.MaxValue));
-						m_Rigidbody2D.gravityScale = tempGravScale;
-					}
-				}
-                else
-                {
+				if (m_Rigidbody2D.gravityScale > 0)
 					m_Rigidbody2D.gravityScale = tempGravScale;
-					wallHoldTimer = wallHoldTimerBackUp;
-				}
+				else
+					m_Rigidbody2D.gravityScale = -tempGravScale;
+
+				wallHoldTimer = wallHoldTimerBackUp;
 			}
 			else
             {
 				holdingWall = false;
 				wallHoldTimer = wallHoldTimerBackUp;
-				if (gravDirection == "up")
-				{
+
+				if (m_Rigidbody2D.gravityScale > 0)
 					m_Rigidbody2D.gravityScale = tempGravScale;
-				}
+				else
+					m_Rigidbody2D.gravityScale = -tempGravScale;
 			}
 
 			if (m_Grounded && !_dashing)

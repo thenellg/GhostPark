@@ -311,7 +311,10 @@ public class PlayerController : MonoBehaviour {
 		camBrain.m_DefaultBlend.m_Time = 1f;
 
 		Invoke("setCharacter", 0.1f);
-		
+
+		if (controller.m_Rigidbody2D.gravityScale < 0)
+			controller.m_Rigidbody2D.gravityScale = -controller.m_Rigidbody2D.gravityScale;
+
 		//Move character to spawn point
 		this.transform.position = spawnPoint;
 		areDead = false;
