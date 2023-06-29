@@ -5,12 +5,12 @@ using UnityEngine;
 public class projectileShoot : MonoBehaviour
 {
     public BoxCollider2D triggerArea;
-    public GameObject projectile;
-    public GameObject originPoint;
+    public List<GameObject> projectiles = new List<GameObject>();
+    public Transform originPoint;
     public bool consistent = false;
 
     public float interval;
-    public float timePassed;
+    public float timer;
     public bool directionLeft = true;
     public bool active = false;
 
@@ -34,20 +34,34 @@ public class projectileShoot : MonoBehaviour
             instantiateProjectile();
         }
     }
+    private void Update()
+    {
+        if (active)
+        {
+            if (timer > 0)
+                timer -= Time.deltaTime;
+            else
+                instantiateProjectile();
+        }    
+    }
 
     public void instantiateProjectile()
     {
-        GameObject _projectile = Instantiate(projectile);
+        GameObject _projectile = null;
 
         if (m_projectileType == projectileType.fireball)
         {
+            _projectile = Instantiate(projectiles[0]);
+
             if (directionLeft)
                 _projectile.GetComponent<fireball>().speed *= -1;
+
             //Set necessities for fireball
+            _projectile.transform.position = originPoint.position;
         }
         else if (m_projectileType == projectileType.fallingRock)
         {
-
+            _projectile = Instantiate(projectiles[1]);
         }
 
         if (possessable)
@@ -62,7 +76,7 @@ public class projectileShoot : MonoBehaviour
 
         }
 
-        Invoke("resetInterval", interval);
+        timer = interval;
     }
 
     void resetInterval()
@@ -75,8 +89,8 @@ public class projectileShoot : MonoBehaviour
     {
         if(collision.tag == "Player" && !consistent)
         {
+            timer = interval;
             active = true;
-            Invoke("instantiateProjectile",1f);
         }
     }
 

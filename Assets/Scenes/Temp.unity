@@ -355,14 +355,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerArea: {fileID: 0}
-  projectile: {fileID: 4939842176680306043, guid: 34fe724e33837af4e886789a900d9c93, type: 3}
-  originPoint: {fileID: 162609932}
-  consistent: 1
+  projectiles:
+  - {fileID: 4939842176680306043, guid: 34fe724e33837af4e886789a900d9c93, type: 3}
+  originPoint: {fileID: 162609933}
+  consistent: 0
   interval: 2
-  timePassed: 0
+  timer: 0
   directionLeft: 1
   active: 0
-  possessable: 1
+  possessable: 0
   possessionInterval: 4
   m_projectileType: 0
 --- !u!212 &117566979
@@ -537,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162609932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.486, y: 0, z: 0}
+  m_LocalPosition: {x: 0.486, y: -0.14, z: 0}
   m_LocalScale: {x: 0.06634765, y: 0.71321535, z: 1}
   m_Children: []
   m_Father: {fileID: 117566980}
