@@ -35,8 +35,10 @@ public class pushableObject : MonoBehaviour
 
         if (transform.parent)
             normalState = transform.parent.gameObject;
+        else
+            normalState = null;
 
-        if (normalState.tag == "MovingPlatform")
+        if (normalState && normalState.tag == "MovingPlatform")
         {
             defaultMoving = true;
             movingParent = normalState.transform;

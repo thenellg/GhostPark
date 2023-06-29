@@ -21,7 +21,8 @@ public class projectileShoot : MonoBehaviour
     public enum projectileType
     {
         fireball,
-        fallingRock
+        fallingRockFatal,
+        fallingRockObstacle
     }
     public projectileType m_projectileType;
 
@@ -57,12 +58,19 @@ public class projectileShoot : MonoBehaviour
                 _projectile.GetComponent<fireball>().speed *= -1;
 
             //Set necessities for fireball
-            _projectile.transform.position = originPoint.position;
         }
-        else if (m_projectileType == projectileType.fallingRock)
+        else if (m_projectileType == projectileType.fallingRockFatal)
         {
             _projectile = Instantiate(projectiles[1]);
+            _projectile.GetComponent<fallingRock>().fatal = true;
         }
+        else if (m_projectileType == projectileType.fallingRockObstacle)
+        {
+            _projectile = Instantiate(projectiles[1]);
+            _projectile.GetComponent<fallingRock>().fatal = false;
+        }
+
+        _projectile.transform.position = originPoint.position;
 
         if (possessable)
         {
