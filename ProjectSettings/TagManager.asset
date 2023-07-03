@@ -15,6 +15,7 @@ TagManager:
   - camSwap
   - Fan
   - Possession
+  - falseWall
   layers:
   - Default
   - TransparentFX

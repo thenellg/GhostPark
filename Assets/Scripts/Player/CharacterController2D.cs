@@ -145,7 +145,8 @@ public class CharacterController2D : MonoBehaviour
 					playLandingSFX = false;
 				}
 
-				m_Grounded = true;
+				if(colliders[i].isTrigger == false)
+					m_Grounded = true;
 				canDash = true;
 
 				jumpCounter = 0;
