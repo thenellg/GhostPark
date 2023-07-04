@@ -72,6 +72,7 @@ public class possessionObject : MonoBehaviour
         player.transform.parent = null;
         
         player.controller.dashing();
+        player.controller.fromPossession = true;
         //player.controller.Move(0f, false, true, false, false);
 
     }

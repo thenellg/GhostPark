@@ -54,6 +54,7 @@ public class CharacterController2D : MonoBehaviour
 	private Animator PlayerAnim;
 	bool canMove = true;
 	public Vector2 dashVector;
+	public bool fromPossession = false;
 	float shakeTimer = 0;
 	bool crouching = false;
 	private float moveCheck;
@@ -215,7 +216,7 @@ public class CharacterController2D : MonoBehaviour
 			transform.localScale = theScale;
 	}
 
-	public void dashing()
+	public void dashing(bool fromPossession = false)
     {
 		canDash = false;
 		
@@ -241,8 +242,9 @@ public class CharacterController2D : MonoBehaviour
 
 		jumpCounter = 0;
 
+
 		_dashing = true;
-		canDash = false;
+
 		Invoke("resetDash", 0.4f);
 	}
 
@@ -251,8 +253,9 @@ public class CharacterController2D : MonoBehaviour
 		_dashing = false;
 		m_PlayerController.downwardDash = false;
 		PlayerAnim.SetBool("dashing", false);
-		if (m_Settings.infiniteDash)
+		if (m_Settings.infiniteDash || fromPossession)
 			canDash = true;
+		fromPossession = false;
 	}
 
 	public void deadSFX(AudioClip deathSFX)
