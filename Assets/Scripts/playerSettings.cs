@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerSettings : MonoBehaviour
 {
-    public enum controlType { controller, keyboard };
+    public enum controlType { Playstation, Xbox, Switch, keyboard };
 
     [Header("General")]
     public int activeLevel;
@@ -26,7 +26,12 @@ public class playerSettings : MonoBehaviour
     public string right = "d";
     public string jump = "space";
     public string dash = "q";
+    public string hold = "e";
 
+    public List<string> keyboardDefault = new List<string>();
+    public List<string> playstationDefault = new List<string>();
+    public List<string> xboxDefault = new List<string>();
+    public List<string> switchDefault = new List<string>();
 
     // Start is called before the first frame update
     void Start()

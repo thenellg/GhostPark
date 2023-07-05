@@ -6089,13 +6089,41 @@ MonoBehaviour:
   infiniteDash: 0
   invincibility: 0
   outline: 0
-  currentController: 1
+  currentController: 3
   up: w
   down: s
   left: a
   right: d
   jump: space
   dash: q
+  keyboardDefault:
+  - w
+  - s
+  - a
+  - d
+  - space
+  - q
+  playstationDefault:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  xboxDefault:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  switchDefault:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!4 &2069281847
 Transform:
   m_ObjectHideFlags: 0

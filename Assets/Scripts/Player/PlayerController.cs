@@ -106,20 +106,20 @@ public class PlayerController : MonoBehaviour {
 				crouch = true;
 			}
 
-			if (Input.GetButtonDown("Jump"))
+			if (Input.GetKeyDown(controller.m_Settings.jump))
 			{
 				jump = true;
 			}
-			else if (Input.GetButtonDown("Dash"))
+			else if (Input.GetKeyDown(controller.m_Settings.dash))
             {
 				dash = true;
             }
 
-			if (Input.GetButtonDown("Hold"))
+			if (Input.GetKeyDown(controller.m_Settings.hold))
             {
 				hold = true;
             }
-			else if (Input.GetButtonUp("Hold"))
+			else if (Input.GetKeyUp(controller.m_Settings.hold))
             {
 				hold = false;
             }
