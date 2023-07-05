@@ -6096,6 +6096,7 @@ MonoBehaviour:
   right: d
   jump: space
   dash: q
+  hold: e
   keyboardDefault:
   - w
   - s
@@ -6103,7 +6104,9 @@ MonoBehaviour:
   - d
   - space
   - q
+  - e
   playstationDefault:
+  - 
   - 
   - 
   - 
@@ -6117,6 +6120,7 @@ MonoBehaviour:
   - 
   - 
   - 
+  - 
   switchDefault:
   - 
   - 
@@ -6124,6 +6128,8 @@ MonoBehaviour:
   - 
   - 
   - 
+  - 
+  active: 0
 --- !u!4 &2069281847
 Transform:
   m_ObjectHideFlags: 0
