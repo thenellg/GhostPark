@@ -13,10 +13,21 @@ public class playerSettings : MonoBehaviour
     public bool downSmashUnlock = false;
     public bool dashUnlock = true;
 
+    [Header("Audio")]
+    [Range(0f, 1f)] public float sfxVolume;
+    [Range(0f, 1f)] public float musicVolume;
+    [Range(0f, 1f)] public float menuVolume;
+
+    [Header("Level Complete")]
+    public bool fantasyComplete = false;
+    public bool futureComplete = false;
+    public bool horrorComplete = false;
+
     [Header("Accessibility")]
     public bool infiniteDash;
     public bool invincibility;
     public bool outline;
+    public bool coverPits;
 
     [Header("Key Bindings")]
     public controlType currentController = controlType.keyboard;

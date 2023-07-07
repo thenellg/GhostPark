@@ -2325,9 +2325,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2142694979
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 10252d010f84b614a9f1675a87c21a3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4910,9 +4910,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2142694979
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 10252d010f84b614a9f1675a87c21a3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5163,6 +5163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gravity Trigger (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2364438394890076449, guid: cd1db6620914de64e9f543a01626eb33, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2364438394890076453, guid: cd1db6620914de64e9f543a01626eb33, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -5205,6 +5209,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2364438394890076453, guid: cd1db6620914de64e9f543a01626eb33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364438394890076454, guid: cd1db6620914de64e9f543a01626eb33, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6003,6 +6011,12 @@ MonoBehaviour:
   activeLevel: 0
   downSmashUnlock: 0
   dashUnlock: 1
+  sfxVolume: 0
+  musicVolume: 0
+  menuVolume: 0
+  fantasyComplete: 0
+  futureComplete: 0
+  horrorComplete: 0
   infiniteDash: 0
   invincibility: 0
   outline: 0
@@ -6014,10 +6028,38 @@ MonoBehaviour:
   jump: space
   dash: q
   hold: e
-  keyboardControls: []
-  playstationControls: []
-  xboxControls: []
-  switchControls: []
+  keyboardControls:
+  - w
+  - s
+  - a
+  - d
+  - space
+  - q
+  - e
+  playstationControls:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  xboxControls:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  switchControls:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   active: 0
 --- !u!4 &2069281847
 Transform:
@@ -6256,6 +6298,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1593796742}
     m_Modifications:
+    - target: {fileID: 1892259465579667680, guid: 8e9e01fd0f873ca498c070176e767bf1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1892259465579667683, guid: 8e9e01fd0f873ca498c070176e767bf1, type: 3}
       propertyPath: m_RootOrder
       value: 39
