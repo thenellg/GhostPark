@@ -16,6 +16,7 @@ TagManager:
   - Fan
   - Possession
   - falseWall
+  - Minecart
   layers:
   - Default
   - TransparentFX

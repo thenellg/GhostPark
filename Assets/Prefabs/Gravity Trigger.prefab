@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2364438394890076454}
   - component: {fileID: 2364438394890076455}
   - component: {fileID: 2364438394890076448}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Gravity Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
