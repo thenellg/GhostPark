@@ -6860,6 +6860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Posession Test
       objectReference: {fileID: 0}
+    - target: {fileID: 5287718332791514613, guid: 701ffbffe4b76c344bf4bd7a7ae96390, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 701ffbffe4b76c344bf4bd7a7ae96390, type: 3}
 --- !u!1001 &4916519144076007968
