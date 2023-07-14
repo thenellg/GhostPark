@@ -23,6 +23,8 @@ public class fanPush : MonoBehaviour
 
         if (collision.tag == "Player")
             collision.GetComponent<CharacterController2D>().fanSet(fanDirection);
+        else if(collision.tag == "Minecart")
+            collision.GetComponent<minecart>().fanSet(fanDirection);
         else if (collision.tag == "Box")
             collision.GetComponent<pushableObject>().fanSet(fanDirection);
 
@@ -33,6 +35,10 @@ public class fanPush : MonoBehaviour
         if(collision.tag == "Player")
         {
             collision.GetComponent<CharacterController2D>().fanDeset();
+        }
+        else if (collision.tag == "Minecart")
+        {
+            collision.GetComponent<minecart>().fanDeset();
         }
         else if (collision.tag == "Box")
         {

@@ -340,7 +340,7 @@ public class CharacterController2D : MonoBehaviour
 			}
 
 			// If the player should jump...
-			if (coyoteTimer > 0 && jump && jumpCounter < 1 || isWallSliding && jump)// && jumpCounter < 1)// || doubleJump && jump)
+			if (coyoteTimer > 0 && jump && jumpCounter < 1 || isWallSliding && jump && jumpCounter < 1)// || doubleJump && jump)
 			{
 				PlayerAnim.SetTrigger("Jump");
 
