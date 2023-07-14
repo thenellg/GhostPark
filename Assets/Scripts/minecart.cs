@@ -175,7 +175,6 @@ public class minecart : MonoBehaviour
         else
             rb.AddForce(new Vector2(0, -m_JumpForce));
     }
-    }
 
     public void fanSet(Vector2 fanVelocity)
     {
@@ -192,7 +191,6 @@ public class minecart : MonoBehaviour
 
     public void resetCart()
     {
-        active = false;
         rb.velocity = Vector2.zero;
         transform.position = originalSpot;
     }
@@ -202,6 +200,21 @@ public class minecart : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             speed *= -1f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Death")
+        {
+            if (active)
+            {
+                exit();
+                player.GetComponent<PlayerController>().onDeath();
+                resetPlayerChild();
+            }
+
+            resetCart();
         }
     }
 }
