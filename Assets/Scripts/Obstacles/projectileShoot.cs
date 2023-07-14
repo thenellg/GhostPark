@@ -95,7 +95,7 @@ public class projectileShoot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" && !consistent)
+        if ((collision.tag == "Player" || collision.tag == "Minecart") && !consistent)
         {
             timer = interval;
             active = true;
@@ -104,7 +104,7 @@ public class projectileShoot : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Player" && !consistent)
+        if((collision.tag == "Player" || collision.tag == "Minecart") && !consistent )
         {
             active = false;
         }

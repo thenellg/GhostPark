@@ -175,6 +175,7 @@ public class minecart : MonoBehaviour
         else
             rb.AddForce(new Vector2(0, -m_JumpForce));
     }
+    }
 
     public void fanSet(Vector2 fanVelocity)
     {

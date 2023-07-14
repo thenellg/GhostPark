@@ -23,7 +23,7 @@ public class snakeTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && !active)
+        if ((collision.tag == "Player" || collision.tag == "Minecart") && !active)
             Invoke("setSnake", interval);
     }
 }
