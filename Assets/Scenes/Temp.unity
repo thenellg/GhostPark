@@ -4360,7 +4360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 160184803935990803, guid: 7400844e49076744f941768559f1bb7c, type: 3}
       propertyPath: m_TagString
-      value: Box
+      value: Mirror
       objectReference: {fileID: 0}
     - target: {fileID: 2993133503254054579, guid: 7400844e49076744f941768559f1bb7c, type: 3}
       propertyPath: m_Enabled
@@ -5893,14 +5893,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904135338}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.15134712, w: 0.9884807}
   m_LocalPosition: {x: -13.72, y: 5.26, z: 0}
   m_LocalScale: {x: 3.0505, y: 3.0505, z: 3.0505}
   m_Children:
   - {fileID: 1840369968}
   m_Father: {fileID: 0}
   m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.41}
 --- !u!114 &1904135342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5917,14 +5917,15 @@ MonoBehaviour:
   layerDetection:
     serializedVersion: 2
     m_Bits: 113
-  active: 0
+  active: 1
   maxRayDistance: 9
   actualDistance: 0
+  length: 0
   drawTime: 0.05
   changingDistance: 0
   canReflect: 1
   reflections: 5
-  canRotate: 1
+  canRotate: 0
   rotateRight: 0
   rotationSpeed: 50
   limitedRotation: 1

@@ -12,6 +12,7 @@ public class laser : MonoBehaviour
     public bool active = false;
     public float maxRayDistance;
     public float actualDistance = 0f;
+    public float length = 0f;
     public float drawTime = 0.1f;
     public bool changingDistance = false;
 
@@ -76,14 +77,13 @@ public class laser : MonoBehaviour
             lineOfSight.positionCount = 1;
             lineOfSight.SetPosition(0, transform.position);
 
-            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, actualDistance, layerDetection);
+            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, actualDistance - length, layerDetection);
             // Ray
             Ray2D ray = new Ray2D(transform.position, transform.right);
 
             bool isMirror = false;
             Vector2 mirrorHitPoint = Vector2.zero;
             Vector2 mirrorHitNormal = Vector2.zero;
-
 
             for (int i = 0; i < reflections; i++)
             {
@@ -96,10 +96,13 @@ public class laser : MonoBehaviour
                     isMirror = false;
                     if (hitInfo.collider.tag == "Mirror")
                     {
-                        mirrorHitPoint = (Vector2)hitInfo.point;
-                        mirrorHitNormal = (Vector2)hitInfo.normal;
-                        hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), actualDistance, layerDetection);
+                        mirrorHitPoint = hitInfo.point;
+                        mirrorHitNormal = hitInfo.normal;
+                        hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), actualDistance - length, layerDetection);
                         isMirror = true;
+
+                        if(i > 0)
+                            length += Vector2.Distance(mirrorHitPoint, (Vector2)lineOfSight.GetPosition(i-1));
                     }
                     else if (hitInfo.collider.tag == "Player")
                     {
@@ -113,12 +116,12 @@ public class laser : MonoBehaviour
                 {
                     if (isMirror)
                     {
-                        lineOfSight.SetPosition(lineOfSight.positionCount - 1, mirrorHitPoint + Vector2.Reflect(mirrorHitPoint, mirrorHitNormal) * layerDetection);
+                        lineOfSight.SetPosition(lineOfSight.positionCount - 1, mirrorHitPoint + Vector2.Reflect(mirrorHitPoint, mirrorHitNormal).normalized * (actualDistance - length));
                         break;
                     }
                     else
                     {
-                        lineOfSight.SetPosition(lineOfSight.positionCount - 1, transform.position + transform.right * actualDistance);
+                        lineOfSight.SetPosition(lineOfSight.positionCount - 1, transform.position + transform.right * (actualDistance - length));
                         break;
                     }
                 }
