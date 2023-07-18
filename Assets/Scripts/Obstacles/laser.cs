@@ -9,8 +9,10 @@ public class laser : MonoBehaviour
     private PlayerController player;
 
     [Header("Length")]
+    public bool active = false;
     public float maxRayDistance;
     public float actualDistance = 0f;
+    public float drawTime = 0.1f;
     public bool changingDistance = false;
 
     [Header("Reflection")]
@@ -42,84 +44,97 @@ public class laser : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (canRotate)
+        if (active)
         {
-            if (limitedRotation)
+            if (actualDistance < maxRayDistance)
+                actualDistance += drawTime;
+            if (actualDistance > maxRayDistance)
+                actualDistance = maxRayDistance;
+
+            if (canRotate)
             {
-                if (transform.rotation.z >= maxRotate)
+                if (limitedRotation)
                 {
-                    Debug.Log("rotate over max");
-                    rotateRight = false;
+                    if (transform.rotation.z >= maxRotate)
+                    {
+                        Debug.Log("rotate over max");
+                        rotateRight = false;
+                    }
+                    else if (transform.rotation.z <= minRotate)
+                    {
+                        Debug.Log("rotate under min");
+                        rotateRight = true;
+                    }
                 }
-                else if (transform.rotation.z <= minRotate)
-                {
-                    Debug.Log("rotate under min");
-                    rotateRight = true;
-                }
+
+                if (rotateRight)
+                    transform.Rotate(rotationSpeed * Vector3.forward * Time.deltaTime);
+                else
+                    transform.Rotate(-rotationSpeed * Vector3.forward * Time.deltaTime);
             }
 
-            if(rotateRight)
-                transform.Rotate(rotationSpeed * Vector3.forward * Time.deltaTime);
-            else
-                transform.Rotate(-rotationSpeed * Vector3.forward * Time.deltaTime);
-        }
+            lineOfSight.positionCount = 1;
+            lineOfSight.SetPosition(0, transform.position);
 
-        lineOfSight.positionCount = 1;
-        lineOfSight.SetPosition(0, transform.position);
+            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, actualDistance, layerDetection);
+            // Ray
+            Ray2D ray = new Ray2D(transform.position, transform.right);
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, actualDistance, layerDetection);
-        // Ray
-        Ray2D ray = new Ray2D(transform.position, transform.right);
-
-        bool isMirror = false;
-        Vector2 mirrorHitPoint = Vector2.zero;
-        Vector2 mirrorHitNormal = Vector2.zero;
+            bool isMirror = false;
+            Vector2 mirrorHitPoint = Vector2.zero;
+            Vector2 mirrorHitNormal = Vector2.zero;
 
 
-        for (int i = 0; i < reflections; i++)
-        {
-            lineOfSight.positionCount += 1;
-
-            if (hitInfo.collider != null)
+            for (int i = 0; i < reflections; i++)
             {
-                lineOfSight.SetPosition(lineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
+                lineOfSight.positionCount += 1;
 
-                isMirror = false;
-                if (hitInfo.collider.tag == "Mirror")
+                if (hitInfo.collider != null)
                 {
-                    mirrorHitPoint = (Vector2)hitInfo.point;
-                    mirrorHitNormal = (Vector2)hitInfo.normal;
-                    hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), maxRayDistance - actualDistance, layerDetection);
-                    isMirror = true;
-                }
-                else if(hitInfo.collider.tag == "Player")
-                {
-                    player.onDeath();
-                    resetLaser();
+                    lineOfSight.SetPosition(lineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
+
+                    isMirror = false;
+                    if (hitInfo.collider.tag == "Mirror")
+                    {
+                        mirrorHitPoint = (Vector2)hitInfo.point;
+                        mirrorHitNormal = (Vector2)hitInfo.normal;
+                        hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), actualDistance, layerDetection);
+                        isMirror = true;
+                    }
+                    else if (hitInfo.collider.tag == "Player")
+                    {
+                        player.onDeath();
+                        resetLaser();
+                    }
+                    else
+                        break;
                 }
                 else
-                    break;
-            }
-            else
-            {
-                if (isMirror)
                 {
-                    lineOfSight.SetPosition(lineOfSight.positionCount - 1, mirrorHitPoint + Vector2.Reflect(mirrorHitPoint, mirrorHitNormal) * layerDetection);
-                    break;
-                }
-                else
-                {
-                    lineOfSight.SetPosition(lineOfSight.positionCount - 1, transform.position + transform.right * actualDistance);
-                    break;
+                    if (isMirror)
+                    {
+                        lineOfSight.SetPosition(lineOfSight.positionCount - 1, mirrorHitPoint + Vector2.Reflect(mirrorHitPoint, mirrorHitNormal) * layerDetection);
+                        break;
+                    }
+                    else
+                    {
+                        lineOfSight.SetPosition(lineOfSight.positionCount - 1, transform.position + transform.right * actualDistance);
+                        break;
+                    }
                 }
             }
         }
-
+        else
+        {
+            actualDistance = 0f;
+            lineOfSight.positionCount = 0;
+        }
     }
 
     void resetLaser()
     {
         transform.rotation = originalRotation;
         rotateRight = true;
+        actualDistance = 0f;
     }
 }
