@@ -117,7 +117,7 @@ public class laser : MonoBehaviour
                     lineOfSight.SetPosition(lineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
 
                     isMirror = false;
-                    if (hitInfo.collider.tag == "Mirror")
+                    if (hitInfo.collider.CompareTag("Mirror"))
                     {
                         mirrorHitPoint = hitInfo.point;
                         mirrorHitNormal = hitInfo.normal;
@@ -127,7 +127,7 @@ public class laser : MonoBehaviour
                         if(i > 0)
                             length += Vector2.Distance(mirrorHitPoint, (Vector2)lineOfSight.GetPosition(i-1));
                     }
-                    else if (hitInfo.collider.tag == "Player")
+                    else if (hitInfo.collider.CompareTag("Player") || hitInfo.collider.CompareTag("Minecart"))
                     {
                         player.onDeath();
                         resetLaser();
