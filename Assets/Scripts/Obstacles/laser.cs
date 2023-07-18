@@ -7,6 +7,7 @@ public class laser : MonoBehaviour
     public LineRenderer lineOfSight;
     public float maxRayDistance;
     public LayerMask layerDetection;
+    private PlayerController player;
 
     [Header("Reflection")]
     public bool canReflect = false;
@@ -16,20 +17,45 @@ public class laser : MonoBehaviour
     public bool canRotate = false;
     public bool rotateRight = true;
     public float rotationSpeed;
+
+    public bool limitedRotation = false;
+    [Range(0, 1f)] [SerializeField] public float maxRotate = 0f;
+    [Range(-1, 0f)] [SerializeField] public float minRotate = 0f;
+    
     public Quaternion originalRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         originalRotation = transform.rotation;
-
+        player = FindObjectOfType<PlayerController>();
         Physics2D.queriesStartInColliders = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        transform.Rotate(rotationSpeed * Vector3.forward * Time.deltaTime);
+        if (canRotate)
+        {
+            if (limitedRotation)
+            {
+                if (transform.rotation.z >= maxRotate)
+                {
+                    Debug.Log("rotate over max");
+                    rotateRight = false;
+                }
+                else if (transform.rotation.z <= minRotate)
+                {
+                    Debug.Log("rotate under min");
+                    rotateRight = true;
+                }
+            }
+
+            if(rotateRight)
+                transform.Rotate(rotationSpeed * Vector3.forward * Time.deltaTime);
+            else
+                transform.Rotate(-rotationSpeed * Vector3.forward * Time.deltaTime);
+        }
 
         lineOfSight.positionCount = 1;
         lineOfSight.SetPosition(0, transform.position);
@@ -77,5 +103,11 @@ public class laser : MonoBehaviour
             }
         }
 
+    }
+
+    void resetLaser()
+    {
+        transform.rotation = originalRotation;
+        rotateRight = true;
     }
 }

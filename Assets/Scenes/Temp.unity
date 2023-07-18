@@ -5914,15 +5914,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineOfSight: {fileID: 1840369969}
-  maxRayDistance: 15
+  maxRayDistance: 9
   layerDetection:
     serializedVersion: 2
-    m_Bits: 115
+    m_Bits: 113
   canReflect: 1
   reflections: 5
   canRotate: 1
-  rotateRight: 1
-  rotationSpeed: 30
+  rotateRight: 0
+  rotationSpeed: 50
+  limitedRotation: 1
+  maxRotate: 0.5
+  minRotate: -0.5
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1907149402
 GameObject:
@@ -7206,6 +7209,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1593796742}
     m_Modifications:
+    - target: {fileID: 4593367942348308401, guid: cf9b35b11b2d8d246a3f45e07da2cdb7, type: 3}
+      propertyPath: m_TagString
+      value: Mirror
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593367942513651064, guid: cf9b35b11b2d8d246a3f45e07da2cdb7, type: 3}
+      propertyPath: m_TagString
+      value: Mirror
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593367943522238033, guid: cf9b35b11b2d8d246a3f45e07da2cdb7, type: 3}
+      propertyPath: m_TagString
+      value: Mirror
+      objectReference: {fileID: 0}
     - target: {fileID: 5457117477798420933, guid: cf9b35b11b2d8d246a3f45e07da2cdb7, type: 3}
       propertyPath: m_Name
       value: Cycling Platforms
