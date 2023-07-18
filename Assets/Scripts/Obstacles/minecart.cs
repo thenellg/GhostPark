@@ -18,6 +18,7 @@ public class minecart : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     private Vector3 velocity = Vector3.zero;
     public Vector3 originalSpot;
+    [Range(0, 45f)] public float maxRotate = 27f;
 
     public bool fanActive = false;
     public Vector2 fanForce = new Vector2();
@@ -40,6 +41,9 @@ public class minecart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float rotationZ = Mathf.Clamp(rb.rotation, -maxRotate, maxRotate);
+        rb.rotation = rotationZ;
+
         if (active)
         {
             if (Input.GetKeyDown(m_Settings.jump) && m_Grounded)

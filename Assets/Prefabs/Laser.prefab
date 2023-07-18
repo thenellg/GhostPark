@@ -256,7 +256,7 @@ MonoBehaviour:
   currentTime: 0
   canReflect: 1
   reflections: 5
-  canRotate: 0
+  canRotate: 1
   rotateRight: 0
   rotationSpeed: 50
   limitedRotation: 1
