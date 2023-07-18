@@ -16,6 +16,13 @@ public class laser : MonoBehaviour
     public float drawTime = 0.1f;
     public bool changingDistance = false;
 
+    [Header("Timer")]
+    public bool timer = false;
+    public bool timerRecurring = true;
+    public float timerAmount = 3f;
+    public float currentTime = 0f;
+
+
     [Header("Reflection")]
     public bool canReflect = false;
     public int reflections;
@@ -45,6 +52,22 @@ public class laser : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (timer)
+        {
+            if (currentTime >= timerAmount)
+            {
+                if (!timerRecurring)
+                    timer = false;
+
+                currentTime = 0;
+                active = !active;
+            }
+            else
+            {
+                currentTime += Time.deltaTime;
+            }
+        }
+
         if (active)
         {
             if (actualDistance < maxRayDistance)

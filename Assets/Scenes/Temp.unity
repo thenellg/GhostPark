@@ -5917,12 +5917,16 @@ MonoBehaviour:
   layerDetection:
     serializedVersion: 2
     m_Bits: 113
-  active: 1
+  active: 0
   maxRayDistance: 9
   actualDistance: 0
   length: 0
   drawTime: 0.05
   changingDistance: 0
+  timer: 1
+  timerRecurring: 0
+  timerAmount: 3
+  currentTime: 0
   canReflect: 1
   reflections: 5
   canRotate: 0
