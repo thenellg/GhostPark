@@ -2944,19 +2944,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2769096543429761463, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2769096543850380658, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2769096544135627431, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2769096544390078003, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2769096544467633920, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Material
@@ -3228,7 +3228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2769096544467633935, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
@@ -3412,7 +3412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139250882587854451, guid: e5f29d24e0f07e44caa2fceb5e5c2ee7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.47
+      value: -9.35
       objectReference: {fileID: 0}
     - target: {fileID: 6139250882587854451, guid: e5f29d24e0f07e44caa2fceb5e5c2ee7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4356,7 +4356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 160184803935990803, guid: 7400844e49076744f941768559f1bb7c, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 160184803935990803, guid: 7400844e49076744f941768559f1bb7c, type: 3}
       propertyPath: m_TagString
@@ -5914,10 +5914,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineOfSight: {fileID: 1840369969}
-  maxRayDistance: 9
   layerDetection:
     serializedVersion: 2
     m_Bits: 113
+  maxRayDistance: 9
+  actualDistance: 0
+  changingDistance: 0
   canReflect: 1
   reflections: 5
   canRotate: 1

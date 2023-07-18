@@ -5,9 +5,13 @@ using UnityEngine;
 public class laser : MonoBehaviour
 {
     public LineRenderer lineOfSight;
-    public float maxRayDistance;
     public LayerMask layerDetection;
     private PlayerController player;
+
+    [Header("Length")]
+    public float maxRayDistance;
+    public float actualDistance = 0f;
+    public bool changingDistance = false;
 
     [Header("Reflection")]
     public bool canReflect = false;
@@ -30,6 +34,9 @@ public class laser : MonoBehaviour
         originalRotation = transform.rotation;
         player = FindObjectOfType<PlayerController>();
         Physics2D.queriesStartInColliders = false;
+
+        if (!changingDistance)
+            actualDistance = maxRayDistance;
     }
 
     // Update is called once per frame
@@ -60,7 +67,7 @@ public class laser : MonoBehaviour
         lineOfSight.positionCount = 1;
         lineOfSight.SetPosition(0, transform.position);
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, maxRayDistance, layerDetection);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, actualDistance, layerDetection);
         // Ray
         Ray2D ray = new Ray2D(transform.position, transform.right);
 
@@ -78,12 +85,17 @@ public class laser : MonoBehaviour
                 lineOfSight.SetPosition(lineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
 
                 isMirror = false;
-                if (hitInfo.collider.CompareTag("Mirror"))
+                if (hitInfo.collider.tag == "Mirror")
                 {
                     mirrorHitPoint = (Vector2)hitInfo.point;
                     mirrorHitNormal = (Vector2)hitInfo.normal;
-                    hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), maxRayDistance, layerDetection);
+                    hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), maxRayDistance - actualDistance, layerDetection);
                     isMirror = true;
+                }
+                else if(hitInfo.collider.tag == "Player")
+                {
+                    player.onDeath();
+                    resetLaser();
                 }
                 else
                     break;
@@ -97,7 +109,7 @@ public class laser : MonoBehaviour
                 }
                 else
                 {
-                    lineOfSight.SetPosition(lineOfSight.positionCount - 1, transform.position + transform.right * maxRayDistance);
+                    lineOfSight.SetPosition(lineOfSight.positionCount - 1, transform.position + transform.right * actualDistance);
                     break;
                 }
             }
