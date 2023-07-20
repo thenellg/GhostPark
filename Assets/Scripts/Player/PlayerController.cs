@@ -256,10 +256,10 @@ public class PlayerController : MonoBehaviour {
 
     public void onDeath()
     {
-			//death has become overly complicated but the short version is this. Play the sound, add to the count, reset
-			controller.deadSFX(deathSFX);
-			deathCount += 1;
-			Invoke("resetLevel", 0f);
+		//death has become overly complicated but the short version is this. Play the sound, add to the count, reset
+		controller.deadSFX(deathSFX);
+		deathCount += 1;
+		Invoke("resetLevel", 0f);
 	}
 
 	public void itemReset()

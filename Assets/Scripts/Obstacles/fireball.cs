@@ -30,7 +30,10 @@ public class fireball : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" && !temp.controller._dashing)
             {
-                FindObjectOfType<PlayerController>().onDeath();
+                if (!temp.controller.m_Settings.invincibility)
+                    temp.onDeath();
+                else
+                    Destroy(this.gameObject);
             }
 
             else if (collision.gameObject.tag != "Player" && GetComponent<possessionObject>().active)
@@ -41,13 +44,18 @@ public class fireball : MonoBehaviour
 
             else if (collision.gameObject.tag != "Player" && !GetComponent<possessionObject>().active)
             {
-                Destroy(this.gameObject);
+                if (!temp.controller.m_Settings.invincibility)
+                    temp.onDeath();
+                else
+                    Destroy(this.gameObject);
             }
         }
         else if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Minecart")
         {
-            temp.onDeath();
-            Destroy(this.gameObject);
+            if (!temp.controller.m_Settings.invincibility)
+                temp.onDeath();
+            else
+                Destroy(this.gameObject);
         }
         else
         {

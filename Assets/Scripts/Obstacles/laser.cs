@@ -129,8 +129,11 @@ public class laser : MonoBehaviour
                     }
                     else if (hitInfo.collider.CompareTag("Player") || hitInfo.collider.CompareTag("Minecart"))
                     {
-                        player.onDeath();
-                        resetLaser();
+                        if (!player.controller.m_Settings.invincibility)
+                        {
+                            player.onDeath();
+                            resetLaser();
+                        }
                     }
                     else
                         break;
