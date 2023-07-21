@@ -47,6 +47,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] bool isWallSliding = false;
 	[SerializeField] int jumpCounter = 0;
 	[SerializeField] RaycastHit2D wallCheckHit;
+	public GameObject lastWall;
 	float jumpTime;
 	GameObject newCollision;
 	GameObject prevCollision;
@@ -393,6 +394,16 @@ public class CharacterController2D : MonoBehaviour
 				isWallSliding = true;
 				wallHoldTimer = wallHoldTimerBackUp;
 				jumpTime = Time.time + wallJumpTime;
+
+				if (jumpCounter >= 1 && wallCheckHit.transform.gameObject != lastWall)
+				{
+					jumpCounter = 0;
+					lastWall = wallCheckHit.transform.gameObject;
+				}
+                else
+                {
+					lastWall = wallCheckHit.transform.gameObject;
+				}
 
 				if (playWallGrabSFX)
 				{
