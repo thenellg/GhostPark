@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 	public Animator UIAnimation;
 	public Image reset;
 	//public SpriteRenderer background;
-	public SpriteRenderer backgroundA;
 
 	public TextMeshProUGUI visDeathCounter;
 	public string levelPlayerPref;
@@ -62,16 +61,6 @@ public class PlayerController : MonoBehaviour {
 
 		objects = items.GetComponentsInChildren<Transform>();
 		spawnPoint = this.transform.position;
-	}
-
-	private void Start()
-    {
-		Invoke("setBackground", 0.1f);
-	}
-
-	void setBackground()
-    {
-		backgroundA.color = colorA;
 	}
 
     void Update()
