@@ -14,6 +14,7 @@ public class playerSettings : MonoBehaviour
     public bool dashUnlock = true;
 
     [Header("Audio")]
+    [Range(0f, 1f)] public float masterVolume;
     [Range(0f, 1f)] public float sfxVolume;
     [Range(0f, 1f)] public float musicVolume;
     [Range(0f, 1f)] public float menuVolume;
@@ -26,7 +27,6 @@ public class playerSettings : MonoBehaviour
     [Header("Accessibility")]
     public bool infiniteDash;
     public bool invincibility;
-    public bool outline;
     public bool coverPits;
 
     [Header("Key Bindings")]

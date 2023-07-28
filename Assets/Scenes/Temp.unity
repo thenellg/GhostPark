@@ -2314,6 +2314,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8470973979349041362, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1017349267}
+    - target: {fileID: 8470973979349041362, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changePits
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4932900770037585072, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
@@ -2621,6 +2629,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7340462899905194802, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
   m_PrefabInstance: {fileID: 887572530}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1017349267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7015292968328929759, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+  m_PrefabInstance: {fileID: 887572530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017349266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b325c0bf087af94f969afa88e21ffa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1031921214
 GameObject:
   m_ObjectHideFlags: 0
@@ -6099,6 +6118,7 @@ MonoBehaviour:
   activeLevel: 0
   downSmashUnlock: 0
   dashUnlock: 1
+  masterVolume: 0
   sfxVolume: 0
   musicVolume: 0
   menuVolume: 0
@@ -6107,7 +6127,6 @@ MonoBehaviour:
   horrorComplete: 0
   infiniteDash: 0
   invincibility: 0
-  outline: 0
   coverPits: 0
   currentController: 3
   up: w
