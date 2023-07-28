@@ -65,13 +65,16 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
 	{
-		// This will be for an eventual pause menu we still need to build
-		if (Input.GetKeyDown("escape"))
+		// This will be for an eventual pause menu we still  to build
+		if (Input.GetKeyDown("escape") || Input.GetKeyDown("joystick button 7"))
         {
 			//SceneManager.LoadScene("Level Menu");
 			if (pauseMenu.activeSelf == true)
 			{
 				pauseMenu.SetActive(false);
+				pauseMenu.GetComponent<pauseMenu>().mainPauseMenu.SetActive(true);
+				pauseMenu.GetComponent<pauseMenu>().settingsMenu.SetActive(false);
+
 				Time.timeScale = 1f;
 			}
 			else
@@ -81,9 +84,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		
 		}
-
-		//Setting out death counter
-		visDeathCounter.text = deathCount.ToString();
 
 		if (canMove)
 		{
