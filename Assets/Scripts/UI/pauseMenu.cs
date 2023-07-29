@@ -14,9 +14,9 @@ public class pauseMenu : MonoBehaviour
     [Header("Settings")]
     public playerSettings settings;
 
-    public bool infiniteDash = false;
-    public bool invincibility = false;
-    public bool coverPits = false;
+    public Toggle dashToggle;
+    public Toggle invincibilityToggle;
+    public Toggle pitsToggle;
 
     [Header("Audio")]
     public Slider masterSlider;
@@ -57,9 +57,9 @@ public class pauseMenu : MonoBehaviour
         musicSlider.value = settings.musicVolume;
         menuSlider.value = settings.menuVolume;
 
-        infiniteDash = settings.infiniteDash;
-        invincibility = settings.invincibility;
-        coverPits = settings.coverPits;
+        dashToggle.isOn = settings.infiniteDash;
+        invincibilityToggle.isOn = settings.invincibility;
+        pitsToggle.isOn = settings.coverPits;
 
         up = settings.up;
         down = settings.down;
@@ -78,9 +78,9 @@ public class pauseMenu : MonoBehaviour
         settings.musicVolume = musicSlider.value;
         settings.menuVolume = menuSlider.value;
 
-        settings.infiniteDash = infiniteDash;
-        settings.invincibility = invincibility;
-        settings.coverPits = coverPits;
+        settings.infiniteDash = dashToggle.isOn;
+        settings.invincibility = invincibilityToggle.isOn;
+        settings.coverPits = pitsToggle.isOn;
 
         settings.up = up;
         settings.down = down;
@@ -91,24 +91,5 @@ public class pauseMenu : MonoBehaviour
         settings.hold = hold;
 
         //if (coverPits)
-    }
-
-    public void changeDash()
-    {
-        Debug.Log("check button");
-        infiniteDash = !infiniteDash;
-    }
-
-    public void changeInvincible()
-    {
-        Debug.Log("check button");
-        invincibility = !invincibility;
-    }
-
-    public void changePits()
-    {
-        Debug.Log("check button");
-        coverPits = !coverPits;
-        coverPits = true;
     }
 }
