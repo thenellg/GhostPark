@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class pauseMenu : MonoBehaviour
 {
@@ -13,14 +14,15 @@ public class pauseMenu : MonoBehaviour
     [Header("Settings")]
     public playerSettings settings;
 
-    [Range(0f, 1f)] public float masterVolume = 1f;
-    [Range(0f, 1f)] public float sfxVolume = 1f;
-    [Range(0f, 1f)] public float musicVolume = 1f;
-    [Range(0f, 1f)] public float menuVolume = 1f;
-
     public bool infiniteDash = false;
     public bool invincibility = false;
     public bool coverPits = false;
+
+    [Header("Audio")]
+    public Slider masterSlider;
+    public Slider sfxSlider;
+    public Slider musicSlider;
+    public Slider menuSlider;
 
     [Header("Key Bindings")]
     public string up = "w";
@@ -50,10 +52,10 @@ public class pauseMenu : MonoBehaviour
 
     public void setTempSettings()
     {
-        masterVolume = settings.masterVolume;
-        sfxVolume = settings.sfxVolume;
-        musicVolume = settings.musicVolume;
-        menuVolume = settings.menuVolume;
+        masterSlider.value = settings.masterVolume;
+        sfxSlider.value = settings.sfxVolume;
+        musicSlider.value = settings.musicVolume;
+        menuSlider.value = settings.menuVolume;
 
         infiniteDash = settings.infiniteDash;
         invincibility = settings.invincibility;
@@ -71,10 +73,10 @@ public class pauseMenu : MonoBehaviour
 
     public void setActualSettings()
     {
-        settings.masterVolume = masterVolume;
-        settings.sfxVolume = sfxVolume;
-        settings.musicVolume = musicVolume;
-        settings.menuVolume = menuVolume;
+        settings.masterVolume = masterSlider.value;
+        settings.sfxVolume = sfxSlider.value;
+        settings.musicVolume = musicSlider.value;
+        settings.menuVolume = menuSlider.value;
 
         settings.infiniteDash = infiniteDash;
         settings.invincibility = invincibility;

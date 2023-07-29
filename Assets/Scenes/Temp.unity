@@ -2166,9 +2166,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 144888736634938105, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 424137191115477347, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786673275874516316, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407822681403048740, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306451978769075276, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346489688294881432, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368121187673978855, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2712631626595892200, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965211887568258150, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3048697044505202078, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_RootOrder
@@ -2302,17 +2334,49 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5902438871879570104, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318060008845208400, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640864590831444069, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 154
+      objectReference: {fileID: 0}
     - target: {fileID: 6720316493069718250, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731464968506147122, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731464968506147122, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 7021323025060762746, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7021323025060762746, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183193359979166616, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7340462899905194802, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651085816616052164, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8470973979349041362, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6118,10 +6182,10 @@ MonoBehaviour:
   activeLevel: 0
   downSmashUnlock: 0
   dashUnlock: 1
-  masterVolume: 0
-  sfxVolume: 0
-  musicVolume: 0
-  menuVolume: 0
+  masterVolume: 1
+  sfxVolume: 1
+  musicVolume: 1
+  menuVolume: 1
   fantasyComplete: 0
   futureComplete: 0
   horrorComplete: 0
