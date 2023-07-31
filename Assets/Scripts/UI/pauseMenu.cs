@@ -10,6 +10,9 @@ public class pauseMenu : MonoBehaviour
     [Header("General")]
     public GameObject mainPauseMenu;
     public GameObject settingsMenu;
+    
+    Resolution[] resolutions;
+    public TMP_Dropdown resolutionDropdown;
 
     [Header("Settings")]
     public playerSettings settings;
@@ -37,12 +40,47 @@ public class pauseMenu : MonoBehaviour
     {
         settings = FindObjectOfType<playerSettings>();
         setTempSettings();
+
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResolutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
+        mainPauseMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
     
+    public void setResolution (int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
     public void turnOffPauseMenu()
     {
         Time.timeScale = 1f;
         this.gameObject.SetActive(false);
+    }
+
+    public void toggleFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
     }
 
     public void returnToMainMenu()
