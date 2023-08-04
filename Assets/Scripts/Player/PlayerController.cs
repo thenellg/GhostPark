@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour {
 	public CinemachineBrain camBrain;
 
 	[Header("UI")]
-	public Animator UIAnimation;
 	public Image reset;
 	//public SpriteRenderer background;
 
@@ -137,7 +136,6 @@ public class PlayerController : MonoBehaviour {
 				{
 					areDead = true;
 					canMove = false;
-					UIAnimation.SetTrigger("Died");
 					this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 					deathSFX = collision.GetComponent<deathObject>().sendDeathAudio();
 					Invoke("onDeath", 0.4f);
