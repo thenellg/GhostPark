@@ -35,7 +35,10 @@ public class customGravTrigger : MonoBehaviour
 
         Rigidbody2D m_Rigidbody2D = flippin.GetComponent<Rigidbody2D>();
 
-        m_Rigidbody2D.gravityScale = -m_Rigidbody2D.gravityScale;
+        Debug.Log(m_Rigidbody2D.gameObject.name);
+
+        m_Rigidbody2D.gravityScale *= -1f;
+        Debug.Log(m_Rigidbody2D.gravityScale);
         Vector3 theScale = flippin.transform.localScale;
         theScale.y *= -1;
         flippin.transform.localScale = theScale;
