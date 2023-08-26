@@ -313,7 +313,8 @@ public class CharacterController2D : MonoBehaviour
 		{
 			if (move != 0 && m_Grounded)
 			{
-				PlayerAnim.SetBool("isWalking", true);
+				if(!PlayerAnim.GetBool("isWalking"))
+					PlayerAnim.SetBool("isWalking", true);
 			}
 			else if (m_Grounded && crouch)
 			{

@@ -7113,6 +7113,22 @@ PrefabInstance:
       propertyPath: moveables.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6375462750937859178, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.19687733
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375462750937859178, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.44412732
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375462750937859178, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0050714454
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375462750937859178, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0011669346
+      objectReference: {fileID: 0}
     - target: {fileID: 6375462750937859182, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_SortingOrder
       value: 20
