@@ -6993,6 +6993,10 @@ PrefabInstance:
       propertyPath: wallDistance
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6375462750937859172, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ad4063d3022a9134aad1889700b01c0c, type: 2}
     - target: {fileID: 6375462750937859174, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Name
       value: Player
