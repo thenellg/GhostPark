@@ -14,7 +14,8 @@ public class key : MonoBehaviour
     bool end = true;
 
     private Animator keyAnim;
-    bool inPosition = false;
+    public bool inPosition = false;
+    public Door door = null;
 
     private void Start()
     {
@@ -39,18 +40,21 @@ public class key : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach (GameObject door in GameObject.FindGameObjectsWithTag("Door"))
+        if (door && transform.position.x == door.transform.position.x && transform.position.y == door.transform.position.y && door.GetComponent<Door>().isLocked == true)
         {
-            if (transform.position == door.transform.position && end && door.GetComponent<Door>().isLocked == true)
-            {
-                keyAnim.SetTrigger("Fade");
-                inPosition = true;
-                door.GetComponent<Door>().unlocked();
-                this.transform.parent = FindObjectOfType<PlayerController>().transform;
-                Invoke("boom", 1.35f);
-                end = false;
-            }
+            keyAnim.SetTrigger("Fade");
+            inPosition = true;
+            door.GetComponent<Door>().unlocked();
+            this.transform.parent = FindObjectOfType<PlayerController>().transform;
+            Invoke("boom", 1.35f);
+            end = false;
         }
+    }
+
+    public void startDoor(Door newDoor)
+    {
+        door = newDoor;
+        gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, newDoor.transform.position.z);
     }
 
     void boom()
@@ -70,6 +74,7 @@ public class key : MonoBehaviour
         this.transform.position = originSpot;
         this.transform.parent = parent;
         this.GetComponent<BoxCollider2D>().enabled = true;
+        door = null;
         following = false;
         inPosition = false;
     }
