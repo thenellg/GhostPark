@@ -214,6 +214,7 @@ public class PlayerController : MonoBehaviour {
 		if(collision.gameObject.tag == "Minecart" && controller._dashing)
         {
 			collision.gameObject.GetComponent<minecart>().enter();
+			canMove = false;
         }
 
         if (controller._dashing && collision.gameObject.GetComponent<possessionObject>())

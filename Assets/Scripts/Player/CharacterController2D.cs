@@ -54,7 +54,7 @@ public class CharacterController2D : MonoBehaviour
 	GameObject newCollision;
 	GameObject prevCollision;
 
-	private Animator PlayerAnim;
+	public Animator PlayerAnim;
 	bool canMove = true;
 
 	public Vector2 dashVector;
@@ -193,7 +193,8 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 
-		PlayerAnim.SetBool("isGrounded", m_Grounded);
+		if(canMove)
+			PlayerAnim.SetBool("isGrounded", m_Grounded);
 
 	}
 

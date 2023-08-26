@@ -59,15 +59,21 @@ public class minecart : MonoBehaviour
             else if (Input.GetKeyDown(m_Settings.left))
             {
                 if (speed > 0f)
+                {
                     speed *= -1f;
+                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
+                }
             }
             else if (Input.GetKeyDown(m_Settings.right))
             {
                 if (speed < 0f)
+                {
                     speed *= -1f;
+                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
+                }
             }
 
-            Vector2 targetVelocity = new Vector2(speed * 10f, rb.velocity.y);
+                Vector2 targetVelocity = new Vector2(speed * 10f, rb.velocity.y);
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
 
             if (fanActive)
@@ -127,6 +133,8 @@ public class minecart : MonoBehaviour
         player.transform.parent = transform;
 
         player.GetComponent<PlayerController>().canMove = false;
+        player.GetComponent<PlayerController>().controller.PlayerAnim.SetTrigger("inMinecart");
+        player.GetComponent<PlayerController>().controller.PlayerAnim.SetBool("isWalking", false);
         player.GetComponent<Rigidbody2D>().simulated = false;
         player.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
