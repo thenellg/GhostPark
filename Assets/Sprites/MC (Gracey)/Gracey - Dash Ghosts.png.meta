@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: ce85c5fc7fae3e24c95b9201e0d012f6
+guid: 1aa764d2ee35150438eeb7cc04efb1c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8175270104702439499
-    second: Gracey - Dash_0
+      213: -1416153499087577433
+    second: Gracey - Dash Ghosts_0
   - first:
-      213: 3769626459183211809
-    second: Gracey - Dash_1
+      213: -4949435538347083350
+    second: Gracey - Dash Ghosts_1
   - first:
-      213: 6691163942150258382
-    second: Gracey - Dash_2
+      213: 7885463473598105458
+    second: Gracey - Dash Ghosts_2
   - first:
-      213: -128617250915790996
-    second: Gracey - Dash_3
+      213: 9154038770083350266
+    second: Gracey - Dash Ghosts_3
   - first:
-      213: 2309714301734762254
-    second: Gracey - Dash_4
+      213: 5444806182622303849
+    second: Gracey - Dash Ghosts_4
   - first:
-      213: -2151933721592112464
-    second: Gracey - Dash_5
+      213: -3366423927873320337
+    second: Gracey - Dash Ghosts_5
   - first:
-      213: 1176546502045560984
-    second: Gracey - Dash_6
+      213: -4029180587619232847
+    second: Gracey - Dash Ghosts_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +89,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +113,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,7 +125,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gracey - Dash_0
+      name: Gracey - Dash Ghosts_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b40d8a588d4647170800000000000000
-      internalID: 8175270104702439499
+      spriteID: 7ae557b45efc85ce0800000000000000
+      internalID: -1416153499087577433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gracey - Dash_1
+      name: Gracey - Dash Ghosts_1
       rect:
         serializedVersion: 2
         x: 44
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1256783da47605430800000000000000
-      internalID: 3769626459183211809
+      spriteID: aa9b022e992105bb0800000000000000
+      internalID: -4949435538347083350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gracey - Dash_2
+      name: Gracey - Dash Ghosts_2
       rect:
         serializedVersion: 2
         x: 88
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eceb4c1772acbdc50800000000000000
-      internalID: 6691163942150258382
+      spriteID: 2770221104bce6d60800000000000000
+      internalID: 7885463473598105458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gracey - Dash_3
+      name: Gracey - Dash Ghosts_3
       rect:
         serializedVersion: 2
         x: 132
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6f4d2faa4f073ef0800000000000000
-      internalID: -128617250915790996
+      spriteID: af6c8fed2cda90f70800000000000000
+      internalID: 9154038770083350266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gracey - Dash_4
+      name: Gracey - Dash Ghosts_4
       rect:
         serializedVersion: 2
         x: 176
@@ -234,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e073a878be0cd0020800000000000000
-      internalID: 2309714301734762254
+      spriteID: 9669d021066df8b40800000000000000
+      internalID: 5444806182622303849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gracey - Dash_5
+      name: Gracey - Dash Ghosts_5
       rect:
         serializedVersion: 2
         x: 220
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ba51508eabc222e0800000000000000
-      internalID: -2151933721592112464
+      spriteID: f6a4cbf064f0841d0800000000000000
+      internalID: -3366423927873320337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gracey - Dash_6
+      name: Gracey - Dash Ghosts_6
       rect:
         serializedVersion: 2
         x: 264
@@ -276,8 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 890772c5fcee35010800000000000000
-      internalID: 1176546502045560984
+      spriteID: 1b35e036a997518c0800000000000000
+      internalID: -4029180587619232847
       vertices: []
       indices: 
       edges: []

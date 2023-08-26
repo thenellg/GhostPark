@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using System.Collections.Generic;
+
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -54,7 +56,17 @@ public class CharacterController2D : MonoBehaviour
 
 	private Animator PlayerAnim;
 	bool canMove = true;
+
 	public Vector2 dashVector;
+	public SpriteRenderer m_SpriteRenderer;
+	public List<Sprite> dashImages = new List<Sprite>();
+	public List<Sprite> dashGhostImages = new List<Sprite>();
+	public int numGhosts;
+	public float ghostTimer = 0.05f;
+	public float ghostTimePassed = 0f;
+
+	public GameObject m_dashGhost;
+
 	public bool fromPossession = false;
 	float shakeTimer = 0;
 	bool crouching = false;
@@ -74,6 +86,7 @@ public class CharacterController2D : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		m_PlayerController = GetComponent<PlayerController>();
 		m_Settings = FindObjectOfType<playerSettings>();
+		m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
 		wallSlideBackUp = wallSlideSpeed;
 		wallHoldTimerBackUp = wallHoldTimer;
@@ -121,6 +134,29 @@ public class CharacterController2D : MonoBehaviour
 			dashVector = new Vector2(horizontal, vertical).normalized;
 
 		}
+
+        if (_dashing && numGhosts < 3)
+        {
+			if (ghostTimePassed > ghostTimer)
+			{
+				int dashImage;
+				dashImage = dashImages.IndexOf(m_SpriteRenderer.sprite);
+				if (dashImage < 0)
+					dashImage = 3;
+
+				dashGhost ghost = Instantiate(m_dashGhost).GetComponent<dashGhost>();
+				ghost.location.position = this.transform.position;
+				ghost.location.localScale = this.transform.localScale;
+				ghost._sprite.sprite = dashGhostImages[dashImage];
+
+				ghostTimePassed = 0f;
+				numGhosts++;
+			}
+            else
+            {
+				ghostTimePassed += Time.deltaTime;
+            }
+        }
 
         if (fanActive)
         {
@@ -252,6 +288,7 @@ public class CharacterController2D : MonoBehaviour
 	void resetDash()
     {
 		_dashing = false;
+		numGhosts = 0;
 		m_PlayerController.downwardDash = false;
 		PlayerAnim.SetBool("dashing", false);
 		if (m_Settings.infiniteDash || fromPossession)
