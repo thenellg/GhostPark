@@ -262,7 +262,7 @@ public class CharacterController2D : MonoBehaviour
 		CinemachineVirtualCamera vcam = Camera.main.gameObject.GetComponent<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera;
 		CinemachineBasicMultiChannelPerlin shake = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 		shake.m_AmplitudeGain = 0.5f;
-		shakeTimer = 0.1f;
+		shakeTimer = 0.15f;
 
 		m_Rigidbody2D.velocity = new Vector2(0, 0);
 		float temp = dashSpeed * 0.5f;
