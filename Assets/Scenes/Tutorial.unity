@@ -2412,7 +2412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 0}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
+  m_AmplitudeGain: 0.5
   m_FrequencyGain: 0.5
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1061366387
@@ -5312,7 +5312,7 @@ MonoBehaviour:
   infiniteDash: 0
   invincibility: 0
   coverPits: 0
-  currentController: 0
+  currentController: 3
   up: 119
   down: 115
   left: 97
