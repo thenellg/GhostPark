@@ -46,6 +46,7 @@ public class dialogueInterface : MonoBehaviour
                 if (i < dialogue.options.Count)
                 {
                     optionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = dialogue.options[i];
+                    optionButtons[i].gameObject.SetActive(true);
                 }
                 else
                 {
