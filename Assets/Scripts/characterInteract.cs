@@ -11,7 +11,8 @@ public class characterInteract : MonoBehaviour
 
     public SpriteRenderer interactPrompt;
     public Sprite interactionArt;
-    public bool active = false;
+    public bool triggerActive = false;
+    public bool dialogueActive = false;
 
     public Transform characterSpot;
     public bool playerFacingRight = false;
@@ -20,19 +21,21 @@ public class characterInteract : MonoBehaviour
     public CinemachineVirtualCamera dialogueCam;
 
     private playerSettings settings;
-       
+
+    public dialogueInterface dialogue;
 
     // Start is called before the first frame update
     void Start()
     {
         interactPrompt.gameObject.SetActive(false);
+        dialogue = FindObjectOfType<UIHandler>().dialogue;
         settings = FindObjectOfType<playerSettings>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (active)
+        if (triggerActive)
         {
             if (Input.GetKeyDown(settings.hold)) 
             {
@@ -44,6 +47,13 @@ public class characterInteract : MonoBehaviour
                     startGate();
             }
         }
+        else if (dialogueActive)
+        {
+            if (Input.GetKeyDown(settings.hold))
+            {
+                endInteract();
+            }
+        }
     }
 
     void startDialogue()
@@ -51,6 +61,8 @@ public class characterInteract : MonoBehaviour
         startInteract();
 
         //Dialogue stuff
+        dialogueActive = true;
+        dialogue.gameObject.SetActive(true);
     }
     void startStore()
     {
@@ -65,7 +77,7 @@ public class characterInteract : MonoBehaviour
 
     void startInteract()
     {
-        active = false;
+        triggerActive = false;
 
         //change player
         PlayerController player = FindObjectOfType<PlayerController>();
@@ -85,6 +97,10 @@ public class characterInteract : MonoBehaviour
 
     void endInteract()
     {
+        dialogue.gameObject.SetActive(false);
+
+        dialogueActive = false;
+
         mainCam.Priority = 1;
         dialogueCam.Priority = 0;
 
@@ -96,7 +112,7 @@ public class characterInteract : MonoBehaviour
         if(collision.tag == "Player")
         {
             interactPrompt.gameObject.SetActive(true);
-            active = true;
+            triggerActive = true;
         }
     }
 
@@ -105,6 +121,7 @@ public class characterInteract : MonoBehaviour
         if (collision.tag == "Player")
         {
             interactPrompt.gameObject.SetActive(false);
+            triggerActive = false;
         }
     }
 }
