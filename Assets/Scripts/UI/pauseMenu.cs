@@ -28,13 +28,13 @@ public class pauseMenu : MonoBehaviour
     public Slider menuSlider;
 
     [Header("Key Bindings")]
-    public string up = "w";
-    public string down = "s";
-    public string left = "a";
-    public string right = "d";
-    public string jump = "space";
-    public string dash = "q";
-    public string hold = "e";
+    public KeyCode up = KeyCode.W;
+    public KeyCode down = KeyCode.S;
+    public KeyCode left = KeyCode.A;
+    public KeyCode right = KeyCode.D;
+    public KeyCode jump = KeyCode.Space;
+    public KeyCode dash = KeyCode.Q;
+    public KeyCode hold = KeyCode.E;
 
     public void Start()
     {

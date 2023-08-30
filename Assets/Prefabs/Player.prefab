@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6375462749300213826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6375462750369196350}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KeySpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6375462749384998043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6375462750937859178}
   - component: {fileID: 6375462750937859173}
   - component: {fileID: 6375462750937859172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -231,6 +231,7 @@ MonoBehaviour:
   isWallSliding: 0
   jumpCounter: 0
   lastWall: {fileID: 0}
+  PlayerAnim: {fileID: 0}
   dashVector: {x: 0, y: 0}
   m_SpriteRenderer: {fileID: 0}
   dashImages:
@@ -250,6 +251,8 @@ MonoBehaviour:
   - {fileID: -3366423927873320337, guid: 1aa764d2ee35150438eeb7cc04efb1c0, type: 3}
   - {fileID: -4029180587619232847, guid: 1aa764d2ee35150438eeb7cc04efb1c0, type: 3}
   numGhosts: 0
+  ghostTimer: 0.05
+  ghostTimePassed: 0
   m_dashGhost: {fileID: 7587410970039602463, guid: 1f5e1439d0c157e43869b798a2802639, type: 3}
   fromPossession: 0
   holdingWall: 0
@@ -471,7 +474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6375462751187515720}
   - component: {fileID: 6375462751187515721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}

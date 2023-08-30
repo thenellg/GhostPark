@@ -31,20 +31,25 @@ public class playerSettings : MonoBehaviour
 
     [Header("Key Bindings")]
     public controlType currentController = controlType.keyboard;
-    public string up = "w";
-    public string down = "s";
-    public string left = "a";
-    public string right = "d";
-    public string jump = "space";
-    public string dash = "q";
-    public string hold = "e";
+    public KeyCode up = KeyCode.W;
+    public KeyCode down = KeyCode.S;
+    public KeyCode left = KeyCode.A;
+    public KeyCode right = KeyCode.D;
+    public KeyCode jump = KeyCode.Space;
+    public KeyCode dash = KeyCode.Q;
+    public KeyCode hold = KeyCode.E;
 
-    public List<string> keyboardControls = new List<string>();
-    public List<string> playstationControls = new List<string>();
-    public List<string> xboxControls = new List<string>();
-    public List<string> switchControls = new List<string>();
+    public List<KeyCode> keyboardControls = new List<KeyCode>();
+    public List<KeyCode> playstationControls = new List<KeyCode>();
+    public List<KeyCode> xboxControls = new List<KeyCode>();
+    public List<KeyCode> switchControls = new List<KeyCode>();
 
     public bool active = false;
+
+    private void Start()
+    {
+        resetDefault();
+    }
 
     private void Update()
     {
@@ -105,43 +110,43 @@ public class playerSettings : MonoBehaviour
     {
         if (currentController == controlType.keyboard)
         {
-            keyboardControls[0] = "w";
-            keyboardControls[1] = "s";
-            keyboardControls[2] = "a";
-            keyboardControls[3] = "d";
-            keyboardControls[4] = "space";
-            keyboardControls[5] = "q";
-            keyboardControls[6] = "e";
+            keyboardControls[0] = KeyCode.W;
+            keyboardControls[1] = KeyCode.S;
+            keyboardControls[2] = KeyCode.A;
+            keyboardControls[3] = KeyCode.D;
+            keyboardControls[4] = KeyCode.Space;
+            keyboardControls[5] = KeyCode.Q;
+            keyboardControls[6] = KeyCode.E;
         }
         if (currentController == controlType.Playstation)
         {
-            playstationControls[0] = "w";
-            playstationControls[1] = "s";
-            playstationControls[2] = "a";
-            playstationControls[3] = "d";
-            playstationControls[4] = "space";
-            playstationControls[5] = "q";
-            playstationControls[6] = "e";
+            playstationControls[0] = KeyCode.W;
+            playstationControls[1] = KeyCode.S;
+            playstationControls[2] = KeyCode.A;
+            playstationControls[3] = KeyCode.D;
+            playstationControls[4] = KeyCode.JoystickButton1;
+            playstationControls[5] = KeyCode.JoystickButton0;
+            playstationControls[6] = KeyCode.JoystickButton2;
         }
         else if (currentController == controlType.Xbox)
         {
-            xboxControls[0] = "w";
-            xboxControls[1] = "s";
-            xboxControls[2] = "a";
-            xboxControls[3] = "d";
-            xboxControls[4] = "space";
-            xboxControls[5] = "q";
-            xboxControls[6] = "e";
+            xboxControls[0] = KeyCode.W;
+            xboxControls[1] = KeyCode.S;
+            xboxControls[2] = KeyCode.A;
+            xboxControls[3] = KeyCode.D;
+            xboxControls[4] = KeyCode.JoystickButton0;
+            xboxControls[5] = KeyCode.JoystickButton2;
+            xboxControls[6] = KeyCode.JoystickButton1;
         }
         else if (currentController == controlType.Switch)
         {
-            switchControls[0] = "w";
-            switchControls[1] = "s";
-            switchControls[2] = "a";
-            switchControls[3] = "d";
-            switchControls[4] = "space";
-            switchControls[5] = "q";
-            switchControls[6] = "e";
+            switchControls[0] = KeyCode.W;
+            switchControls[1] = KeyCode.S;
+            switchControls[2] = KeyCode.A;
+            switchControls[3] = KeyCode.D;
+            switchControls[4] = KeyCode.JoystickButton0;
+            switchControls[5] = KeyCode.JoystickButton2;
+            switchControls[6] = KeyCode.JoystickButton1;
         }
         changeSettings();
     }
