@@ -23,6 +23,7 @@ public class characterInteract : MonoBehaviour
     private playerSettings settings;
 
     public dialogueInterface dialogue;
+    public dialogue startMessage;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class characterInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (triggerActive)
+        if (triggerActive && !dialogueActive)
         {
             if (Input.GetKeyDown(settings.hold)) 
             {
@@ -47,18 +48,17 @@ public class characterInteract : MonoBehaviour
                     startGate();
             }
         }
-        else if (dialogueActive)
-        {
-            if (Input.GetKeyDown(settings.hold))
-            {
-                endInteract();
-            }
-        }
     }
 
     void startDialogue()
     {
         startInteract();
+        dialogue.dialogue = startMessage;
+        dialogue.currentChar = this;
+
+        dialogue.setOptions(startMessage);
+        dialogue.setBackground(startMessage.backgroundImage, Color.white);
+        dialogue.setText(startMessage.speakerName, startMessage.speakerMessage);
 
         //Dialogue stuff
         dialogueActive = true;
@@ -77,8 +77,6 @@ public class characterInteract : MonoBehaviour
 
     void startInteract()
     {
-        triggerActive = false;
-
         //change player
         PlayerController player = FindObjectOfType<PlayerController>();
         player.canMove = false;
@@ -95,9 +93,10 @@ public class characterInteract : MonoBehaviour
         dialogueCam.Priority = 1;
     }
 
-    void endInteract()
+    public void endInteract()
     {
         dialogue.gameObject.SetActive(false);
+        dialogue.currentChar = null;
 
         dialogueActive = false;
 

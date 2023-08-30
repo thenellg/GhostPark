@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef540b75c338efd498e785e52c3eb988, type: 3}
+  m_Name: Dialogue Test
+  m_EditorClassIdentifier: 
+  speakerName: Sonic
+  speakerMessage: This is a test message for determining length of statements that
+    characters will be able to say in the game. It seems like players will be able
+    to say a lot which I like
+  backgroundImage: {fileID: 21300000, guid: 7c20817fe5ee20a4ea890405cafdaaea, type: 3}
+  options:
+  - Test 1
+  - Test 2
+  nextMessage:
+  - {fileID: 11400000, guid: 25d499dd8c022104d96ba90df39f2857, type: 2}
+  - {fileID: 11400000, guid: 8e210930964f39e46b8ab4cbc3d98b54, type: 2}

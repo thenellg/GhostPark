@@ -2316,7 +2316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7146855253216535559, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7183193359979166616, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2329,6 +2329,12 @@ PrefabInstance:
     - target: {fileID: 7651085816616052164, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388053405627734102, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
+      propertyPath: m_text
+      value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercit
       objectReference: {fileID: 0}
     - target: {fileID: 8470973979349041362, guid: 7327d88e137f4bf49ab9c694f42de4a3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5051,6 +5057,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   dialogueCam: {fileID: 1393950335}
   dialogue: {fileID: 0}
+  startMessage: {fileID: 11400000, guid: e0ee643216845be408ba4ea6bf477a7d, type: 2}
 --- !u!1 &1593796741
 GameObject:
   m_ObjectHideFlags: 0
