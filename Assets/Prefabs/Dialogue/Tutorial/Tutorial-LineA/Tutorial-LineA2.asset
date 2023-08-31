@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef540b75c338efd498e785e52c3eb988, type: 3}
+  m_Name: Tutorial-LineA2
+  m_EditorClassIdentifier: 
+  speakerName: Gracey
+  speakerMessage: I've been asleep for ages. I wonder what woke me up...
+  backgroundImage: {fileID: 21300000, guid: 7c20817fe5ee20a4ea890405cafdaaea, type: 3}
+  options:
+  - 
+  nextMessage:
+  - {fileID: 11400000, guid: 050beda5971610a48b5d3c77fcc49dcd, type: 2}

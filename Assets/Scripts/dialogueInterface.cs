@@ -13,11 +13,13 @@ public class dialogueInterface : MonoBehaviour
 
     public dialogue dialogue;
     public characterInteract currentChar;
+    public forceDialogueTrigger forcedTrigger;
 
     public playerSettings settings;
     public int selection = 0;
 
     public Button[] optionButtons;
+    public bool forced = false;
 
     private void Start()
     {
@@ -79,7 +81,11 @@ public class dialogueInterface : MonoBehaviour
                 }
                 else if (dialogue.options.Count < 1)
                 {
-                    currentChar.endInteract();
+                    if (!forced)
+                        currentChar.endInteract();
+                    else
+                        forcedTrigger.endInteract();
+
                     dialogue = null;
                     currentChar = null;
                 }

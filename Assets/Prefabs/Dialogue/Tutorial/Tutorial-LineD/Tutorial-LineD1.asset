@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef540b75c338efd498e785e52c3eb988, type: 3}
+  m_Name: Tutorial-LineD1
+  m_EditorClassIdentifier: 
+  speakerName: Gracey
+  speakerMessage: There it is. Amazo Park. What a mixed bag of job. A shame it was
+    my last. Loved the park, HATED the people.
+  backgroundImage: {fileID: 21300000, guid: 7c20817fe5ee20a4ea890405cafdaaea, type: 3}
+  options:
+  - 
+  nextMessage:
+  - {fileID: 11400000, guid: 746ff1865e3f800499675d06d80e7a18, type: 2}

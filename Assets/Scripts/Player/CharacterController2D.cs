@@ -132,7 +132,7 @@ public class CharacterController2D : MonoBehaviour
         else
         {
 			dashVector = new Vector2(horizontal, vertical).normalized;
-
+			Debug.Log(dashVector);
 		}
 
         if (_dashing && numGhosts < 3)
@@ -271,10 +271,20 @@ public class CharacterController2D : MonoBehaviour
 		PlayerAnim.SetBool("dashing", true);
 
 		if (dashVector.y > 0.5f)
-			m_Rigidbody2D.AddForce(dashVector * temp, ForceMode2D.Impulse);
+		{
+			if (dashVector.x > 0.75f || dashVector.x < -0.75f)
+				m_Rigidbody2D.AddForce(new Vector2(dashVector.x * dashSpeed * 1.5f, dashVector.y * temp), ForceMode2D.Impulse);
+			else
+				m_Rigidbody2D.AddForce(new Vector2(dashVector.x * dashSpeed, dashVector.y * temp), ForceMode2D.Impulse);
+		}
 		else
-			m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
-		
+		{
+			if (dashVector.x > 0.75f || dashVector.x < -0.75f)
+				m_Rigidbody2D.AddForce(new Vector2(dashVector.x * dashSpeed * 1.5f, dashVector.y * dashSpeed), ForceMode2D.Impulse);
+			else
+				m_Rigidbody2D.AddForce(dashVector * dashSpeed, ForceMode2D.Impulse);
+		}
+
 		if (dashVector.x < 0.5 && dashVector.y < 0)
 			m_PlayerController.downwardDash = true;
 
@@ -352,18 +362,7 @@ public class CharacterController2D : MonoBehaviour
 			if (m_Grounded || m_AirControl)
 			{
 				Vector3 targetVelocity;
-				if (crouch)
-					targetVelocity = new Vector2(move * 3f, m_Rigidbody2D.velocity.y);                                                 // Move the character by finding the target velocity
-				else
-					targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-
-				//====================================================================
-				// Need to update to account for 4 directions of gravity
-				//====================================================================
-				if (m_PlayerController.downwardDash)
-                {
-					targetVelocity.x = 0f;
-                }
+				targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 
 				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing);     // And then smoothing it out and applying it to the character
 

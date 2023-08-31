@@ -80,7 +80,9 @@ public class characterInteract : MonoBehaviour
         //change player
         PlayerController player = FindObjectOfType<PlayerController>();
         player.canMove = false;
+        player.controller.m_Rigidbody2D.velocity = Vector2.zero;
         player.transform.position = characterSpot.position;
+        player.controller.PlayerAnim.SetBool("isWalking", false);
 
         if (playerFacingRight)
             player.transform.localScale = new Vector3(Mathf.Abs(player.transform.localScale.x), player.transform.localScale.y, player.transform.localScale.z);
