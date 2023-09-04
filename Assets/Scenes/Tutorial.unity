@@ -7562,7 +7562,7 @@ MonoBehaviour:
   infiniteDash: 0
   invincibility: 0
   coverPits: 0
-  currentController: 0
+  currentController: 3
   up: 119
   down: 115
   left: 97

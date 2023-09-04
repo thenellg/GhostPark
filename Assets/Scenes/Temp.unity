@@ -3068,7 +3068,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6375462750369196351, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
   m_PrefabInstance: {fileID: 6375462749319365586}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1956758147}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
@@ -5939,6 +5939,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f664ebb550d97e42b9a3944837ac0f0, type: 3}
+--- !u!1 &1956758147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6375462750937859174, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+  m_PrefabInstance: {fileID: 6375462749319365586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1956758149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956758147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a22a5767e65c842a0384dd09fcd1f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAnim: {fileID: 9100000, guid: ad4063d3022a9134aad1889700b01c0c, type: 2}
+  animations:
+  - {fileID: 9100000, guid: ad4063d3022a9134aad1889700b01c0c, type: 2}
+  - {fileID: 9100000, guid: fccc1f5be3c40574e892bbdf72ab12c2, type: 2}
+  - {fileID: 9100000, guid: 27a1de1a52df4614eb42ee0fdd5ae277, type: 2}
+  animator: {fileID: 0}
+  animationIndex: 0
 --- !u!1 &1961151741
 GameObject:
   m_ObjectHideFlags: 0
@@ -6555,45 +6579,17 @@ MonoBehaviour:
   invincibility: 0
   coverPits: 0
   currentController: 3
-  up: w
-  down: s
-  left: a
-  right: d
-  jump: space
-  dash: q
-  hold: e
-  keyboardControls:
-  - w
-  - s
-  - a
-  - d
-  - space
-  - q
-  - e
-  playstationControls:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  xboxControls:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  switchControls:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  up: 0
+  down: 0
+  left: 0
+  right: 0
+  jump: 0
+  dash: 0
+  hold: 0
+  keyboardControls: 00000000000000000000000000000000000000000000000000000000
+  playstationControls: 00000000000000000000000000000000000000000000000000000000
+  xboxControls: 00000000000000000000000000000000000000000000000000000000
+  switchControls: 00000000000000000000000000000000000000000000000000000000
   active: 0
 --- !u!4 &2069281847
 Transform:
@@ -7407,7 +7403,7 @@ PrefabInstance:
     - target: {fileID: 6375462750937859172, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 27a1de1a52df4614eb42ee0fdd5ae277, type: 2}
+      objectReference: {fileID: 9100000, guid: ad4063d3022a9134aad1889700b01c0c, type: 2}
     - target: {fileID: 6375462750937859174, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Name
       value: Player
