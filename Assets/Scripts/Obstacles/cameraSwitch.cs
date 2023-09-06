@@ -8,6 +8,9 @@ public class cameraSwitch : MonoBehaviour
     public CinemachineVirtualCamera vcam1;
     public CinemachineVirtualCamera vcam2;
 
+    public groupLoading group1;
+    public groupLoading group2;
+
     public void camSwap()
     {
         Invoke("go", 0.3f);
@@ -16,11 +19,13 @@ public class cameraSwitch : MonoBehaviour
         {
             vcam1.Priority = 0;
             vcam2.Priority = 1;
+            group2.swapGroups();
         }
         else
         {
             vcam1.Priority = 1;
             vcam2.Priority = 0;
+            group1.swapGroups();
         }
     }
 
