@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class groupLoading : MonoBehaviour
 {
-    public GameObject groupContainer;
-    public List<groupLoading> connectedGroups = new List<groupLoading>();
+    public List<GameObject> groups = new List<GameObject>();
 
-    public void swapGroups()
+    public void swapGroups(int mainID, List<int> extraRooms = null)
     {
-        foreach(groupLoading group in groupContainer.GetComponentsInChildren<groupLoading>())
+        for(int i = 0; i < groups.Count; i++)
         {
-            if(connectedGroups.IndexOf(group) >= 0)
-                group.gameObject.SetActive(true);
+            if (i <= mainID + 1 && i >= mainID - 1)
+                groups[i].SetActive(true);
             else
-                group.gameObject.SetActive(false);
+                groups[i].SetActive(false);
+        }
+
+        if(extraRooms != null)
+        {
+            foreach(int roomNum in extraRooms)
+            {
+                groups[roomNum].SetActive(true);
+            }
         }
     }
 }

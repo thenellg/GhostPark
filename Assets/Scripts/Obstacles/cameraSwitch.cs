@@ -5,11 +5,21 @@ using Cinemachine;
 
 public class cameraSwitch : MonoBehaviour
 {
+    public groupLoading m_groupLoading;
+
+    public bool multiRoom = false;
+    public List<int> extraRooms;
+
     public CinemachineVirtualCamera vcam1;
     public CinemachineVirtualCamera vcam2;
 
-    public groupLoading group1;
-    public groupLoading group2;
+    public int group1;
+    public int group2;
+
+    public void Start()
+    {
+        m_groupLoading = FindObjectOfType<groupLoading>();
+    }
 
     public void camSwap()
     {
@@ -19,13 +29,21 @@ public class cameraSwitch : MonoBehaviour
         {
             vcam1.Priority = 0;
             vcam2.Priority = 1;
-            group2.swapGroups();
+
+            if (multiRoom)
+                m_groupLoading.swapGroups(group2, extraRooms);
+            else
+                m_groupLoading.swapGroups(group2);
         }
         else
         {
             vcam1.Priority = 1;
             vcam2.Priority = 0;
-            group1.swapGroups();
+
+            if (multiRoom)
+                m_groupLoading.swapGroups(group1, extraRooms);
+            else
+                m_groupLoading.swapGroups(group1);
         }
     }
 
