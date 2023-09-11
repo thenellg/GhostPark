@@ -53,13 +53,33 @@ public class playerSettings : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (Input.anyKeyDown || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
+            checkController();
+    }
+
+    public void checkController()
+    {
+        var controllers = Input.GetJoystickNames();
+        foreach (string controller in controllers)
+            //Debug.Log(controller);
+        active = false;
+
+        if (controllers[0].Length > 0)
         {
-            var controllers = Input.GetJoystickNames();
-            foreach (string controller in controllers)
-                Debug.Log(controller);
-            active = false;
+            if (controllers[0].ToLower().Contains("dualsense") || controllers[0].ToLower().Contains("playstation"))
+                currentController = controlType.Playstation;
+            else if (controllers[0].ToLower().Contains("nintendo"))
+                currentController = controlType.Switch;
+            else if (controllers[0].ToLower().Contains("xbox"))
+                currentController = controlType.Xbox;
+            else
+                currentController = controlType.keyboard;
         }
+        else
+        {
+            currentController = controlType.keyboard;
+        }
+        resetDefault();
     }
 
     public void changeSettings()

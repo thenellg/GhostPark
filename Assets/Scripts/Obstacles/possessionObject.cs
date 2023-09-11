@@ -5,7 +5,7 @@ using UnityEngine;
 public class possessionObject : MonoBehaviour
 {
     public PlayerController player;
-    public Vector3 scale;
+    public Vector3 scale = new Vector3 (5.772182f, 5.772182f, 5.772182f);
 
     public bool active = false;
 

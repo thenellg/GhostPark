@@ -243,7 +243,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 8920463556363728399}
   layerDetection:
     serializedVersion: 2
-    m_Bits: 113
+    m_Bits: 241
   active: 1
   maxRayDistance: 9
   actualDistance: 0

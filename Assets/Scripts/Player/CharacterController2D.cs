@@ -132,7 +132,7 @@ public class CharacterController2D : MonoBehaviour
         else
         {
 			dashVector = new Vector2(horizontal, vertical).normalized;
-			Debug.Log(dashVector);
+			//Debug.Log(dashVector);
 		}
 
         if (_dashing && numGhosts < 3)
@@ -222,7 +222,7 @@ public class CharacterController2D : MonoBehaviour
 			jumpForce = m_JumpForce;
 		*/
 
-		Debug.Log(new Vector2(0f, m_JumpForce));
+		//Debug.Log(new Vector2(0f, m_JumpForce));
 
 		m_Grounded = false;
 
