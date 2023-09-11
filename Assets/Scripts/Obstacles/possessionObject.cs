@@ -13,6 +13,7 @@ public class possessionObject : MonoBehaviour
     public GameObject arrow;
 
     public bool through = false;
+    public bool camSwap = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,9 @@ public class possessionObject : MonoBehaviour
 
         scale = player.transform.localScale;
 
+        if (camSwap)
+            GetComponent<cameraSwitch>().setEnterDirection(player.transform);
+
         //disabling normal player activity
         player.controller.m_Rigidbody2D.velocity = Vector2.zero;
         player.controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
@@ -52,7 +56,7 @@ public class possessionObject : MonoBehaviour
 
         player.canMove = false;
         player.transform.position = transform.position;
-        player.transform.localScale = Vector3.zero;
+        player.transform.localScale = Vector3.one * 0.01f;
         //setting this object to active controller
         active = true;
 
@@ -74,6 +78,9 @@ public class possessionObject : MonoBehaviour
         player.controller.dashing();
         player.controller.fromPossession = true;
         //player.controller.Move(0f, false, true, false, false);
+
+        if (camSwap)
+            GetComponent<cameraSwitch>().checkCamSwap(player.transform);
 
     }
 

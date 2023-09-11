@@ -6,6 +6,7 @@ using Cinemachine;
 public class cameraSwitch : MonoBehaviour
 {
     public groupLoading m_groupLoading;
+    public Vector3 enterDirection;
 
     public bool multiRoom = false;
     public List<int> extraRooms;
@@ -15,6 +16,9 @@ public class cameraSwitch : MonoBehaviour
 
     public int group1;
     public int group2;
+
+    public bool vertical = false;
+    public bool collision = false;
 
     public void Start()
     {
@@ -51,4 +55,46 @@ public class cameraSwitch : MonoBehaviour
     {
         GameObject.FindObjectOfType<PlayerController>().itemReset();
     }
+
+    public void setEnterDirection(Transform player)
+    {
+        enterDirection = player.position - transform.position;
+
+        if (collision)
+            enterDirection = player.GetComponent<CharacterController2D>().dashVector;
+    }
+
+    public void checkCamSwap(Transform player)
+    {
+        Vector3 direction = player.position - transform.position;
+        if (collision)
+            direction = player.GetComponent<Rigidbody2D>().velocity;
+
+        Debug.Log("Enter: " + enterDirection);
+        Debug.Log("Exit: " + direction);
+
+        if (collision)
+        {
+            if (vertical && direction.y > 0 && enterDirection.y > 0)
+                camSwap();
+            else if (vertical && direction.y < 0 && enterDirection.y < 0)
+                camSwap();
+            else if (!vertical && direction.x > 0 && enterDirection.x > 0)
+                camSwap();
+            else if (!vertical && direction.x < 0 && enterDirection.x < 0)
+                camSwap();
+        }
+        else
+        {
+            if (vertical && direction.y > 0 && enterDirection.y < 0)
+                camSwap();
+            else if (vertical && direction.y < 0 && enterDirection.y > 0)
+                camSwap();
+            else if (!vertical && direction.x > 0 && enterDirection.x < 0)
+                camSwap();
+            else if (!vertical && direction.x < 0 && enterDirection.x > 0)
+                camSwap();
+        }
+    }
+
 }

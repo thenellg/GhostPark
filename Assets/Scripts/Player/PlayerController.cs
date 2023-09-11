@@ -146,8 +146,7 @@ public class PlayerController : MonoBehaviour {
 
 		else if (collision.tag == "camSwap")
         {
-			Debug.Log("collision");
-			collision.gameObject.GetComponent<cameraSwitch>().camSwap();
+			collision.gameObject.GetComponent<cameraSwitch>().setEnterDirection(transform);
         }
 
 		else if (collision.tag == "Key")
@@ -231,8 +230,15 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+		if (collision.tag == "camSwap")
+		{
+			collision.gameObject.GetComponent<cameraSwitch>().checkCamSwap(transform);
+		}
+	}
 
-	private void resetBoard(GameObject board)
+    private void resetBoard(GameObject board)
     {
 		foreach (BoxCollider2D collider in board.GetComponents<BoxCollider2D>())
 			collider.enabled = true;

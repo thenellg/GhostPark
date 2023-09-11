@@ -6,6 +6,14 @@ public class groupLoading : MonoBehaviour
 {
     public List<GameObject> groups = new List<GameObject>();
 
+    private void Start()
+    {
+        for (int i = 2; i < groups.Count; i++)
+        {
+            groups[i].SetActive(false);
+        }
+    }
+
     public void swapGroups(int mainID, List<int> extraRooms = null)
     {
         for(int i = 0; i < groups.Count; i++)
