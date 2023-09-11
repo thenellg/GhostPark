@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 41177544737208872}
   - component: {fileID: 8519807308178012837}
   - component: {fileID: 8519807308178012842}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Hanging Box
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.02
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: d0056c69a7fd25f439cdb7b26ed3392a, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

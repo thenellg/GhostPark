@@ -53,7 +53,7 @@ public class playerSettings : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
+        //if (Input.anyKeyDown || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
             checkController();
     }
 
@@ -68,7 +68,7 @@ public class playerSettings : MonoBehaviour
         {
             if (controllers[0].ToLower().Contains("dualsense") || controllers[0].ToLower().Contains("playstation"))
                 currentController = controlType.Playstation;
-            else if (controllers[0].ToLower().Contains("nintendo"))
+            else if (controllers[0].ToLower().Contains("pro controller"))
                 currentController = controlType.Switch;
             else if (controllers[0].ToLower().Contains("xbox"))
                 currentController = controlType.Xbox;
