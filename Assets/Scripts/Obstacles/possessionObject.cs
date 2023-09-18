@@ -5,6 +5,7 @@ using UnityEngine;
 public class possessionObject : MonoBehaviour
 {
     public PlayerController player;
+    public playerSettings settings;
     public Vector3 scale = new Vector3 (5.772182f, 5.772182f, 5.772182f);
 
     public bool active = false;
@@ -19,6 +20,7 @@ public class possessionObject : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        settings = FindObjectOfType<playerSettings>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class possessionObject : MonoBehaviour
             //dashVector = new Vector2(transform.position.x - player.transform.position.x, transform.position.y - player.transform.position.y);
             //dashVector = dashVector.normalized;
 
-            if (Input.GetButtonDown("Dash"))
+            if (Input.GetKeyDown(settings.dash))
             {
                 dashOut();
             }
