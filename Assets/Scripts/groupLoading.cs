@@ -5,13 +5,17 @@ using UnityEngine;
 public class groupLoading : MonoBehaviour
 {
     public List<GameObject> groups = new List<GameObject>();
+    public List<Transform> checkpoints = new List<Transform>();
+    public int activeGroup = 0;
 
     private void Start()
     {
-        for (int i = 2; i < groups.Count; i++)
-        {
-            groups[i].SetActive(false);
-        }
+        swapGroups(activeGroup);
+    }
+
+    public Vector3 returnCheckpoint()
+    {
+        return checkpoints[activeGroup].position;
     }
 
     public void swapGroups(int mainID, List<int> extraRooms = null)
@@ -22,6 +26,8 @@ public class groupLoading : MonoBehaviour
                 groups[i].SetActive(true);
             else
                 groups[i].SetActive(false);
+
+            activeGroup = mainID;
         }
 
         if(extraRooms != null)

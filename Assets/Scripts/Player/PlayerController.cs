@@ -306,8 +306,6 @@ public class PlayerController : MonoBehaviour {
 
 		//Move the camera back
 		camBrain.m_DefaultBlend.m_Time = 0.05f;
-		camBrain.ActiveVirtualCamera.Priority = 0;
-		startCam.Priority = 1;
 		camBrain.m_DefaultBlend.m_Time = 1f;
 
 		Invoke("setCharacter", 0.1f);
@@ -316,7 +314,7 @@ public class PlayerController : MonoBehaviour {
 			controller.m_Rigidbody2D.gravityScale = -controller.m_Rigidbody2D.gravityScale;
 
 		//Move character to spawn point
-		this.transform.position = spawnPoint;
+		this.transform.position = FindObjectOfType<groupLoading>().returnCheckpoint()	;
 		areDead = false;
 	}
 
