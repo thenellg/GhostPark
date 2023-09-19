@@ -1340,6 +1340,10 @@ PrefabInstance:
       propertyPath: vcam2
       value: 
       objectReference: {fileID: 339255833}
+    - target: {fileID: 3376376179633190905, guid: 0d60dc864b29a644ebabcca032d2b0a7, type: 3}
+      propertyPath: group2
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3376376179633190909, guid: 0d60dc864b29a644ebabcca032d2b0a7, type: 3}
       propertyPath: m_Name
       value: Cam Switch (1)
@@ -2852,11 +2856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3207871115750446089, guid: bb002fe39b8f2fe45a9b80f0543d12ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.462254
+      value: 64.3
       objectReference: {fileID: 0}
     - target: {fileID: 3207871115750446089, guid: bb002fe39b8f2fe45a9b80f0543d12ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.0106955
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 3207871115750446089, guid: bb002fe39b8f2fe45a9b80f0543d12ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3267,7 +3271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173425413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.95, y: 17.51, z: 0}
+  m_LocalPosition: {x: 28.7, y: 17.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1338327663}
@@ -5433,15 +5437,31 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6149340887832056462, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.26354018
+      value: 0.9380449
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056462, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5145585
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056462, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.2426
+      value: 13.7674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056462, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.1266
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: horizontal
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: fanModifier
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: fanIntensity
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
@@ -5974,7 +5994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916519144126362658, guid: 8292b1230c7903743a5d3fc10bdcba83, type: 3}
       propertyPath: consistent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4916519144126362658, guid: 8292b1230c7903743a5d3fc10bdcba83, type: 3}
       propertyPath: followPlayer
@@ -6666,7 +6686,7 @@ MonoBehaviour:
   infiniteDash: 0
   invincibility: 0
   coverPits: 0
-  currentController: 0
+  currentController: 1
   up: 0
   down: 0
   left: 0
@@ -7365,6 +7385,18 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: inverted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: fanModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: fanIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
+      propertyPath: initialIntensity
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

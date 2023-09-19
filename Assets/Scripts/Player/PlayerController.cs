@@ -202,11 +202,15 @@ public class PlayerController : MonoBehaviour {
 				collision.gameObject.GetComponent<Door>().locked();
 			else
 			{
-				this.GetComponentInChildren<key>().speed = 8;
-				controller.stopVelocity();
-				this.GetComponentInChildren<key>().followSpot = collision.transform;
-				this.GetComponentInChildren<key>().startDoor(collision.gameObject.GetComponent<Door>());
-				this.GetComponentInChildren<key>().resetParent();
+				var temp = GetComponentInChildren<key>();
+				if (temp)
+				{
+					temp.speed = 8;
+					controller.stopVelocity();
+					temp.followSpot = collision.transform;
+					temp.startDoor(collision.gameObject.GetComponent<Door>());
+					temp.resetParent();
+				}
 			}
 		}
 

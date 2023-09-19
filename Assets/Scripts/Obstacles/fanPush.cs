@@ -4,26 +4,73 @@ using UnityEngine;
 
 public class fanPush : MonoBehaviour
 {
+    public bool active = false;
+    public bool interaction = false;
     public Transform fanOrigin;
-    public float fanIntensity;
+    public CharacterController2D player;
+    
+    public float fanIntensity = 0.05f;
+    public float fanModifier = 6f;
+    public float initialIntensity;
     public bool horizontal = true;
     public bool inverted = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void Start()
+    {
+        player = FindObjectOfType<CharacterController2D>();
+        initialIntensity = fanIntensity;
+    }
+
+    private void Update()
+    {
+        if (active)
+        {
+            if (Input.GetKeyDown(player.m_Settings.hold))
+            {
+                interaction = true;
+                fanIntensity = initialIntensity * fanModifier;
+                player.m_Rigidbody2D.velocity = new Vector2(player.m_Rigidbody2D.velocity.x, player.m_Rigidbody2D.velocity.y / 2); 
+                player.fanSet(setFanDirection());
+            }
+            else if (Input.GetKeyUp(player.m_Settings.hold))
+            {
+                interaction = false;
+            }
+
+            if (!interaction)
+            {
+                fanIntensity = initialIntensity;
+                player.fanSet(setFanDirection());
+            }
+
+        }
+    }
+
+    Vector2 setFanDirection()
     {
         Vector2 fanDirection = Vector2.zero;
         if (horizontal)
-            fanDirection.x = 1;
+            fanDirection.x = fanIntensity;
         else
-            fanDirection.y = 1;
-        fanDirection = fanDirection.normalized * fanIntensity;
+            fanDirection.y = fanIntensity;
 
         if (inverted)
             fanDirection = fanDirection * -1;
 
+        return fanDirection;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Vector2 fanDirection = setFanDirection();
+
         if (collision.tag == "Player")
-            collision.GetComponent<CharacterController2D>().fanSet(fanDirection);
-        else if(collision.tag == "Minecart")
+        {
+            player.fanSet(fanDirection);
+            active = true;
+        }
+        else if (collision.tag == "Minecart")
             collision.GetComponent<minecart>().fanSet(fanDirection);
         else if (collision.tag == "Box")
             collision.GetComponent<pushableObject>().fanSet(fanDirection);
@@ -35,6 +82,8 @@ public class fanPush : MonoBehaviour
         if(collision.tag == "Player")
         {
             collision.GetComponent<CharacterController2D>().fanDeset();
+            active = false;
+            fanIntensity = initialIntensity;
         }
         else if (collision.tag == "Minecart")
         {
