@@ -22,7 +22,7 @@ public class projectilePlayerOnly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_Rigidbody2D.AddForce(new Vector2(-speed, 0));
+        m_Rigidbody2D.AddForce(new Vector2(speed, 0));
 
         if(timer < maxTime)
         {
@@ -40,9 +40,10 @@ public class projectilePlayerOnly : MonoBehaviour
         PlayerController temp = FindObjectOfType<PlayerController>();
         if (collision.tag == "Player" || collision.tag == "Minecart")
         {
-            if(collision.transform.position.y > transform.position.y)
+            if((collision.transform.position.y > transform.position.y && temp.controller.m_Rigidbody2D.gravityScale > 0) || (collision.transform.position.y < transform.position.y && temp.controller.m_Rigidbody2D.gravityScale < 0))
             {
-                temp.controller.m_Rigidbody2D.AddForce(new Vector2(0, temp.controller.m_JumpForce));
+                temp.controller.playerJump();
+                Destroy(this.gameObject);
             }
             else
             {

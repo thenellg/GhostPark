@@ -17,12 +17,15 @@ public class projectileShoot : MonoBehaviour
     public bool possessable = false;
     private int count = 0;
     public int possessionInterval;
+    public bool followPlayer = false;
+    public Transform player;
 
     public enum projectileType
     {
         fireball,
         fallingRockFatal,
-        fallingRockObstacle
+        fallingRockObstacle,
+        playerProjectile
     }
     public projectileType m_projectileType;
 
@@ -34,17 +37,22 @@ public class projectileShoot : MonoBehaviour
             active = true;
             instantiateProjectile();
         }
+        player = FindObjectOfType<PlayerController>().transform;
     }
     private void Update()
     {
         if (active)
         {
+            if (followPlayer)
+                originPoint.position = new Vector3(originPoint.position.x, player.position.y, originPoint.position.z);
+
             if (timer > 0)
                 timer -= Time.deltaTime;
             else
                 instantiateProjectile();
-        }    
+        }
     }
+
 
     public void instantiateProjectile()
     {
@@ -68,6 +76,13 @@ public class projectileShoot : MonoBehaviour
         {
             _projectile = Instantiate(projectiles[1]);
             _projectile.GetComponent<fallingRock>().fatal = false;
+        }
+        else if(m_projectileType == projectileType.playerProjectile)
+        {
+            _projectile = Instantiate(projectiles[2]);
+
+            if (directionLeft)
+                _projectile.GetComponent<projectilePlayerOnly>().speed *= -1;
         }
 
         _projectile.transform.position = originPoint.position;

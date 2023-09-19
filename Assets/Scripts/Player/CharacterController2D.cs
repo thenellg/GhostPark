@@ -198,7 +198,7 @@ public class CharacterController2D : MonoBehaviour
 
 	}
 
-	void playerJump()
+	public void playerJump()
     {
 		isWallSliding = false;
 
