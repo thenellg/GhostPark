@@ -6676,6 +6676,7 @@ MonoBehaviour:
   activeLevel: 0
   downSmashUnlock: 0
   dashUnlock: 1
+  glideUnlock: 1
   masterVolume: 1
   sfxVolume: 1
   musicVolume: 1

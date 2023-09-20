@@ -68,7 +68,9 @@ public class fanPush : MonoBehaviour
         if (collision.tag == "Player")
         {
             player.fanSet(fanDirection);
-            active = true;
+
+            if(player.m_Settings.glideUnlock)
+                active = true;
         }
         else if (collision.tag == "Minecart")
             collision.GetComponent<minecart>().fanSet(fanDirection);

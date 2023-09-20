@@ -12,6 +12,7 @@ public class playerSettings : MonoBehaviour
     [Header("Unlocks")]
     public bool downSmashUnlock = false;
     public bool dashUnlock = true;
+    public bool glideUnlock = false;
 
     [Header("Audio")]
     [Range(0f, 1f)] public float masterVolume;

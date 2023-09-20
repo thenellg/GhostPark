@@ -8,6 +8,7 @@ public class CharacterController2D : MonoBehaviour
 {
 	[Header("General")]
 	public float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
+	public float gravity;
 	//[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -317,7 +318,7 @@ public class CharacterController2D : MonoBehaviour
 		moveCheck = move;
 
 		//if (!jump)
-		holdingWall = hold;
+		//holdingWall = hold;
 
 		if (canMove)
 		{
@@ -376,6 +377,14 @@ public class CharacterController2D : MonoBehaviour
 				{
 					Flip(false);             // ... flip the player.
 				}
+                if (m_Grounded)
+                {
+					if (m_Rigidbody2D.gravityScale > 0)
+						m_Rigidbody2D.gravityScale = tempGravScale;
+					else
+						m_Rigidbody2D.gravityScale = -tempGravScale;
+				}
+
 			}
 
 			// If the player should jump...
@@ -401,15 +410,32 @@ public class CharacterController2D : MonoBehaviour
             {
 				if (!m_Grounded)
 				{
-					PlayerAnim.SetTrigger("fall");
+					if (hold && !dash && !jump)
+					{
+						PlayerAnim.SetTrigger("fall");
 
-					if (Input.GetAxis("Vertical") < 0 && m_Rigidbody2D.gravityScale > 0)
-					{
-						m_Rigidbody2D.AddForce(new Vector2(0, -3));
+						if (m_Rigidbody2D.gravityScale > 0)
+							m_Rigidbody2D.gravityScale = tempGravScale/3;
+						else
+							m_Rigidbody2D.gravityScale = -tempGravScale/3;
 					}
-					else if (Input.GetAxis("Vertical") < 0 && m_Rigidbody2D.gravityScale < 0)
+					else
 					{
-						m_Rigidbody2D.AddForce(new Vector2(0, 3));
+						PlayerAnim.SetTrigger("fall");
+
+						if (m_Rigidbody2D.gravityScale > 0)
+							m_Rigidbody2D.gravityScale = tempGravScale;
+						else
+							m_Rigidbody2D.gravityScale = -tempGravScale;
+
+						if (Input.GetAxis("Vertical") < 0 && m_Rigidbody2D.gravityScale > 0)
+						{
+							m_Rigidbody2D.AddForce(new Vector2(0, -3));
+						}
+						else if (Input.GetAxis("Vertical") < 0 && m_Rigidbody2D.gravityScale < 0)
+						{
+							m_Rigidbody2D.AddForce(new Vector2(0, 3));
+						}
 					}
 				}
 			}
@@ -456,7 +482,8 @@ public class CharacterController2D : MonoBehaviour
 			}
 
 			//holdingWall = false;
-			if (isWallSliding && !jump && !dash)
+			/*
+			if (isWallSliding && !jump && !dash && !hold)
 			{
 				if (m_Rigidbody2D.gravityScale > 0)
 					m_Rigidbody2D.gravityScale = tempGravScale;
@@ -475,6 +502,7 @@ public class CharacterController2D : MonoBehaviour
 				else
 					m_Rigidbody2D.gravityScale = -tempGravScale;
 			}
+			*/
 
 			if (m_Grounded && !_dashing)
 				canDash = true;
