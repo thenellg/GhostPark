@@ -69,6 +69,9 @@ public class CharacterController2D : MonoBehaviour
 	public GameObject m_dashGhost;
 
 	public bool fromPossession = false;
+	public bool fromPossessionDash = false;
+	public possessionObject lastPossession;
+
 	float shakeTimer = 0;
 	bool crouching = false;
 	private float moveCheck;
@@ -305,6 +308,7 @@ public class CharacterController2D : MonoBehaviour
 		PlayerAnim.SetBool("dashing", false);
 		if (m_Settings.infiniteDash || fromPossession)
 			canDash = true;
+		fromPossessionDash = false;
 		fromPossession = false;
 	}
 

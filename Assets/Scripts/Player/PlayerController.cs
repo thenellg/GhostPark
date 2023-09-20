@@ -131,11 +131,11 @@ public class PlayerController : MonoBehaviour {
 
 		if (collision.tag == "Death")
 		{
-			if (!controller.m_Settings.invincibility || (controller.m_Settings.invincibility && collision.GetComponent<deathObject>().typeOfObject == 0) || collision.GetComponent<deathObject>() && collision.GetComponent<deathObject>().onPossession && controller.fromPossession)
+			if (!controller.m_Settings.invincibility || (controller.m_Settings.invincibility && collision.GetComponent<deathObject>().typeOfObject == 0))
 			{
 				if (collision.GetComponent<deathObject>() && collision.GetComponent<deathObject>().onPossession)
 				{
-					if(!controller.fromPossession && !areDead)
+					if(!controller.fromPossessionDash && !areDead)
                     {
 						areDead = true;
 						canMove = false;
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour {
 					}
                     else
                     {
-						controller.fromPossession = false;
+						controller.fromPossessionDash = false;
                     }
 				}
 				else { 
@@ -330,7 +330,6 @@ public class PlayerController : MonoBehaviour {
 		camBrain.m_DefaultBlend.m_Time = 0.05f;
 		camBrain.m_DefaultBlend.m_Time = 1f;
 
-		Invoke("setCharacter", 0.1f);
 
 
 		if (FindObjectOfType<groupLoading>().checkGrav())
@@ -339,10 +338,22 @@ public class PlayerController : MonoBehaviour {
 			controller.m_Rigidbody2D.gravityScale = controller.tempGravScale;
 
 		controller.fanActive = false;
+		transform.parent = null;
+		transform.localScale = Vector3.one * 5.772182f;
+
+        if (controller.lastPossession != null && controller.lastPossession.active)
+		{
+			controller.lastPossession.active = false;
+			controller.lastPossession = null;
+		}
+		controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
+		controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
 		//Move character to spawn point
-		this.transform.position = FindObjectOfType<groupLoading>().returnCheckpoint()	;
+		this.transform.position = FindObjectOfType<groupLoading>().returnCheckpoint();
 		areDead = false;
+
+		Invoke("setCharacter", 0.1f);
 	}
 
 	void setCharacter()

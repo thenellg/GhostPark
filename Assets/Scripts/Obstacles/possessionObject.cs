@@ -41,6 +41,7 @@ public class possessionObject : MonoBehaviour
 
     public void setUp()
     {
+
         if (GetComponent<BoxCollider2D>())
             GetComponent<BoxCollider2D>().isTrigger = true;
         else if (GetComponent<CircleCollider2D>())
@@ -54,7 +55,7 @@ public class possessionObject : MonoBehaviour
         //disabling normal player activity
         player.controller.m_Rigidbody2D.velocity = Vector2.zero;
         player.controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
-
+        player.controller.lastPossession = this;
 
         player.canMove = false;
         player.transform.position = transform.position;
@@ -80,6 +81,7 @@ public class possessionObject : MonoBehaviour
         
         player.controller.dashing();
         player.controller.fromPossession = true;
+        player.controller.fromPossessionDash = true;
         //player.controller.Move(0f, false, true, false, false);
 
         if (camSwap)
