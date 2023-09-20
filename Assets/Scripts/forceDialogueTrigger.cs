@@ -17,6 +17,14 @@ public class forceDialogueTrigger : MonoBehaviour
     public dialogue startMessage;
     public bool active = false;
 
+    public enum abilities
+    {
+        none,
+        dash,
+        glide
+    }
+    public abilities unlock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +91,14 @@ public class forceDialogueTrigger : MonoBehaviour
         if(!active && collision.tag == "Player")
         {
             startDialogue();
+
+            if(unlock != abilities.none)
+            {
+                if (unlock == abilities.dash)
+                    settings.dashUnlock = true;
+                else if (unlock == abilities.glide)
+                    settings.glideUnlock = true;
+            }
         }
     }
 }

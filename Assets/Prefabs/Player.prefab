@@ -196,6 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 140
+  gravity: 0
+  maxVertSpeed: 10
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -255,6 +257,8 @@ MonoBehaviour:
   ghostTimePassed: 0
   m_dashGhost: {fileID: 7587410970039602463, guid: 1f5e1439d0c157e43869b798a2802639, type: 3}
   fromPossession: 0
+  fromPossessionDash: 0
+  lastPossession: {fileID: 0}
   holdingWall: 0
   fanActive: 0
   fanForce: {x: 0, y: 0}
@@ -430,7 +434,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 6375462750937859174}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: d0056c69a7fd25f439cdb7b26ed3392a, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
