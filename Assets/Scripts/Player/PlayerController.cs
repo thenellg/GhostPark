@@ -340,8 +340,9 @@ public class PlayerController : MonoBehaviour {
 		controller.fanActive = false;
 		transform.parent = null;
 		transform.localScale = Vector3.one * 5.772182f;
+		hold = false;
 
-        if (controller.lastPossession != null && controller.lastPossession.active)
+		if (controller.lastPossession != null && controller.lastPossession.active)
 		{
 			controller.lastPossession.active = false;
 			controller.lastPossession = null;
