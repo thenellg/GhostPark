@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 spawnPoint;
 	public int deathCount = 0;
 	public bool canMove = true;
+	public bool respawnReverseGrav = false;
+
 
 	public key _key;
 	public GameObject items;
@@ -314,8 +316,11 @@ public class PlayerController : MonoBehaviour {
 
 		Invoke("setCharacter", 0.1f);
 
-		if (controller.m_Rigidbody2D.gravityScale < 0)
-			controller.m_Rigidbody2D.gravityScale = -controller.m_Rigidbody2D.gravityScale;
+
+		if (respawnReverseGrav)
+			controller.m_Rigidbody2D.gravityScale = controller.tempGravScale;
+		else
+			controller.m_Rigidbody2D.gravityScale = -controller.tempGravScale;
 
 		//Move character to spawn point
 		this.transform.position = FindObjectOfType<groupLoading>().returnCheckpoint()	;

@@ -410,7 +410,7 @@ public class CharacterController2D : MonoBehaviour
             {
 				if (!m_Grounded)
 				{
-					if (hold && !dash && !jump)
+					if (m_Settings.glideUnlock && hold && !dash && !jump && m_Rigidbody2D.velocity.y <= 0)
 					{
 						PlayerAnim.SetTrigger("fall");
 

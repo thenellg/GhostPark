@@ -6,6 +6,7 @@ public class groupLoading : MonoBehaviour
 {
     public List<GameObject> groups = new List<GameObject>();
     public List<Transform> checkpoints = new List<Transform>();
+    public List<int> reverseGravCheckpoints = new List<int>();
     public int activeGroup = 0;
 
     private void Start()
@@ -37,5 +38,10 @@ public class groupLoading : MonoBehaviour
                 groups[roomNum].SetActive(true);
             }
         }
+    }
+
+    public bool checkGrav()
+    {
+        return reverseGravCheckpoints.Contains(activeGroup);
     }
 }
