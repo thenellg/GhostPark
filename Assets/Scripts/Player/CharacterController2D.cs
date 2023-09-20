@@ -334,6 +334,7 @@ public class CharacterController2D : MonoBehaviour
 			{
 				if(!PlayerAnim.GetBool("isWalking"))
 					PlayerAnim.SetBool("isWalking", true);
+				PlayerAnim.SetBool("Glide", false);
 			}
 			else if (m_Grounded && crouch)
 			{
@@ -346,18 +347,20 @@ public class CharacterController2D : MonoBehaviour
 
 				PlayerAnim.SetBool("crouching", true);
 				PlayerAnim.SetBool("isWalking", false);
+				PlayerAnim.SetBool("Glide", false);
 			}
 			else if (m_Grounded && !crouch)
 			{
 				crouching = false;
 				PlayerAnim.SetBool("crouching", false);
 				PlayerAnim.SetBool("isWalking", false);
+				PlayerAnim.SetBool("Glide", false);
 			}
 			else if (!m_Grounded)
             {
 				playLandingSFX = true;
 
-				PlayerAnim.SetTrigger("fall");
+				//PlayerAnim.SetTrigger("fall");
 				PlayerAnim.SetBool("isWalking", false);
 				PlayerAnim.SetBool("crouching", false);
 			}
@@ -365,6 +368,7 @@ public class CharacterController2D : MonoBehaviour
 			{
 				PlayerAnim.SetBool("isWalking", false);
 				PlayerAnim.SetBool("crouching", false);
+				PlayerAnim.SetBool("Glide", false);
 			}
 
 			//only control the player if grounded or airControl is turned on
@@ -420,7 +424,7 @@ public class CharacterController2D : MonoBehaviour
 				{
 					if (m_Settings.glideUnlock && hold && !dash && !jump && m_Rigidbody2D.velocity.y <= 0)
 					{
-						PlayerAnim.SetTrigger("fall");
+						PlayerAnim.SetBool("Glide", true);
 
 						if (m_Rigidbody2D.gravityScale > 0)
 							m_Rigidbody2D.gravityScale = tempGravScale/3;
@@ -429,6 +433,7 @@ public class CharacterController2D : MonoBehaviour
 					}
 					else
 					{
+						PlayerAnim.SetBool("Glide", false);
 						PlayerAnim.SetTrigger("fall");
 
 						if (m_Rigidbody2D.gravityScale > 0)
