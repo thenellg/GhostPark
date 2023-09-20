@@ -59,6 +59,7 @@ public class possessionObject : MonoBehaviour
         player.canMove = false;
         player.transform.position = transform.position;
         player.transform.localScale = Vector3.one * 0.01f;
+        player.controller.fanActive = false;
         //setting this object to active controller
         active = true;
 

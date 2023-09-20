@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4275081856226541673}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Fan Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6149340887832056461}
   - component: {fileID: 6149340887832056456}
   - component: {fileID: 6149340887832056463}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Fan Trigger
   m_TagString: Fan
   m_Icon: {fileID: 0}

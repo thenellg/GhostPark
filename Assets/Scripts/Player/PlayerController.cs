@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 spawnPoint;
 	public int deathCount = 0;
 	public bool canMove = true;
-	public bool respawnReverseGrav = false;
 
 
 	public key _key;
@@ -132,16 +131,33 @@ public class PlayerController : MonoBehaviour {
 
 		if (collision.tag == "Death")
 		{
-			if (!controller.m_Settings.invincibility || (controller.m_Settings.invincibility && collision.GetComponent<deathObject>().typeOfObject == 0))
+			if (!controller.m_Settings.invincibility || (controller.m_Settings.invincibility && collision.GetComponent<deathObject>().typeOfObject == 0) || collision.GetComponent<deathObject>() && collision.GetComponent<deathObject>().onPossession && controller.fromPossession)
 			{
-				if (!areDead)
+				if (collision.GetComponent<deathObject>() && collision.GetComponent<deathObject>().onPossession)
 				{
-					areDead = true;
-					canMove = false;
-					this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-					deathSFX = collision.GetComponent<deathObject>().sendDeathAudio();
-					Invoke("onDeath", 0.4f);
-					//onDeath();
+					if(!controller.fromPossession && !areDead)
+                    {
+						areDead = true;
+						canMove = false;
+						this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+						deathSFX = collision.GetComponent<deathObject>().sendDeathAudio();
+						Invoke("onDeath", 0.4f);
+					}
+                    else
+                    {
+						controller.fromPossession = false;
+                    }
+				}
+				else { 
+					if (!areDead)
+					{
+						areDead = true;
+						canMove = false;
+						this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+						deathSFX = collision.GetComponent<deathObject>().sendDeathAudio();
+						Invoke("onDeath", 0.4f);
+						//onDeath();
+					}
 				}
 			}
 		}
@@ -317,10 +333,12 @@ public class PlayerController : MonoBehaviour {
 		Invoke("setCharacter", 0.1f);
 
 
-		if (respawnReverseGrav)
-			controller.m_Rigidbody2D.gravityScale = controller.tempGravScale;
-		else
+		if (FindObjectOfType<groupLoading>().checkGrav())
 			controller.m_Rigidbody2D.gravityScale = -controller.tempGravScale;
+		else
+			controller.m_Rigidbody2D.gravityScale = controller.tempGravScale;
+
+		controller.fanActive = false;
 
 		//Move character to spawn point
 		this.transform.position = FindObjectOfType<groupLoading>().returnCheckpoint()	;

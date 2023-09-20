@@ -13,6 +13,7 @@ public class deathObject : MonoBehaviour
      */
     public int typeOfObject;
     public AudioClip[] deathSFX;
+    public bool onPossession = false;
 
     public AudioClip sendDeathAudio()
     {
