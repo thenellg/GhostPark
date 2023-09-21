@@ -6865,6 +6865,7 @@ MonoBehaviour:
   checkpoints:
   - {fileID: 750633184}
   - {fileID: 1173425414}
+  reverseGravCheckpoints: 
   activeGroup: 0
 --- !u!1001 &2116405475
 PrefabInstance:

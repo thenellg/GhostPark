@@ -194,8 +194,9 @@ public class PlayerController : MonoBehaviour {
 
         }
 
-		else if (collision.tag == "Spring")
+		else if (collision.tag == "Spring" && transform.position.y > collision.transform.position.y)
 		{
+			controller.m_Rigidbody2D.velocity = new Vector2(controller.m_Rigidbody2D.velocity.x, 0f);
 			controller.m_Rigidbody2D.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
 			controller.canDash = true;
 		}
