@@ -422,7 +422,7 @@ public class CharacterController2D : MonoBehaviour
             {
 				if (!m_Grounded)
 				{
-					if (m_Settings.glideUnlock && hold && !dash && !jump && m_Rigidbody2D.velocity.y <= 0)
+					if (m_Settings.glideUnlock && hold && !dash && !jump && m_Rigidbody2D.velocity.y <= 1)
 					{
 						PlayerAnim.SetBool("Glide", true);
 
@@ -431,8 +431,13 @@ public class CharacterController2D : MonoBehaviour
 						else
 							m_Rigidbody2D.gravityScale = -tempGravScale/3;
 					}
+					else if (m_Settings.glideUnlock && hold && !dash && !jump && m_Rigidbody2D.velocity.y > 1 && fanActive)
+                    {
+						PlayerAnim.SetBool("Glide", true);
+					}
 					else
 					{
+						if(fanActive)
 						PlayerAnim.SetBool("Glide", false);
 						PlayerAnim.SetTrigger("fall");
 
