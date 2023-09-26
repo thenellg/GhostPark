@@ -277,6 +277,7 @@ public class CharacterController2D : MonoBehaviour
 
 		PlayerAnim.SetTrigger("Dash");
 		PlayerAnim.SetBool("dashing", true);
+		PlayerAnim.SetBool("Glide", false);
 
 		if (dashVector.y > 0.5f)
 		{
@@ -431,7 +432,7 @@ public class CharacterController2D : MonoBehaviour
 						else
 							m_Rigidbody2D.gravityScale = -tempGravScale/3;
 					}
-					else if (m_Settings.glideUnlock && hold && !dash && !jump && m_Rigidbody2D.velocity.y > 1 && fanActive)
+					else if (m_Settings.glideUnlock && hold && fanActive)
                     {
 						PlayerAnim.SetBool("Glide", true);
 					}

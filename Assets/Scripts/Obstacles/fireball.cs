@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class fireball : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     public bool directionLeft;
     public Rigidbody2D m_Rigidbody2D;
     public Transform parent;

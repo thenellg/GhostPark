@@ -84,7 +84,10 @@ public class possessionObject : MonoBehaviour
         player.controller.fromPossessionDash = true;
         //player.controller.Move(0f, false, true, false, false);
 
-        if (camSwap)
+
+        if (camSwap && player.controller.dashVector.y < 0.05 && player.controller.dashVector.y > -0.05)
+            GetComponent<cameraSwitch>().checkCamSwap(player.transform, true);
+        else if (camSwap && player.controller.dashVector.y != 0)
             GetComponent<cameraSwitch>().checkCamSwap(player.transform);
 
     }

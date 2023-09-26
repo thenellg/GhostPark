@@ -8,6 +8,7 @@ public class playerSettings : MonoBehaviour
 
     [Header("General")]
     public int activeLevel;
+    public int totalCoins = 0;
 
     [Header("Unlocks")]
     public bool downSmashUnlock = false;

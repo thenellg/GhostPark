@@ -139,7 +139,6 @@ MonoBehaviour:
   directionLeft: 0
   m_Rigidbody2D: {fileID: 0}
   parent: {fileID: 0}
-  layerCollisions: 0000000004000000050000000600000007000000
 --- !u!114 &6035572961047714654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +154,4 @@ MonoBehaviour:
   typeOfObject: 2
   deathSFX:
   - {fileID: 8300000, guid: b372afb66a6b052408266105cc0cf325, type: 3}
+  onPossession: 0

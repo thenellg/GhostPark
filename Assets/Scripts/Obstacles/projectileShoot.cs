@@ -13,6 +13,7 @@ public class projectileShoot : MonoBehaviour
     public float timer;
     public bool directionLeft = true;
     public bool active = false;
+    public float speedOverride = 0f;
 
     public bool possessable = false;
     private int count = 0;
@@ -35,10 +36,16 @@ public class projectileShoot : MonoBehaviour
         if (consistent)
         {
             active = true;
-            instantiateProjectile();
         }
         player = FindObjectOfType<PlayerController>().transform;
     }
+
+    private void Awake()
+    {
+        if(consistent)
+            instantiateProjectile();
+    }
+
     private void Update()
     {
         if (active)
@@ -62,6 +69,9 @@ public class projectileShoot : MonoBehaviour
         {
             _projectile = Instantiate(projectiles[0]);
 
+            if (speedOverride != 0)
+                _projectile.GetComponent<fireball>().speed = speedOverride;
+
             if (directionLeft)
                 _projectile.GetComponent<fireball>().speed *= -1;
 
@@ -70,6 +80,7 @@ public class projectileShoot : MonoBehaviour
         else if (m_projectileType == projectileType.fallingRockFatal)
         {
             _projectile = Instantiate(projectiles[1]);
+
             _projectile.GetComponent<fallingRock>().fatal = true;
         }
         else if (m_projectileType == projectileType.fallingRockObstacle)
@@ -81,6 +92,9 @@ public class projectileShoot : MonoBehaviour
         {
             _projectile = Instantiate(projectiles[2]);
 
+            if (speedOverride != 0)
+                _projectile.GetComponent<projectilePlayerOnly>().speed = speedOverride;
+            
             if (directionLeft)
                 _projectile.GetComponent<projectilePlayerOnly>().speed *= -1;
         }

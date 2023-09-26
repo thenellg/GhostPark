@@ -18,6 +18,7 @@ TagManager:
   - falseWall
   - Minecart
   - Mirror
+  - Coin
   layers:
   - Default
   - TransparentFX

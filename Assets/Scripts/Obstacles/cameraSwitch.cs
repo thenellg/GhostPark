@@ -64,7 +64,7 @@ public class cameraSwitch : MonoBehaviour
             enterDirection = player.GetComponent<CharacterController2D>().dashVector;
     }
 
-    public void checkCamSwap(Transform player)
+    public void checkCamSwap(Transform player, bool dashCheck = false)
     {
         Vector3 direction = player.position - transform.position;
         if (collision)
@@ -73,7 +73,20 @@ public class cameraSwitch : MonoBehaviour
         Debug.Log("Enter: " + enterDirection);
         Debug.Log("Exit: " + direction);
 
-        if (collision)
+        if(collision && dashCheck)
+        {
+            if (vcam1.Priority < vcam2.Priority)
+            {
+                vcam1.Priority = 1;
+                vcam2.Priority = 0;
+
+                if (multiRoom)
+                    m_groupLoading.swapGroups(group1, extraRooms);
+                else
+                    m_groupLoading.swapGroups(group1);
+            }
+        }
+        else if (collision)
         {
             if (vertical && direction.y > 0 && enterDirection.y > 0)
                 camSwap();

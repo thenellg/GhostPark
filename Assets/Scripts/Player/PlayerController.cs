@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
 	[Header("General")]
 	public CharacterController2D controller;
-
+	public int coins = 0;
 	public float runSpeed = 40f;
 
 	public float horizontalMove = 0f;
@@ -193,6 +193,14 @@ public class PlayerController : MonoBehaviour {
 			}
 
         }
+
+		else if (collision.tag == "Coin")
+        {
+			int temp = collision.gameObject.GetComponent<Coin>().amount;
+			controller.m_Settings.totalCoins += temp;
+			//controller.deadSFX(collision.gameObject.GetComponent<Coin>().soundEffect);
+			collision.gameObject.GetComponent<Coin>().hideCoin();
+		}
 
 		else if (collision.tag == "Spring" && transform.position.y > collision.transform.position.y)
 		{
