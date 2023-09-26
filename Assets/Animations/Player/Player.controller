@@ -573,6 +573,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: dashing
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Glide
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7208289580116646271}
   m_Solo: 0
@@ -746,7 +749,7 @@ AnimatorStateMachine:
     m_Position: {x: 320, y: 490, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7208289580116646271}
-    m_Position: {x: 660, y: 390, z: 0}
+    m_Position: {x: 740, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4618098883839902809}
     m_Position: {x: 100, y: 540, z: 0}

@@ -299,10 +299,9 @@ public class CharacterController2D : MonoBehaviour
 
 		jumpCounter = 0;
 
-
 		_dashing = true;
 
-		Invoke("resetDash", 0.4f);
+		Invoke("resetDash", 0.2f);
 	}
 
 	void resetDash()
