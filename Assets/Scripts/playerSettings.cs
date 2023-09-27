@@ -9,6 +9,7 @@ public class playerSettings : MonoBehaviour
     [Header("General")]
     public int activeLevel;
     public int totalCoins = 0;
+    public int targetFrameRate = 30;
 
     [Header("Unlocks")]
     public bool downSmashUnlock = false;
@@ -50,6 +51,7 @@ public class playerSettings : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = targetFrameRate;
         resetDefault();
     }
 
