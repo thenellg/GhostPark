@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4258448119491719068}
   - component: {fileID: 1297874325200966407}
   - component: {fileID: 1200671283406806333}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Minecart Stopper
   m_TagString: endMinecart
   m_Icon: {fileID: 0}

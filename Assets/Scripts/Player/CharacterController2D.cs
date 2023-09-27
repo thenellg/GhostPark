@@ -83,6 +83,7 @@ public class CharacterController2D : MonoBehaviour
 
 	[Header("Gravity")]
 	public float tempGravScale;
+	static Vector2 zeroVector = new Vector2(0f, 0f);
 
 	private void Awake()
 	{
@@ -262,7 +263,7 @@ public class CharacterController2D : MonoBehaviour
 			transform.localScale = theScale;
 	}
 
-	public void dashing(bool fromPossession = false)
+	public void dashing(bool fromPossession = false, Vector2 dashOveride = default(Vector2))
     {
 		canDash = false;
 		
@@ -278,6 +279,9 @@ public class CharacterController2D : MonoBehaviour
 		PlayerAnim.SetTrigger("Dash");
 		PlayerAnim.SetBool("dashing", true);
 		PlayerAnim.SetBool("Glide", false);
+
+		if (dashOveride != default(Vector2))
+			dashVector = dashOveride;
 
 		if (dashVector.y > 0.5f)
 		{

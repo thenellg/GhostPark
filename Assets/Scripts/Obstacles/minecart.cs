@@ -15,17 +15,20 @@ public class minecart : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 3f;
     public float m_JumpForce = 140f;
+    public Transform initialParent;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     private Vector3 velocity = Vector3.zero;
     public Vector3 originalSpot;
     [Range(0, 45f)] public float maxRotate = 27f;
 
     public bool fanActive = false;
+    bool exitRight = true;
     public Vector2 fanForce = new Vector2();
 
     float tempGravScale;
     [Header("Ground Check")]
     public bool m_Grounded = true;
+    public bool m_FacingRight = true;
     [SerializeField] private LayerMask m_WhatIsGround;
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     const float k_GroundedRadius = .2f;
@@ -36,6 +39,10 @@ public class minecart : MonoBehaviour
         m_Settings = FindObjectOfType<playerSettings>();
         tempGravScale = rb.gravityScale;
         originalSpot = transform.position;
+        initialParent = transform.parent;
+
+        if (m_FacingRight == false)
+            speed *= -1;
     }
 
     // Update is called once per frame
@@ -56,24 +63,26 @@ public class minecart : MonoBehaviour
 
                 Invoke("resetPlayerChild", 0.2f);
             }
-            else if (Input.GetKeyDown(m_Settings.left))
+            else if (Input.GetAxis("Horizontal") < 0f)
             {
                 if (speed > 0f)
                 {
                     speed *= -1f;
                     this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
+                    m_FacingRight = true;
                 }
             }
-            else if (Input.GetKeyDown(m_Settings.right))
+            else if (Input.GetAxis("Horizontal") > 0f)
             {
                 if (speed < 0f)
                 {
                     speed *= -1f;
                     this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
+                    m_FacingRight = false;
                 }
             }
 
-                Vector2 targetVelocity = new Vector2(speed * 10f, rb.velocity.y);
+            Vector2 targetVelocity = new Vector2(speed * 10f, rb.velocity.y);
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
 
             if (fanActive)
@@ -130,6 +139,10 @@ public class minecart : MonoBehaviour
         playerChild = true;
 
         player.transform.position = playerSpot.position;
+
+        if(player.GetComponent<CharacterController2D>().m_FacingRight != m_FacingRight)
+            player.transform.localScale = new Vector3(-player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z); 
+        
         player.transform.parent = transform;
 
         player.GetComponent<PlayerController>().canMove = false;
@@ -138,7 +151,7 @@ public class minecart : MonoBehaviour
         player.GetComponent<Rigidbody2D>().simulated = false;
         player.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
-
+        transform.parent = null;
 
         active = true;
         rb.constraints = RigidbodyConstraints2D.None;
@@ -149,6 +162,11 @@ public class minecart : MonoBehaviour
         player.transform.position = playerSpot.position;
         player.transform.parent = null;
 
+
+        if(m_Grounded)
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        
+        
         rb.simulated = false;
         player.GetComponent<Rigidbody2D>().simulated = true;
 
@@ -158,15 +176,30 @@ public class minecart : MonoBehaviour
 
         player.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
+        transform.parent = initialParent;
+
         active = false;
+
+        speed = Mathf.Abs(speed);
+        m_FacingRight = true;
 
         GetComponent<BoxCollider2D>().isTrigger = true;
         player.GetComponent<PlayerController>().canMove = true;
-        player.GetComponent<CharacterController2D>().dashing(true);
+
+        if(exitRight)
+            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(-1.25f, 1.25f));
+        else
+            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(1.25f, 1.25f));
+
         rb.simulated = true;
         //rb.gravityScale = 0f;
 
+        Invoke("resetTrigger", 0.1f);
+    }
 
+    void resetTrigger()
+    {
+        GetComponent<BoxCollider2D>().isTrigger = false;
     }
 
     void playerJump()
@@ -231,9 +264,9 @@ public class minecart : MonoBehaviour
         else if (collision.tag == "endMinecart")
         {
             if (collision.transform.rotation.y == 180)
-                player.GetComponent<CharacterController2D>().dashVector = new Vector2(-1.25f, 1.25f);
+                exitRight = true;
             else
-                player.GetComponent<CharacterController2D>().dashVector = new Vector2(1.25f, 1.25f);
+                exitRight = false;
 
             exit();
 
