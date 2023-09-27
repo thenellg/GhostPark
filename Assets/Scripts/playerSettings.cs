@@ -38,8 +38,8 @@ public class playerSettings : MonoBehaviour
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
     public KeyCode jump = KeyCode.Space;
-    public KeyCode dash = KeyCode.Q;
-    public KeyCode hold = KeyCode.E;
+    public KeyCode dash = KeyCode.O;
+    public KeyCode hold = KeyCode.P;
 
     public List<KeyCode> keyboardControls = new List<KeyCode>();
     public List<KeyCode> playstationControls = new List<KeyCode>();
@@ -137,8 +137,8 @@ public class playerSettings : MonoBehaviour
             keyboardControls[2] = KeyCode.A;
             keyboardControls[3] = KeyCode.D;
             keyboardControls[4] = KeyCode.Space;
-            keyboardControls[5] = KeyCode.Q;
-            keyboardControls[6] = KeyCode.E;
+            keyboardControls[5] = KeyCode.O;
+            keyboardControls[6] = KeyCode.P;
         }
         if (currentController == controlType.Playstation)
         {
