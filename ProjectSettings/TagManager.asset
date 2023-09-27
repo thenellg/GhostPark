@@ -19,6 +19,7 @@ TagManager:
   - Minecart
   - Mirror
   - Coin
+  - endMinecart
   layers:
   - Default
   - TransparentFX

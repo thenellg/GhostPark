@@ -228,5 +228,16 @@ public class minecart : MonoBehaviour
 
             resetCart();
         }
+        else if (collision.tag == "endMinecart")
+        {
+            if (collision.transform.rotation.y == 180)
+                player.GetComponent<CharacterController2D>().dashVector = new Vector2(-1.25f, 1.25f);
+            else
+                player.GetComponent<CharacterController2D>().dashVector = new Vector2(1.25f, 1.25f);
+
+            exit();
+
+            Invoke("resetCart", 1f);
+        }
     }
 }
