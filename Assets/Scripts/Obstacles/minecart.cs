@@ -14,7 +14,8 @@ public class minecart : MonoBehaviour
     public bool active = false;
     public Rigidbody2D rb;
     public float speed = 3f;
-    public float m_JumpForce = 140f;
+    public float m_JumpForce = 10f;
+    public float m_springForce = 20f;
     public Transform initialParent;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     private Vector3 velocity = Vector3.zero;
@@ -49,6 +50,9 @@ public class minecart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rb.rotation > maxRotate || rb.rotation < -maxRotate)
+            rb.angularVelocity = 0f;
+
         float rotationZ = Mathf.Clamp(rb.rotation, -maxRotate, maxRotate);
         rb.rotation = rotationZ;
 
@@ -225,11 +229,26 @@ public class minecart : MonoBehaviour
         m_Grounded = false;
 
         rb.velocity = new Vector2(0, 0);
+        if (speed > 0)
+            speed -= 0.5F;
+        else
+            speed += 0.5f;
+
 
         if (rb.gravityScale > 0)
-            rb.AddForce(new Vector2(0, m_JumpForce));
+            rb.AddForce(new Vector2(0, m_JumpForce), ForceMode2D.Impulse);
         else
-            rb.AddForce(new Vector2(0, -m_JumpForce));
+            rb.AddForce(new Vector2(0, -m_JumpForce), ForceMode2D.Impulse);
+
+        Invoke("resetSpeed", 0.3f);    
+    }
+
+    void resetSpeed()
+    {
+        if (speed > 0)
+            speed += 0.5F;
+        else
+            speed -= 0.5f;
     }
 
     public void fanSet(Vector2 fanVelocity)
@@ -275,6 +294,11 @@ public class minecart : MonoBehaviour
         else if (collision.tag == "camSwap")
         {
             collision.gameObject.GetComponent<cameraSwitch>().setEnterDirection(transform);
+        }
+        else if (collision.tag == "Spring" && transform.position.y > collision.transform.position.y)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.AddForce(new Vector2(0f, m_springForce), ForceMode2D.Impulse);
         }
         else if (collision.tag == "endMinecart")
         {

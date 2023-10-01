@@ -212,14 +212,18 @@ MonoBehaviour:
   m_Settings: {fileID: 0}
   active: 0
   rb: {fileID: 7757975340486782590}
-  speed: 1.2
+  speed: 1.5
   m_JumpForce: 400
+  initialParent: {fileID: 0}
   m_MovementSmoothing: 0.05
   originalSpot: {x: 0, y: 0, z: 0}
   maxRotate: 27
   fanActive: 0
+  exitRight: 1
   fanForce: {x: 0, y: 0}
+  forceOut: 0
   m_Grounded: 1
+  m_FacingRight: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 1
