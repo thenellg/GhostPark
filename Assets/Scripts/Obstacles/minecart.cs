@@ -22,7 +22,7 @@ public class minecart : MonoBehaviour
     [Range(0, 45f)] public float maxRotate = 27f;
 
     public bool fanActive = false;
-    bool exitRight = true;
+    public bool exitRight = true;
     public Vector2 fanForce = new Vector2();
 
     float tempGravScale;
@@ -69,7 +69,7 @@ public class minecart : MonoBehaviour
                 {
                     speed *= -1f;
                     this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
-                    m_FacingRight = true;
+                    m_FacingRight = false;
                 }
             }
             else if (Input.GetAxis("Horizontal") > 0f)
@@ -78,7 +78,7 @@ public class minecart : MonoBehaviour
                 {
                     speed *= -1f;
                     this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
-                    m_FacingRight = false;
+                    m_FacingRight = true;
                 }
             }
 
@@ -187,9 +187,9 @@ public class minecart : MonoBehaviour
         player.GetComponent<PlayerController>().canMove = true;
 
         if(exitRight)
-            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(-1.25f, 1.25f));
+            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(1.25f, 0.5f));
         else
-            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(1.25f, 1.25f));
+            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(-1.25f, 0.5f));
 
         rb.simulated = true;
         //rb.gravityScale = 0f;
@@ -199,6 +199,7 @@ public class minecart : MonoBehaviour
 
     void resetTrigger()
     {
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0f);
         GetComponent<BoxCollider2D>().isTrigger = false;
     }
 
@@ -261,9 +262,14 @@ public class minecart : MonoBehaviour
 
             resetCart();
         }
+        else if (collision.tag == "camSwap")
+        {
+            collision.gameObject.GetComponent<cameraSwitch>().setEnterDirection(transform);
+        }
         else if (collision.tag == "endMinecart")
         {
-            if (collision.transform.rotation.y == 180)
+            Debug.Log("Rotation: " + collision.transform.rotation.y);
+            if (collision.transform.rotation.y == 1)
                 exitRight = true;
             else
                 exitRight = false;
@@ -271,6 +277,14 @@ public class minecart : MonoBehaviour
             exit();
 
             Invoke("resetCart", 1f);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "camSwap")
+        {
+            collision.gameObject.GetComponent<cameraSwitch>().checkCamSwap(transform);
         }
     }
 }
