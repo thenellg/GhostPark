@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class groupLoading : MonoBehaviour
 {
+
     public List<GameObject> groups = new List<GameObject>();
     public List<Transform> checkpoints = new List<Transform>();
     public List<int> reverseGravCheckpoints = new List<int>();
     public int activeGroup = 0;
+
+    public bool forceCheckpoint = false;
+    public int forceGroupID;
+    public CinemachineVirtualCamera forceGroupCam;
+    public List<int> extraRooms = new List<int>();
+
 
     private void Start()
     {
@@ -38,6 +46,18 @@ public class groupLoading : MonoBehaviour
                 groups[roomNum].SetActive(true);
             }
         }
+    }
+
+    public void resetGroups()
+    {
+        CinemachineVirtualCamera activeCam = Camera.main.gameObject.GetComponent<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera;
+        activeCam.Priority = 0;
+        forceGroupCam.Priority = 1;
+
+        if (extraRooms.Count > 0)
+            swapGroups(forceGroupID, extraRooms);
+        else
+            swapGroups(forceGroupID);
     }
 
     public bool checkGrav()

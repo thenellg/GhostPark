@@ -335,13 +335,21 @@ public class PlayerController : MonoBehaviour {
 
 		itemReset();
 
+		groupLoading t_groupLoading = FindObjectOfType<groupLoading>();
+
+
+		if (t_groupLoading.forceCheckpoint)
+        {
+			t_groupLoading.resetGroups();
+		}
+
 		//Move the camera back
 		camBrain.m_DefaultBlend.m_Time = 0.05f;
 		camBrain.m_DefaultBlend.m_Time = 1f;
 
 
 
-		if (FindObjectOfType<groupLoading>().checkGrav())
+		if (t_groupLoading.checkGrav())
 			controller.m_Rigidbody2D.gravityScale = -controller.tempGravScale;
 		else
 			controller.m_Rigidbody2D.gravityScale = controller.tempGravScale;
