@@ -14,12 +14,12 @@ public class disappearingWall : MonoBehaviour
     {
         if(hidden && alpha > 0)
         {
-            alpha -= 0.02f;
+            alpha -= 0.1f;
             wallImage.color = new Color(wallImage.color.r, wallImage.color.g, wallImage.color.b, alpha);
         }
         else if(!hidden && alpha < 1)
         {
-            alpha += 0.02f;
+            alpha += 0.1f;
             wallImage.color = new Color(wallImage.color.r, wallImage.color.g, wallImage.color.b, alpha);
         }
     }

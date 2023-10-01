@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 16.38
+    OrthographicSize: 22.7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4281,7 +4281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -4386,7 +4386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -5472,7 +5472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -6301,7 +6301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -7198,7 +7198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -7257,7 +7257,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 9.4
+    OrthographicSize: 9.12
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -7612,7 +7612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -7717,7 +7717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -8125,6 +8125,80 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3037913847461120138, guid: 701ffbffe4b76c344bf4bd7a7ae96390, type: 3}
   m_PrefabInstance: {fileID: 1417892237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1440107119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1602979416}
+    m_Modifications:
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.8205185
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 20.374638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.5518
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.6118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.6986685
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268115, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: sceneName
+      value: Main Street
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556133679386268118, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+      propertyPath: m_Name
+      value: Scene Switch - Enter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+--- !u!4 &1440107120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6556133679386268112, guid: 504c600adcc38d147a7cace0b6109997, type: 3}
+  m_PrefabInstance: {fileID: 1440107119}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1441174476
 GameObject:
@@ -8800,6 +8874,7 @@ Transform:
   - {fileID: 562247772}
   - {fileID: 676071231}
   - {fileID: 884068312}
+  - {fileID: 1440107120}
   m_Father: {fileID: 1593796742}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10516,7 +10591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -11019,7 +11094,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 16.38
+    OrthographicSize: 12.71
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -11931,8 +12006,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeLevel: 0
+  totalCoins: 0
+  targetFrameRate: 30
   downSmashUnlock: 0
   dashUnlock: 1
+  glideUnlock: 0
   masterVolume: 0
   sfxVolume: 0
   musicVolume: 0
@@ -12015,7 +12093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -12194,7 +12272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0.5
@@ -12334,6 +12412,7 @@ MonoBehaviour:
   - {fileID: 1154283753}
   - {fileID: 914397629}
   - {fileID: 1441174477}
+  reverseGravCheckpoints: 
   activeGroup: 0
 --- !u!1001 &2126937602
 PrefabInstance:
