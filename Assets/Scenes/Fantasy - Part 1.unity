@@ -6269,6 +6269,8 @@ MonoBehaviour:
   vcam2: {fileID: 1205166854}
   group1: 2
   group2: 3
+  forceCheckpointGroup1: 0
+  forceCheckpointGroup2: 0
   vertical: 1
   collision: 1
 --- !u!1 &589749431
@@ -14849,6 +14851,8 @@ MonoBehaviour:
   vcam2: {fileID: 1205166854}
   group1: 2
   group2: 3
+  forceCheckpointGroup1: 0
+  forceCheckpointGroup2: 0
   vertical: 1
   collision: 1
 --- !u!1001 &1256606389
@@ -15478,6 +15482,10 @@ PrefabInstance:
     - target: {fileID: 3849496168644577709, guid: c88a0a6b08556c247b9451b59aaba153, type: 3}
       propertyPath: orthographic size
       value: 12.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849496168644577710, guid: c88a0a6b08556c247b9451b59aaba153, type: 3}
+      propertyPath: m_DefaultBlend.m_Time
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3849496168854541827, guid: c88a0a6b08556c247b9451b59aaba153, type: 3}
       propertyPath: m_LocalScale.x
@@ -26076,6 +26084,10 @@ MonoBehaviour:
   - {fileID: 439873852}
   reverseGravCheckpoints: 
   activeGroup: 0
+  forceCheckpoint: 0
+  forceGroupID: 0
+  forceGroupCam: {fileID: 0}
+  extraRooms: 
 --- !u!1 &2124717766
 GameObject:
   m_ObjectHideFlags: 0

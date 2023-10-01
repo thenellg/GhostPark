@@ -24,6 +24,7 @@ public class minecart : MonoBehaviour
     public bool fanActive = false;
     public bool exitRight = true;
     public Vector2 fanForce = new Vector2();
+    public bool forceOut = false;
 
     float tempGravScale;
     [Header("Ground Check")]
@@ -141,8 +142,11 @@ public class minecart : MonoBehaviour
         player.transform.position = playerSpot.position;
 
         if(player.GetComponent<CharacterController2D>().m_FacingRight != m_FacingRight)
-            player.transform.localScale = new Vector3(-player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z); 
-        
+            player.transform.localScale = new Vector3(-player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
+
+        player.GetComponent<CharacterController2D>().fromPossession = true;
+        player.GetComponent<CharacterController2D>().fromPossessionDash = true;
+
         player.transform.parent = transform;
 
         player.GetComponent<PlayerController>().canMove = false;
@@ -186,10 +190,15 @@ public class minecart : MonoBehaviour
         GetComponent<BoxCollider2D>().isTrigger = true;
         player.GetComponent<PlayerController>().canMove = true;
 
-        if(exitRight)
+        player.GetComponent<CharacterController2D>().fromPossession = true;
+        player.GetComponent<CharacterController2D>().fromPossessionDash = true;
+
+        if (forceOut && exitRight)
             player.GetComponent<CharacterController2D>().dashing(true, new Vector2(1.25f, 0.5f));
-        else
+        else if (forceOut && !exitRight)
             player.GetComponent<CharacterController2D>().dashing(true, new Vector2(-1.25f, 0.5f));
+        else
+            player.GetComponent<CharacterController2D>().dashing(true);
 
         rb.simulated = true;
         //rb.gravityScale = 0f;
@@ -199,8 +208,9 @@ public class minecart : MonoBehaviour
 
     void resetTrigger()
     {
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0f);
+        player.GetComponent<CharacterController2D>().dashVector = Vector2.zero;
         GetComponent<BoxCollider2D>().isTrigger = false;
+        forceOut = false;
     }
 
     void playerJump()
@@ -273,6 +283,8 @@ public class minecart : MonoBehaviour
                 exitRight = true;
             else
                 exitRight = false;
+
+            forceOut = true;
 
             exit();
 
