@@ -42,7 +42,6 @@ public class minecartRail : MonoBehaviour
     void resetEffector()
     {
         effector.rotationalOffset = 0f;
-        player.currentMinecart.canJump = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

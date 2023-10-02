@@ -14,6 +14,7 @@ public class minecart : MonoBehaviour
     public bool active = false;
     public Rigidbody2D rb;
     public float speed = 3f;
+    float originalSpeed;
     public float m_JumpForce = 10f;
     public float m_springForce = 20f;
     public Transform initialParent;
@@ -42,6 +43,7 @@ public class minecart : MonoBehaviour
         m_Settings = FindObjectOfType<playerSettings>();
         tempGravScale = rb.gravityScale;
         originalSpot = transform.position;
+        originalSpeed = speed;
         initialParent = transform.parent;
 
         if (m_FacingRight == false)
@@ -74,7 +76,7 @@ public class minecart : MonoBehaviour
                 if (speed > 0f)
                 {
                     speed *= -1f;
-                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
+                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     m_FacingRight = false;
                 }
             }
@@ -83,9 +85,36 @@ public class minecart : MonoBehaviour
                 if (speed < 0f)
                 {
                     speed *= -1f;
-                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.x);
+                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     m_FacingRight = true;
                 }
+            }
+            
+            if (m_Grounded)
+            {             
+                if ((rb.rotation < -11 && m_FacingRight) ||
+                    (rb.rotation > 11 && !m_FacingRight))
+                {
+                    if (speed > 0)
+                        speed = originalSpeed + 0.5f;
+                    else
+                        speed = -originalSpeed - 0.5f;
+                }
+                else
+                {
+                    if (speed > 0)
+                        speed = originalSpeed;
+                    else
+                        speed = -originalSpeed;
+                }
+                
+            }
+            else
+            {
+                if (speed > 0)
+                    speed = originalSpeed;
+                else
+                    speed = -originalSpeed;
             }
 
             Vector2 targetVelocity = new Vector2(speed * 10f, rb.velocity.y);
@@ -167,7 +196,7 @@ public class minecart : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
     }
 
-    public void exit()
+    public void exit(bool dead = false)
     {
         player.transform.position = playerSpot.position;
         player.transform.parent = null;
@@ -204,6 +233,8 @@ public class minecart : MonoBehaviour
             player.GetComponent<CharacterController2D>().dashing(true, new Vector2(1.25f, 0.5f));
         else if (forceOut && !exitRight)
             player.GetComponent<CharacterController2D>().dashing(true, new Vector2(-1.25f, 0.5f));
+        else if (dead)
+            player.GetComponent<CharacterController2D>().dashing(true, new Vector2(0f, -0.1f));
         else
             player.GetComponent<CharacterController2D>().dashing(true);
 
@@ -287,7 +318,7 @@ public class minecart : MonoBehaviour
         {
             if (active)
             {
-                exit();
+                exit(true);
                 player.GetComponent<PlayerController>().onDeath();
                 resetPlayerChild();
             }
@@ -302,6 +333,13 @@ public class minecart : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(new Vector2(0f, m_springForce), ForceMode2D.Impulse);
+        }
+        else if (collision.tag == "Coin")
+        {
+            int temp = collision.gameObject.GetComponent<Coin>().amount;
+            FindObjectOfType<playerSettings>().totalCoins += temp;
+            //controller.deadSFX(collision.gameObject.GetComponent<Coin>().soundEffect);
+            collision.gameObject.GetComponent<Coin>().hideCoin();
         }
         else if (collision.tag == "endMinecart")
         {
