@@ -26,6 +26,7 @@ public class minecart : MonoBehaviour
     public bool exitRight = true;
     public Vector2 fanForce = new Vector2();
     public bool forceOut = false;
+    public bool canJump = true;
 
     float tempGravScale;
     [Header("Ground Check")]
@@ -58,7 +59,7 @@ public class minecart : MonoBehaviour
 
         if (active)
         {
-            if (Input.GetKeyDown(m_Settings.jump) && m_Grounded)
+            if (Input.GetKeyDown(m_Settings.jump) && m_Grounded && canJump)
             {
                 playerJump();
             }
@@ -153,6 +154,7 @@ public class minecart : MonoBehaviour
 
         player.transform.parent = transform;
 
+        player.GetComponent<PlayerController>().currentMinecart = this;
         player.GetComponent<PlayerController>().canMove = false;
         player.GetComponent<PlayerController>().controller.PlayerAnim.SetTrigger("inMinecart");
         player.GetComponent<PlayerController>().controller.PlayerAnim.SetBool("isWalking", false);
@@ -193,6 +195,7 @@ public class minecart : MonoBehaviour
 
         GetComponent<BoxCollider2D>().isTrigger = true;
         player.GetComponent<PlayerController>().canMove = true;
+        player.GetComponent<PlayerController>().currentMinecart = null;
 
         player.GetComponent<CharacterController2D>().fromPossession = true;
         player.GetComponent<CharacterController2D>().fromPossessionDash = true;

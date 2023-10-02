@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 	public Color colorA = new Color32(230, 230, 230, 255);
 
 	public bool hasKey = false;
+	public minecart currentMinecart;
 	[SerializeField] private bool areDead = false;
 
 	[Header("Respawn")]
