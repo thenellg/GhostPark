@@ -331,8 +331,12 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Resets normal boxes
-		foreach (Transform box in moveables)
-			box.GetComponent<pushableObject>().moveBack();
+		foreach (Transform box in moveables) {
+			if (box.GetComponent<pushableObject>())
+				box.GetComponent<pushableObject>().moveBack();
+			else if (box.GetComponent<minecart>())
+				box.GetComponent<minecart>().resetCart();
+		}
 
 		itemReset();
 

@@ -26,7 +26,7 @@ public class CharacterController2D : MonoBehaviour
 	public playerSettings m_Settings;
 
 	[Header("Specialized Jump")]
-	private PlayerController m_PlayerController;
+	public PlayerController m_PlayerController;
 	public int coyoteTimer = 3;
 	public bool doubleJump = false;
 	public float dashSpeed = 1.2f;

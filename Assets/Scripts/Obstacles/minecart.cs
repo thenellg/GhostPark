@@ -12,6 +12,8 @@ public class minecart : MonoBehaviour
 
     [Header("Minecart General")]
     public bool active = false;
+    public bool controllable = false;
+    public bool constant = false;
     public Rigidbody2D rb;
     public float speed = 3f;
     float originalSpeed;
@@ -61,35 +63,38 @@ public class minecart : MonoBehaviour
 
         if (active)
         {
-            if (Input.GetKeyDown(m_Settings.jump) && m_Grounded && canJump)
+            if (controllable)
             {
-                playerJump();
-            }
-            else if (Input.GetKeyDown(m_Settings.dash))
-            {
-                exit();
+                if (Input.GetKeyDown(m_Settings.jump) && m_Grounded && canJump)
+                {
+                    playerJump();
+                }
+                else if (Input.GetKeyDown(m_Settings.dash))
+                {
+                    exit();
 
-                Invoke("resetPlayerChild", 0.2f);
-            }
-            else if (Input.GetAxis("Horizontal") < 0f)
-            {
-                if (speed > 0f)
+                    Invoke("resetPlayerChild", 0.2f);
+                }
+                else if (Input.GetAxis("Horizontal") < 0f)
                 {
-                    speed *= -1f;
-                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    m_FacingRight = false;
+                    if (speed > 0f)
+                    {
+                        speed *= -1f;
+                        this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        m_FacingRight = false;
+                    }
+                }
+                else if (Input.GetAxis("Horizontal") > 0f)
+                {
+                    if (speed < 0f)
+                    {
+                        speed *= -1f;
+                        this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        m_FacingRight = true;
+                    }
                 }
             }
-            else if (Input.GetAxis("Horizontal") > 0f)
-            {
-                if (speed < 0f)
-                {
-                    speed *= -1f;
-                    this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    m_FacingRight = true;
-                }
-            }
-            
+
             if (m_Grounded)
             {             
                 if ((rb.rotation < -11 && m_FacingRight) ||
@@ -191,6 +196,7 @@ public class minecart : MonoBehaviour
         player.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
         transform.parent = null;
+        controllable = true;
 
         active = true;
         rb.constraints = RigidbodyConstraints2D.None;
@@ -198,11 +204,12 @@ public class minecart : MonoBehaviour
 
     public void exit(bool dead = false)
     {
+        controllable = false;
         player.transform.position = playerSpot.position;
         player.transform.parent = null;
 
 
-        if(m_Grounded)
+        if(!constant && m_Grounded)
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
         
         
@@ -216,11 +223,6 @@ public class minecart : MonoBehaviour
         player.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
         transform.parent = initialParent;
-
-        active = false;
-
-        speed = Mathf.Abs(speed);
-        m_FacingRight = true;
 
         GetComponent<BoxCollider2D>().isTrigger = true;
         player.GetComponent<PlayerController>().canMove = true;
@@ -239,6 +241,12 @@ public class minecart : MonoBehaviour
             player.GetComponent<CharacterController2D>().dashing(true);
 
         rb.simulated = true;
+        if (!constant)
+        {
+            active = false;
+            speed = Mathf.Abs(speed);
+            m_FacingRight = true;
+        }
         //rb.gravityScale = 0f;
 
         Invoke("resetTrigger", 0.1f);
@@ -293,15 +301,18 @@ public class minecart : MonoBehaviour
 
     public void fanDeset()
     {
-        rb.AddForce(fanForce, ForceMode2D.Force);
+        //rb.AddForce(fanForce, ForceMode2D.Force);
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
         fanForce = Vector2.zero;
         fanActive = false;
     }
 
     public void resetCart()
     {
+        active = false;
         rb.velocity = Vector2.zero;
         transform.position = originalSpot;
+        transform.parent = initialParent;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -359,7 +370,7 @@ public class minecart : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "camSwap")
+        if (collision.tag == "camSwap" && active)
         {
             collision.gameObject.GetComponent<cameraSwitch>().checkCamSwap(transform);
         }

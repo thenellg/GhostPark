@@ -212,8 +212,9 @@ MonoBehaviour:
   m_Settings: {fileID: 0}
   active: 0
   rb: {fileID: 7757975340486782590}
-  speed: 1.5
-  m_JumpForce: 400
+  speed: 1.3
+  m_JumpForce: 12
+  m_springForce: 15
   initialParent: {fileID: 0}
   m_MovementSmoothing: 0.05
   originalSpot: {x: 0, y: 0, z: 0}
@@ -222,6 +223,7 @@ MonoBehaviour:
   exitRight: 1
   fanForce: {x: 0, y: 0}
   forceOut: 0
+  canJump: 1
   m_Grounded: 1
   m_FacingRight: 1
   m_WhatIsGround:

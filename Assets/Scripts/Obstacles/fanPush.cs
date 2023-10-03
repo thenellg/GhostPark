@@ -26,12 +26,14 @@ public class fanPush : MonoBehaviour
     {
         if (active)
         {
-            if (Input.GetKeyDown(player.m_Settings.hold))
+            if (Input.GetKeyDown(player.m_Settings.hold) && player.m_PlayerController.currentMinecart == null)
             {
                 interaction = true;
                 fanIntensity = initialIntensity * fanModifier;
-                player.m_Rigidbody2D.velocity = new Vector2(player.m_Rigidbody2D.velocity.x, player.m_Rigidbody2D.velocity.y / 2); 
+
+                player.m_Rigidbody2D.velocity = new Vector2(player.m_Rigidbody2D.velocity.x, player.m_Rigidbody2D.velocity.y / 2);
                 player.fanSet(setFanDirection());
+
             }
             else if (Input.GetKeyUp(player.m_Settings.hold))
             {
@@ -41,7 +43,16 @@ public class fanPush : MonoBehaviour
             if (!interaction)
             {
                 fanIntensity = initialIntensity;
-                player.fanSet(setFanDirection());
+
+                if (player.m_PlayerController.currentMinecart != null)
+                {
+                    fanIntensity = initialIntensity * (fanModifier * 5);
+                    player.m_PlayerController.currentMinecart.fanSet(setFanDirection());
+                }
+                else
+                {
+                    player.fanSet(setFanDirection());
+                }
             }
 
         }
@@ -65,17 +76,27 @@ public class fanPush : MonoBehaviour
     {
         Vector2 fanDirection = setFanDirection();
 
-        if (collision.tag == "Player")
+        if (collision.tag == "Minecart")
         {
-            player.fanSet(fanDirection);
+            if (player.m_PlayerController.currentMinecart != null && player.m_PlayerController.currentMinecart.active)
+            {
+                fanIntensity = (fanModifier * 7) * initialIntensity;
+                player.m_PlayerController.currentMinecart.fanSet(setFanDirection());
+            }
+        }
+        else if (collision.tag == "Player")
+        {
+            fanIntensity = initialIntensity;
+            player.fanSet(setFanDirection());
 
-            if(player.m_Settings.glideUnlock)
+            if (player.m_Settings.glideUnlock)
                 active = true;
         }
-        else if (collision.tag == "Minecart")
-            collision.GetComponent<minecart>().fanSet(fanDirection);
         else if (collision.tag == "Box")
+        {
+            fanIntensity = initialIntensity;
             collision.GetComponent<pushableObject>().fanSet(fanDirection);
+        }
 
     }
 
@@ -89,7 +110,8 @@ public class fanPush : MonoBehaviour
         }
         else if (collision.tag == "Minecart")
         {
-            collision.GetComponent<minecart>().fanDeset();
+            if (player.m_PlayerController.currentMinecart != null)
+                player.m_PlayerController.currentMinecart.fanDeset();
         }
         else if (collision.tag == "Box")
         {
