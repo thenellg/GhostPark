@@ -9,11 +9,20 @@ public class minecartRail : MonoBehaviour
     public PlayerController player;
     public bool canDrop = false;
     public bool active = false;
+    public bool ifRB = false;
+    Rigidbody2D rb;
+    public float maxRotation = 0;
+    float initialRotation;
 
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
         effector = this.GetComponent<PlatformEffector2D>();
+        if (ifRB)
+        {
+            rb = GetComponent<Rigidbody2D>();
+            initialRotation = rb.rotation;
+        }
     }
 
     void Update()
@@ -36,6 +45,15 @@ public class minecartRail : MonoBehaviour
                 player.currentMinecart.canJump = true;
                 resetEffector();
             }
+
+            if (ifRB)
+            {
+                if(rb.rotation < -maxRotation || rb.rotation > maxRotation)
+                {
+                    rb.angularVelocity = 0;
+                    rb.freezeRotation = true;
+                }
+            }
         }
     }
 
@@ -44,9 +62,17 @@ public class minecartRail : MonoBehaviour
         effector.rotationalOffset = 0f;
     }
 
+    public void resetRotation()
+    {
+        rb.rotation = initialRotation;
+        rb.angularVelocity = 0;
+        rb.freezeRotation = false;
+        rb.angularVelocity = 0;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && collision.transform.parent == null)
+        if (collision.gameObject.tag == "Player" && collision.transform.parent == null && !collision.gameObject.GetComponent<CharacterController2D>().m_Grounded)
             collision.gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
         if (collision.gameObject.tag == "Minecart")

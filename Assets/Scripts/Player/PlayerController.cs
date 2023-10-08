@@ -336,6 +336,8 @@ public class PlayerController : MonoBehaviour {
 				box.GetComponent<pushableObject>().moveBack();
 			else if (box.GetComponent<minecart>())
 				box.GetComponent<minecart>().resetCart();
+			else if (box.GetComponent<minecartRail>())
+				box.GetComponent<minecartRail>().resetRotation();
 		}
 
 		itemReset();

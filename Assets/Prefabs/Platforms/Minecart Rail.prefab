@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1634873573264380313}
   - component: {fileID: 1634873573264380314}
   - component: {fileID: 7112666477391591611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Minecart Rail
   m_TagString: minecartOnly
   m_Icon: {fileID: 0}
@@ -158,3 +158,5 @@ MonoBehaviour:
   player: {fileID: 0}
   canDrop: 0
   active: 0
+  ifRB: 0
+  maxRotation: 0

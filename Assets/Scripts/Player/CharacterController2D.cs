@@ -316,8 +316,14 @@ public class CharacterController2D : MonoBehaviour
 		PlayerAnim.SetBool("dashing", false);
 		if (m_Settings.infiniteDash || fromPossession)
 			canDash = true;
-		fromPossessionDash = false;
+		Invoke("resetFromPossessionDash", 0.5f);
 		fromPossession = false;
+	}
+
+	void resetFromPossessionDash()
+    {
+		fromPossessionDash = false;
+
 	}
 
 	public void deadSFX(AudioClip deathSFX)

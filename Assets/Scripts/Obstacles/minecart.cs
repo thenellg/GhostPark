@@ -327,9 +327,9 @@ public class minecart : MonoBehaviour
     {
         if (collision.tag == "Death")
         {
-            if (active)
+            if (GetComponentInChildren<PlayerController>())
             {
-                exit(true);
+                exit();
                 player.GetComponent<PlayerController>().onDeath();
                 resetPlayerChild();
             }
@@ -362,7 +362,8 @@ public class minecart : MonoBehaviour
 
             forceOut = true;
 
-            exit();
+            if(GetComponentInChildren<PlayerController>())
+                exit();
 
             Invoke("resetCart", 1f);
         }

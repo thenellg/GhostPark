@@ -211,6 +211,8 @@ MonoBehaviour:
   playerSpot: {fileID: 7757975338595538791}
   m_Settings: {fileID: 0}
   active: 0
+  controllable: 0
+  constant: 0
   rb: {fileID: 7757975340486782590}
   speed: 1.3
   m_JumpForce: 12
@@ -228,5 +230,5 @@ MonoBehaviour:
   m_FacingRight: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   m_GroundCheck: {fileID: 7757975340275494686}
