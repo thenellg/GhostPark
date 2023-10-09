@@ -19,6 +19,7 @@ public class cameraSwitch : MonoBehaviour
 
     public bool forceCheckpointGroup1 = false;
     public bool forceCheckpointGroup2 = false;
+    public bool onlyCams = false;
 
     public bool vertical = false;
     public bool collision = false;
@@ -53,23 +54,26 @@ public class cameraSwitch : MonoBehaviour
                 m_groupLoading.swapGroups(group1);
         }
 
-        if (forceCheckpointGroup1)
+        if (!onlyCams)
         {
-            m_groupLoading.forceCheckpoint = true;
-            m_groupLoading.forceGroupID = group1;
-            m_groupLoading.forceGroupCam = vcam1;
-            m_groupLoading.extraRooms = extraRooms;
-        }
-        else if (forceCheckpointGroup2)
-        {
-            m_groupLoading.forceCheckpoint = true;
-            m_groupLoading.forceGroupID = group2;
-            m_groupLoading.forceGroupCam = vcam2;
-            m_groupLoading.extraRooms = extraRooms;
-        }
-        else
-        {
-            m_groupLoading.forceCheckpoint = false;
+            if (forceCheckpointGroup1)
+            {
+                m_groupLoading.forceCheckpoint = true;
+                m_groupLoading.forceGroupID = group1;
+                m_groupLoading.forceGroupCam = vcam1;
+                m_groupLoading.extraRooms = extraRooms;
+            }
+            else if (forceCheckpointGroup2)
+            {
+                m_groupLoading.forceCheckpoint = true;
+                m_groupLoading.forceGroupID = group2;
+                m_groupLoading.forceGroupCam = vcam2;
+                m_groupLoading.extraRooms = extraRooms;
+            }
+            else
+            {
+                m_groupLoading.forceCheckpoint = false;
+            }
         }
     }
 

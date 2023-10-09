@@ -13,7 +13,7 @@ public class minecartRail : MonoBehaviour
     Rigidbody2D rb;
     public float maxRotation = 0;
     float initialRotation;
-
+    public 
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
