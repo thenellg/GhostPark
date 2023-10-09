@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class playerSettings : MonoBehaviour
 {
@@ -47,18 +48,56 @@ public class playerSettings : MonoBehaviour
     public List<KeyCode> xboxControls = new List<KeyCode>();
     public List<KeyCode> switchControls = new List<KeyCode>();
 
+    [Header("Level Loading")]
+    public bool overrideLoad = false;
+    public int overrideGroup = 0;
+    public string overrideCameraName;
+    public List<int> overrideExtraRooms;
+
     public bool active = false;
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         Application.targetFrameRate = targetFrameRate;
         resetDefault();
     }
 
     private void Update()
     {
+        if (overrideLoad)
+            resetLoad();
+
         if (Input.anyKeyDown || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
             checkController();
+    }
+
+    public void resetLoad()
+    {
+        groupLoading load = FindObjectOfType<groupLoading>();
+
+        load.activeGroup = overrideGroup;
+
+        if (overrideExtraRooms.Count > 0)
+            load.swapGroups(overrideGroup, overrideExtraRooms);
+        else
+            load.swapGroups(overrideGroup);
+
+        FindObjectOfType<PlayerController>().transform.position = load.checkpoints[overrideGroup].position;
+
+        GameObject cameras = GameObject.Find("Cinemachine Cams");
+
+        foreach(CinemachineVirtualCamera vcam in cameras.GetComponentsInChildren<CinemachineVirtualCamera>())
+        {
+            vcam.Priority = 0;
+        }
+
+        GameObject.Find(overrideCameraName).GetComponent<CinemachineVirtualCamera>().Priority = 1;
+
+        overrideLoad = false;
+        //overrideGroup = 0;
+        //overrideExtraRooms = null;
+        //overrideCameraName = null;
     }
 
     public void checkController()

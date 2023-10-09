@@ -1260,8 +1260,8 @@ MonoBehaviour:
   m_Follow: {fileID: 1330155533}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7.86
-    NearClipPlane: 0.001
+    OrthographicSize: 12.64
+    NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
     LensShift: {x: 0, y: 0}
@@ -6482,6 +6482,10 @@ MonoBehaviour:
   playstationControls: 00000000000000000000000000000000000000000000000000000000
   xboxControls: 00000000000000000000000000000000000000000000000000000000
   switchControls: 00000000000000000000000000000000000000000000000000000000
+  overrideLoad: 0
+  overrideGroup: 0
+  overrideCameraName: 
+  overrideExtraRooms: 
   active: 1
 --- !u!4 &2069281847
 Transform:
@@ -6650,6 +6654,10 @@ MonoBehaviour:
   - {fileID: 1173425414}
   reverseGravCheckpoints: 
   activeGroup: 0
+  forceCheckpoint: 0
+  forceGroupID: 0
+  forceGroupCam: {fileID: 0}
+  extraRooms: 
 --- !u!1001 &2116405475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7043,11 +7051,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.001
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.86
+  orthographic size: 12.64
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

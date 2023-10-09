@@ -13,6 +13,11 @@ public class sceneSwitch : MonoBehaviour
 
     public GameObject showingImage;
 
+    public bool overrideStartSpot = false;
+    public int overrideGroup;
+    public string overrideCameraName;
+    public List<int> overrideExtraRooms;
+
     private void Start()
     {
         settings = FindObjectOfType<playerSettings>();
@@ -29,12 +34,23 @@ public class sceneSwitch : MonoBehaviour
         }
     }
 
+    public void setLoadOverride()
+    {
+        settings.overrideLoad = true;
+        settings.overrideGroup = overrideGroup;
+        settings.overrideCameraName = overrideCameraName;
+        settings.overrideExtraRooms = overrideExtraRooms;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             if (onEnter)
             {
+                if (overrideStartSpot)
+                    setLoadOverride();
+
                 SceneManager.LoadScene(sceneName);
             }
             else

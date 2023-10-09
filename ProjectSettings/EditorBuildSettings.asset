@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fantasy - Part 2.unity
     guid: 8727e4632ee79a24b9eb11a7a8fee6cd
+  - enabled: 1
+    path: Assets/Scenes/Fantasy - Part 3.unity
+    guid: 6167e1ccb8e788f46b027bb5c959f9b7
   m_configObjects: {}
