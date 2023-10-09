@@ -166,7 +166,7 @@ public class minecart : MonoBehaviour
 
     }
 
-    void resetPlayerChild()
+    public void resetPlayerChild()
     {
         playerChild = false;
         GetComponent<BoxCollider2D>().isTrigger = false;
@@ -320,6 +320,8 @@ public class minecart : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             speed *= -1f;
+            this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            m_FacingRight = !m_FacingRight;
         }
     }
 

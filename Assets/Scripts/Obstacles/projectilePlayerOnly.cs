@@ -38,7 +38,7 @@ public class projectilePlayerOnly : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController temp = FindObjectOfType<PlayerController>();
-        if (collision.tag == "Player" || collision.tag == "Minecart")
+        if (collision.tag == "Player" || collision.tag == "Minecart" && collision.GetComponent<minecart>() && collision.GetComponent<minecart>().active)
         {
             if((collision.transform.position.y > transform.position.y && temp.controller.m_Rigidbody2D.gravityScale > 0) || (collision.transform.position.y < transform.position.y && temp.controller.m_Rigidbody2D.gravityScale < 0))
             {

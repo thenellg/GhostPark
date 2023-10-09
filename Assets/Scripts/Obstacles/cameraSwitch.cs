@@ -92,8 +92,8 @@ public class cameraSwitch : MonoBehaviour
         if (collision)
             direction = player.GetComponent<Rigidbody2D>().velocity;
 
-        Debug.Log("Enter: " + enterDirection);
-        Debug.Log("Exit: " + direction);
+        //Debug.Log("Enter: " + enterDirection);
+        //Debug.Log("Exit: " + direction);
 
         if(collision && dashCheck)
         {

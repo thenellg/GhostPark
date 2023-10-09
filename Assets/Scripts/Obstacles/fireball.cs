@@ -50,18 +50,36 @@ public class fireball : MonoBehaviour
                     Destroy(this.gameObject);
             }
         }
-        else if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Minecart")
+        else if (collision.gameObject.tag == "Player")
         {
             if (!temp.controller.m_Settings.invincibility)
                 temp.onDeath();
             else
                 Destroy(this.gameObject);
         }
+        else if (collision.gameObject.tag == "Minecart")
+        {
+            minecart minecart = collision.gameObject.GetComponent<minecart>();
+            if (minecart.GetComponentInChildren<PlayerController>())
+            {
+                minecart.exit();
+                temp.onDeath();
+                minecart.resetPlayerChild();
+            }
+            minecart.resetCart();
+            Destroy(this.gameObject);
+        }
         else
         {
             Destroy(this.gameObject);
         }
+    }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "endMinecart")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

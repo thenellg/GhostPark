@@ -124,7 +124,7 @@ public class projectileShoot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.tag == "Player" || collision.tag == "Minecart") && !consistent)
+        if ((collision.tag == "Player" || collision.tag == "Minecart" && collision.GetComponent<minecart>() && collision.GetComponent<minecart>().active) && !consistent)
         {
             timer = interval;
             active = true;
@@ -133,7 +133,7 @@ public class projectileShoot : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if((collision.tag == "Player" || collision.tag == "Minecart") && !consistent )
+        if((collision.tag == "Player" || collision.tag == "Minecart" && collision.GetComponent<minecart>() && collision.GetComponent<minecart>().active) && !consistent )
         {
             active = false;
         }
