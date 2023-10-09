@@ -10,7 +10,8 @@ public class pauseMenu : MonoBehaviour
     [Header("General")]
     public GameObject mainPauseMenu;
     public GameObject settingsMenu;
-    
+    public bool active = false;
+
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
 
@@ -65,7 +66,25 @@ public class pauseMenu : MonoBehaviour
         mainPauseMenu.SetActive(true);
         settingsMenu.SetActive(false);
     }
-    
+
+    private void Update()
+    {
+        if (settings.currentController == playerSettings.controlType.Playstation)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+            {
+                turnOffPauseMenu();
+            }
+        }
+        else if (settings.currentController == playerSettings.controlType.Xbox || settings.currentController == playerSettings.controlType.Switch)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+            {
+                turnOffPauseMenu();
+            }
+        }
+    }
+
     public void setResolution (int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
