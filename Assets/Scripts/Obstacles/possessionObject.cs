@@ -61,10 +61,12 @@ public class possessionObject : MonoBehaviour
         player.controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
         player.controller.lastPossession = this;
 
+        player.inObject = true;
         player.canMove = false;
         player.transform.position = transform.position;
         player.transform.localScale = Vector3.one * 0.01f;
         player.controller.fanActive = false;
+        player.controller.fanForce = Vector2.zero;
         //setting this object to active controller
         active = true;
 
@@ -75,6 +77,7 @@ public class possessionObject : MonoBehaviour
     public void dashOut()
     {
         player.canMove = true;
+        player.inObject = false;
         active = false;
 
         player.controller.m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
@@ -86,6 +89,8 @@ public class possessionObject : MonoBehaviour
         player.controller.dashing();
         player.controller.fromPossession = true;
         player.controller.fromPossessionDash = true;
+        player.controller.fanActive = false;
+        player.controller.fanForce = Vector2.zero;
         //player.controller.Move(0f, false, true, false, false);
 
 

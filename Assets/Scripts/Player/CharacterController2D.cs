@@ -447,7 +447,6 @@ public class CharacterController2D : MonoBehaviour
 					}
 					else
 					{
-						if(fanActive)
 						PlayerAnim.SetBool("Glide", false);
 						PlayerAnim.SetTrigger("fall");
 
@@ -556,7 +555,9 @@ public class CharacterController2D : MonoBehaviour
 
 	public void fanDeset()
     {
-		m_Rigidbody2D.AddForce(fanForce, ForceMode2D.Force);
+		if(!m_Grounded)
+			m_Rigidbody2D.AddForce(fanForce, ForceMode2D.Force);
+		
 		fanForce = Vector2.zero;
 		fanActive = false;
     }

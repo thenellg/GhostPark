@@ -24,7 +24,7 @@ public class fanPush : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (active && !player.m_PlayerController.inObject)
         {
             if (Input.GetKeyDown(player.m_Settings.hold) && player.m_PlayerController.currentMinecart == null)
             {
@@ -56,6 +56,10 @@ public class fanPush : MonoBehaviour
             }
 
         }
+        else
+        {
+            active = false;
+        }
     }
 
     Vector2 setFanDirection()
@@ -84,7 +88,7 @@ public class fanPush : MonoBehaviour
                 player.m_PlayerController.currentMinecart.fanSet(setFanDirection());
             }
         }
-        else if (collision.tag == "Player")
+        else if (collision.tag == "Player" && !player.m_PlayerController.inObject)
         {
             fanIntensity = initialIntensity;
             player.fanSet(setFanDirection());
@@ -102,7 +106,7 @@ public class fanPush : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && !player.m_PlayerController.inObject)
         {
             collision.GetComponent<CharacterController2D>().fanDeset();
             active = false;

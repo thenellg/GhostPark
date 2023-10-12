@@ -1697,7 +1697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
+  m_AmplitudeGain: 0.5
   m_FrequencyGain: 0.5
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &135274720
@@ -3267,8 +3267,8 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 16.14
+    FieldOfView: 50
+    OrthographicSize: 7.87
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4274,7 +4274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432166990}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 173.21, y: 21.9, z: 0}
+  m_LocalPosition: {x: 173.21, y: 19.5, z: 0}
   m_LocalScale: {x: 0.013513, y: 0.013513, z: 0.013513}
   m_Children:
   - {fileID: 694589812}
@@ -4303,7 +4303,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 13.74
+    OrthographicSize: 8.2
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4887,6 +4887,8 @@ MonoBehaviour:
   arrow: {fileID: 0}
   through: 0
   camSwap: 0
+  ifEndLevel: 0
+  hideObjects: {fileID: 0}
 --- !u!1001 &459684008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4956,6 +4958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb002fe39b8f2fe45a9b80f0543d12ab, type: 3}
+--- !u!4 &463874830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+  m_PrefabInstance: {fileID: 1337432406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465375022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,11 +5131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanModifier
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanIntensity
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
@@ -6328,7 +6335,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 15.3
+    OrthographicSize: 10.8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -9033,6 +9040,7 @@ Transform:
   - {fileID: 151331252}
   - {fileID: 1426776686}
   - {fileID: 1269482106}
+  - {fileID: 463874830}
   m_Father: {fileID: 1593796742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9747,8 +9755,8 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 13.8
+    FieldOfView: 5.2
+    OrthographicSize: 16.22
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -13724,11 +13732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanModifier
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanIntensity
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
@@ -14827,6 +14835,8 @@ MonoBehaviour:
   arrow: {fileID: 0}
   through: 0
   camSwap: 0
+  ifEndLevel: 0
+  hideObjects: {fileID: 0}
 --- !u!1 &1254886263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5287718332791514613, guid: 701ffbffe4b76c344bf4bd7a7ae96390, type: 3}
@@ -16085,6 +16095,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492edd578a3ed5f4f85cc02d1231c92e, type: 3}
+--- !u!1001 &1337432406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 838173252}
+    m_Modifications:
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.895573
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436340, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821989523617436342, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
+      propertyPath: m_Name
+      value: Spring (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 306ebc870cfc9a14bb945d86fb467d1a, type: 3}
 --- !u!1001 &1345645813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17048,11 +17115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1479657839830458968, guid: f0e7d39f22c48fc4eb9f8c09ad62d543, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.95
       objectReference: {fileID: 0}
     - target: {fileID: 1479657839830458971, guid: f0e7d39f22c48fc4eb9f8c09ad62d543, type: 3}
       propertyPath: m_Lens.NearClipPlane
-      value: -2.51
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1479657839830458971, guid: f0e7d39f22c48fc4eb9f8c09ad62d543, type: 3}
       propertyPath: m_Lens.OrthographicSize
@@ -17403,6 +17470,8 @@ MonoBehaviour:
   arrow: {fileID: 0}
   through: 1
   camSwap: 0
+  ifEndLevel: 0
+  hideObjects: {fileID: 0}
 --- !u!1 &1446065635
 GameObject:
   m_ObjectHideFlags: 0
@@ -17930,11 +17999,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanModifier
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanIntensity
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
@@ -21511,11 +21580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanModifier
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6149340887832056463, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}
       propertyPath: fanIntensity
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e23ef76479450749a9c4cd7e0fbb72f, type: 3}

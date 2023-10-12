@@ -345,8 +345,8 @@ public class minecart : MonoBehaviour
             if (GetComponentInChildren<PlayerController>())
             {
                 exit();
-                player.GetComponent<PlayerController>().onDeath();
                 resetPlayerChild();
+                player.GetComponent<PlayerController>().onDeath();
             }
 
             resetCart();
@@ -377,8 +377,11 @@ public class minecart : MonoBehaviour
 
             forceOut = true;
 
-            if(GetComponentInChildren<PlayerController>())
+            if (GetComponentInChildren<PlayerController>())
+            {
                 exit();
+                resetPlayerChild();
+            }
 
             Invoke("resetCart", 1f);
         }

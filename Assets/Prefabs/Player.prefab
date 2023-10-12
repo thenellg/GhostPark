@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Rigidbody2D: {fileID: 0}
   m_FacingRight: 1
   m_Settings: {fileID: 0}
+  m_PlayerController: {fileID: 0}
   coyoteTimer: 30
   doubleJump: 0
   dashSpeed: 8
@@ -276,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6375462750369196351}
+  coins: 0
   runSpeed: 40
   horizontalMove: 0
   jump: 0
@@ -285,7 +287,9 @@ MonoBehaviour:
   downwardDash: 0
   colorA: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   hasKey: 0
+  currentMinecart: {fileID: 0}
   areDead: 0
+  springForce: 5
   spawnPoint: {x: 0, y: 0, z: 0}
   deathCount: 0
   canMove: 1

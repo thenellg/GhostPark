@@ -23,8 +23,10 @@ public class PlayerController : MonoBehaviour {
 	public Color colorA = new Color32(230, 230, 230, 255);
 
 	public bool hasKey = false;
+	public bool inObject = false;
 	public minecart currentMinecart;
 	[SerializeField] private bool areDead = false;
+	[Range(3,8)] public float springForce = 5;
 
 	[Header("Respawn")]
 	public Vector3 spawnPoint;
@@ -206,22 +208,22 @@ public class PlayerController : MonoBehaviour {
 		else if (collision.tag == "Spring" && transform.position.y > collision.transform.position.y)
 		{
 			controller.m_Rigidbody2D.velocity = new Vector2(controller.m_Rigidbody2D.velocity.x, 0f);
-			controller.m_Rigidbody2D.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
+			controller.m_Rigidbody2D.AddForce(new Vector2(0f, springForce), ForceMode2D.Impulse);
 			controller.canDash = true;
 		}
 	}
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Breakable")
+		if (collision.gameObject.tag == "MovingPlatform" || (collision.transform.parent && collision.transform.parent.tag == "MovingPlatform"))
+		{
+			this.transform.parent = collision.transform.parent;
+		}
+
+		if (collision.gameObject.tag == "Breakable")
         {
 			if (controller._dashing && controller.m_Settings.downSmashUnlock)
 				collision.gameObject.SetActive(false);
-        }
-
-		if (collision.gameObject.tag == "MovingPlatform" || (collision.transform.parent && collision.transform.parent.tag == "MovingPlatform"))
-        {
-			this.transform.parent = collision.transform.parent;
         }
 
 		if (collision.gameObject.tag == "Door")
@@ -250,6 +252,12 @@ public class PlayerController : MonoBehaviour {
 
         if (controller._dashing && collision.gameObject.GetComponent<possessionObject>())
         {
+            if (controller.fanActive)
+            {
+				controller.fanActive = false;
+				controller.fanForce = Vector2.zero;
+            }
+
 			collision.gameObject.GetComponent<possessionObject>().setUp();
 		}
 	}
@@ -267,6 +275,11 @@ public class PlayerController : MonoBehaviour {
 		if (collision.tag == "camSwap")
 		{
 			collision.gameObject.GetComponent<cameraSwitch>().checkCamSwap(transform);
+		}
+
+		if (collision.tag == "Fan")
+		{
+			controller.fanDeset();
 		}
 	}
 
