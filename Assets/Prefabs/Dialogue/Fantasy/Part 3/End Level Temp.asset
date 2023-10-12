@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef540b75c338efd498e785e52c3eb988, type: 3}
-  m_Name: New Dialogue
+  m_Name: End Level Temp
   m_EditorClassIdentifier: 
   speakerName: Gracey
-  speakerMessage: I've got nothing. But this should unlock the glide ability.
+  speakerMessage: I've done it! I've beaten the level
   backgroundImage: {fileID: 21300000, guid: 7c20817fe5ee20a4ea890405cafdaaea, type: 3}
   options: []
   nextMessage: []

@@ -16,6 +16,10 @@ public class possessionObject : MonoBehaviour
     public bool through = false;
     public bool camSwap = false;
 
+    public bool ifEndLevel = false;
+    public GameObject hideObjects;
+    //Add in an animator
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +94,18 @@ public class possessionObject : MonoBehaviour
         else if (camSwap && player.controller.dashVector.y != 0)
             GetComponent<cameraSwitch>().checkCamSwap(player.transform);
 
+        if (ifEndLevel)
+        {
+            Time.timeScale = 0.2f;
+            hideObjects.SetActive(false);
+            Invoke("dialogue", 0.5f);
+        }
+    }
+
+    void dialogue()
+    {
+        Time.timeScale = 1f;
+        GetComponent<forceDialogueTrigger>().startDialogue();
     }
 
     private void OnTriggerExit2D(Collider2D collision)

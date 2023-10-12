@@ -16,6 +16,8 @@ public class forceDialogueTrigger : MonoBehaviour
     public dialogueInterface dialogue;
     public dialogue startMessage;
     public bool active = false;
+    public bool endLevel = false;
+    public string hubLevelName;
 
     public enum abilities
     {
@@ -32,7 +34,7 @@ public class forceDialogueTrigger : MonoBehaviour
         settings = FindObjectOfType<playerSettings>();
     }
 
-    void startDialogue()
+    public void startDialogue()
     {
         active = true;
 
@@ -47,6 +49,7 @@ public class forceDialogueTrigger : MonoBehaviour
             player.transform.localScale = new Vector3(Mathf.Abs(player.transform.localScale.x), player.transform.localScale.y, player.transform.localScale.z);
         else
             player.transform.localScale = new Vector3(-Mathf.Abs(player.transform.localScale.x), player.transform.localScale.y, player.transform.localScale.z);
+        player.transform.position = characterSpot.position;
 
         //change camera
         mainCam = FindObjectOfType<Camera>().GetComponent<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera;
@@ -76,6 +79,11 @@ public class forceDialogueTrigger : MonoBehaviour
 
         mainCam.Priority = 1;
         dialogueCam.Priority = 0;
+
+        if (endLevel)
+        {
+            GetComponent<sceneSwitch>().loadScene();
+        }
 
         FindObjectOfType<PlayerController>().canMove = true;
         Invoke("byebye", 1f);

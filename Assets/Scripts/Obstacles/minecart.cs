@@ -55,14 +55,14 @@ public class minecart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rb.rotation > maxRotate || rb.rotation < -maxRotate)
-            rb.angularVelocity = 0f;
-
-        float rotationZ = Mathf.Clamp(rb.rotation, -maxRotate, maxRotate);
-        rb.rotation = rotationZ;
-
         if (active)
         {
+            if (rb.rotation > maxRotate || rb.rotation < -maxRotate)
+                rb.angularVelocity = 0f;
+
+            float rotationZ = Mathf.Clamp(rb.rotation, -maxRotate, maxRotate);
+            rb.rotation = rotationZ;
+
             if (controllable)
             {
                 if (Input.GetKeyDown(m_Settings.jump) && m_Grounded && canJump)
@@ -302,17 +302,30 @@ public class minecart : MonoBehaviour
     public void fanDeset()
     {
         //rb.AddForce(fanForce, ForceMode2D.Force);
-        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+        if(active)
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+        
         fanForce = Vector2.zero;
         fanActive = false;
     }
 
     public void resetCart()
     {
+
         active = false;
+        if (fanActive)
+        {
+            fanForce = Vector2.zero;
+            fanActive = false;
+        }
         rb.velocity = Vector2.zero;
         transform.position = originalSpot;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        rb.rotation = 0;
+        rb.velocity = Vector2.zero;
         transform.parent = initialParent;
+        rb.constraints = RigidbodyConstraints2D.None;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

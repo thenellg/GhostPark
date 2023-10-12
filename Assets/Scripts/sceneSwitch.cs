@@ -13,6 +13,7 @@ public class sceneSwitch : MonoBehaviour
 
     public GameObject showingImage;
 
+    public bool ifEndLevel = false;
     public bool overrideStartSpot = false;
     public int overrideGroup;
     public string overrideCameraName;
@@ -21,7 +22,7 @@ public class sceneSwitch : MonoBehaviour
     private void Start()
     {
         settings = FindObjectOfType<playerSettings>();
-        if(showingImage)
+        if(showingImage && !ifEndLevel)
             showingImage.SetActive(false);
     }
 
@@ -42,16 +43,21 @@ public class sceneSwitch : MonoBehaviour
         settings.overrideExtraRooms = overrideExtraRooms;
     }
 
+    public void loadScene()
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !ifEndLevel)
         {
             if (onEnter)
             {
                 if (overrideStartSpot)
                     setLoadOverride();
 
-                SceneManager.LoadScene(sceneName);
+                loadScene();
             }
             else
             {
@@ -63,7 +69,7 @@ public class sceneSwitch : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !ifEndLevel)
         {
             active = false;
             showingImage.SetActive(false);

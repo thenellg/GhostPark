@@ -298,6 +298,8 @@ public class PlayerController : MonoBehaviour {
 
 	private void resetLevel()
     {
+		controller.GetComponent<CapsuleCollider2D>().isTrigger = false;
+
 		//Resets gravity if needed
 		if (this.GetComponent<Rigidbody2D>().gravityScale < 0)
 		{
