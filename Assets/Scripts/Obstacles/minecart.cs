@@ -249,7 +249,7 @@ public class minecart : MonoBehaviour
         }
         //rb.gravityScale = 0f;
 
-        Invoke("resetTrigger", 0.1f);
+        Invoke("resetTrigger", 1f);
     }
 
     void resetTrigger()
@@ -380,7 +380,6 @@ public class minecart : MonoBehaviour
             if (GetComponentInChildren<PlayerController>())
             {
                 exit();
-                resetPlayerChild();
             }
 
             Invoke("resetCart", 1f);

@@ -6185,7 +6185,6 @@ GameObject:
   m_Component:
   - component: {fileID: 642536740}
   - component: {fileID: 642536742}
-  - component: {fileID: 642536741}
   m_Layer: 0
   m_Name: Page2b
   m_TagString: Untagged
@@ -6208,23 +6207,6 @@ Transform:
   m_Father: {fileID: 81852271}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &642536741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642536739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a7900b2e1675344a237fa2b6e22bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highPosition: 0.503
-  midPosition: 0.386
-  lowPosition: 0
-  highRange: -5
-  lowRange: -12
 --- !u!114 &642536742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14577,7 +14559,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1305701220}
   - component: {fileID: 1305701221}
-  - component: {fileID: 1305701222}
   m_Layer: 0
   m_Name: Page2a
   m_TagString: Untagged
@@ -14635,23 +14616,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1438797850}
---- !u!114 &1305701222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305701219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a7900b2e1675344a237fa2b6e22bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highPosition: 0.503
-  midPosition: 0.386
-  lowPosition: 0
-  highRange: -5
-  lowRange: -12
 --- !u!1001 &1313461769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20574,7 +20538,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1836423478}
   - component: {fileID: 1836423480}
-  - component: {fileID: 1836423479}
   m_Layer: 0
   m_Name: Page2c
   m_TagString: Untagged
@@ -20597,23 +20560,6 @@ Transform:
   m_Father: {fileID: 81852271}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1836423479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836423477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a7900b2e1675344a237fa2b6e22bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highPosition: 0.503
-  midPosition: 0.386
-  lowPosition: 0
-  highRange: -5
-  lowRange: -12
 --- !u!114 &1836423480
 MonoBehaviour:
   m_ObjectHideFlags: 0
