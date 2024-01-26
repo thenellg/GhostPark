@@ -345,7 +345,7 @@ public class minecart : MonoBehaviour
             if (GetComponentInChildren<PlayerController>())
             {
                 exit();
-                resetPlayerChild();
+                //resetPlayerChild();
                 player.GetComponent<PlayerController>().onDeath();
             }
 

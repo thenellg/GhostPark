@@ -72,7 +72,7 @@ public class minecartRail : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && collision.transform.parent == null && !collision.gameObject.GetComponent<CharacterController2D>().m_Grounded)
+        if (collision.gameObject.tag == "Player" && collision.transform.parent == null && !collision.gameObject.GetComponent<CharacterController2D>().m_Grounded && collision.gameObject.GetComponent<PlayerController>().canMove)
             collision.gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
         if (collision.gameObject.tag == "Minecart")
