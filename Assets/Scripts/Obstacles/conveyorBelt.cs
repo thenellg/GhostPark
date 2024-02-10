@@ -37,7 +37,9 @@ public class conveyorBelt : MonoBehaviour
         if (collision.gameObject.GetComponent<Rigidbody2D>())
         {
             objects.Remove(collision.gameObject.GetComponent<Rigidbody2D>());
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed/2, 0f), ForceMode2D.Impulse);
+
+            if(collision.gameObject.tag != "Player")
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed/2, 0f), ForceMode2D.Impulse);
         }
     }
 

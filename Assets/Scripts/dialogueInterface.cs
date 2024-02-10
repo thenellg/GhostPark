@@ -72,11 +72,11 @@ public class dialogueInterface : MonoBehaviour
     {
         if (dialogue)
         {
-            if (Input.GetKeyDown(settings.hold))
+            if (Input.GetKeyDown(settings.hold) || Input.GetKeyDown(settings.jump) || Input.GetKeyDown(settings.dash))
             {
                 if (dialogue.options.Count == 1)
                 {
-                    Debug.Log("test");
+                    //Debug.Log("test");
                     nextDialogue(0);
                 }
                 else if (dialogue.options.Count < 1)
