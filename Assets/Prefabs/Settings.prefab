@@ -48,7 +48,7 @@ MonoBehaviour:
   targetFrameRate: 30
   downSmashUnlock: 0
   dashUnlock: 1
-  glideUnlock: 1
+  glideUnlock: 0
   masterVolume: 0
   sfxVolume: 0
   musicVolume: 0

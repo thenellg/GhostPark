@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class playerSettings : MonoBehaviour
 {
-    public enum controlType { Playstation, Xbox, Switch, keyboard };
+    public enum controlType { Playstation, Xbox, Switch, keyboard, gamepad };
 
     [Header("General")]
     public int activeLevel;
@@ -109,14 +109,17 @@ public class playerSettings : MonoBehaviour
 
         if (controllers.Length > 0 && controllers[0].Length > 0)
         {
+            currentController = controlType.gamepad;
+            /*
             if (controllers[0].ToLower().Contains("dualsense") || controllers[0].ToLower().Contains("playstation"))
-                currentController = controlType.Playstation;
+                currentController = controlType.gamepad;
             else if (controllers[0].ToLower().Contains("pro controller"))
-                currentController = controlType.Switch;
+                currentController = controlType.gamepad;
             else if (controllers[0].ToLower().Contains("xbox"))
-                currentController = controlType.Xbox;
+                currentController = controlType.gamepad;
             else
                 currentController = controlType.keyboard;
+            */
         }
         else
         {
@@ -136,8 +139,9 @@ public class playerSettings : MonoBehaviour
             jump = keyboardControls[4];
             dash = keyboardControls[5];
             hold = keyboardControls[6];
-}
-        if (currentController == controlType.Playstation)
+        }
+        /*
+        else if (currentController == controlType.Playstation)
         {
             up = playstationControls[0];
             down = playstationControls[1];
@@ -147,7 +151,8 @@ public class playerSettings : MonoBehaviour
             dash = playstationControls[5];
             hold = playstationControls[6];
         }
-        else if (currentController == controlType.Xbox)
+        */
+        else if (currentController == controlType.gamepad)
         {
             up = xboxControls[0];
             down = xboxControls[1];
@@ -157,6 +162,7 @@ public class playerSettings : MonoBehaviour
             dash = xboxControls[5];
             hold = xboxControls[6];
         }
+        /*
         else if (currentController == controlType.Switch)
         {
             up = switchControls[0];
@@ -166,7 +172,7 @@ public class playerSettings : MonoBehaviour
             jump = switchControls[4];
             dash = switchControls[5];
             hold = switchControls[6];
-        }
+        */
     }
 
     public void resetDefault()
@@ -181,7 +187,7 @@ public class playerSettings : MonoBehaviour
             keyboardControls[5] = KeyCode.O;
             keyboardControls[6] = KeyCode.P;
         }
-        if (currentController == controlType.Playstation)
+        /*if (currentController == controlType.Playstation)
         {
             playstationControls[0] = KeyCode.W;
             playstationControls[1] = KeyCode.S;
@@ -190,8 +196,8 @@ public class playerSettings : MonoBehaviour
             playstationControls[4] = KeyCode.JoystickButton1;
             playstationControls[5] = KeyCode.JoystickButton0;
             playstationControls[6] = KeyCode.JoystickButton2;
-        }
-        else if (currentController == controlType.Xbox)
+        }*/
+        else if (currentController == controlType.gamepad)
         {
             xboxControls[0] = KeyCode.W;
             xboxControls[1] = KeyCode.S;
@@ -201,6 +207,7 @@ public class playerSettings : MonoBehaviour
             xboxControls[5] = KeyCode.JoystickButton2;
             xboxControls[6] = KeyCode.JoystickButton1;
         }
+        /*
         else if (currentController == controlType.Switch)
         {
             switchControls[0] = KeyCode.W;
@@ -211,6 +218,7 @@ public class playerSettings : MonoBehaviour
             switchControls[5] = KeyCode.JoystickButton2;
             switchControls[6] = KeyCode.JoystickButton1;
         }
+        */
         changeSettings();
     }
 }
