@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class CharacterController2D : MonoBehaviour
 {
+	public GameObject settingsPrefab;
+
 	[Header("General")]
 	public float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
 	public float gravity;
@@ -91,7 +93,20 @@ public class CharacterController2D : MonoBehaviour
 		PlayerAnim = this.GetComponent<Animator>();
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		m_PlayerController = GetComponent<PlayerController>();
-		m_Settings = FindObjectOfType<playerSettings>();
+
+		if (!FindObjectOfType<playerSettings>())
+        {
+			GameObject temp = Instantiate(settingsPrefab);
+			temp.transform.parent = null;
+			temp.name = "Settings";
+
+			m_Settings = temp.GetComponent<playerSettings>();
+        }
+        else
+        {
+			m_Settings = FindObjectOfType<playerSettings>();
+		}
+
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
 		wallSlideBackUp = wallSlideSpeed;
