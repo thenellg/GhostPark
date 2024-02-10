@@ -72,6 +72,16 @@ public class playerSettings : MonoBehaviour
             checkController();
     }
 
+    public void checkSaveData()
+    {
+
+    }
+
+    public void saveData()
+    {
+
+    }
+
     public void resetLoad()
     {
         groupLoading load = FindObjectOfType<groupLoading>();
