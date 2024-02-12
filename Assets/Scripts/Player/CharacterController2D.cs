@@ -86,6 +86,7 @@ public class CharacterController2D : MonoBehaviour
 	[Header("Gravity")]
 	public float tempGravScale;
 	static Vector2 zeroVector = new Vector2(0f, 0f);
+	public customGravTrigger gravTrigger;
 
 	private void Awake()
 	{
@@ -621,7 +622,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void gravFlip()
     {
-		m_Rigidbody2D.gravityScale = -m_Rigidbody2D.gravityScale;
+		m_Rigidbody2D.gravityScale = m_Rigidbody2D.gravityScale * -1;
 		Vector3 theScale = transform.localScale;
 		theScale.y *= -1;
 		transform.localScale = theScale;

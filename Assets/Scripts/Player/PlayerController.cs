@@ -313,13 +313,6 @@ public class PlayerController : MonoBehaviour {
     {
 		controller.GetComponent<CapsuleCollider2D>().isTrigger = false;
 
-		//Resets gravity if needed
-		if (this.GetComponent<Rigidbody2D>().gravityScale < 0)
-		{
-			controller.gravFlip();
-			this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-		}
-
 		//Resets key if needed
 		if (this.GetComponentInChildren<key>())
 		{
@@ -369,16 +362,9 @@ public class PlayerController : MonoBehaviour {
 		camBrain.m_DefaultBlend.m_Time = 0.05f;
 		camBrain.m_DefaultBlend.m_Time = 1f;
 
-
-
-		if (t_groupLoading.checkGrav())
-			controller.m_Rigidbody2D.gravityScale = -controller.tempGravScale;
-		else
-			controller.m_Rigidbody2D.gravityScale = controller.tempGravScale;
-
 		controller.fanActive = false;
 		transform.parent = null;
-		transform.localScale = Vector3.one * 5.772182f;
+		transform.localScale = new Vector3(5.772182f, transform.localScale.y, 5.772182f);
 		hold = false;
 
 		if (controller.lastPossession != null && controller.lastPossession.active)
@@ -392,6 +378,9 @@ public class PlayerController : MonoBehaviour {
 		//Move character to spawn point
 		this.transform.position = FindObjectOfType<groupLoading>().returnCheckpoint();
 		areDead = false;
+
+		if (t_groupLoading.checkGrav())
+			controller.gravFlip();
 
 		Invoke("setCharacter", 0.1f);
 	}
