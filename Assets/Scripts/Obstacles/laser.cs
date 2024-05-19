@@ -24,6 +24,7 @@ public class laser : MonoBehaviour
 
 
     [Header("Reflection")]
+    public laserSwitch lswitch;
     public bool canReflect = false;
     public int reflections;
 
@@ -135,11 +136,21 @@ public class laser : MonoBehaviour
                             resetLaser();
                         }
                     }
+                    else if (hitInfo.collider.CompareTag("Switch") && lswitch != null){
+                        //something
+                        lswitch.active = true;
+                    }
                     else
                         break;
                 }
                 else
                 {
+                    if (lswitch != null)
+                    {
+                        //something
+                        lswitch.active = false;
+                    }
+
                     if (isMirror)
                     {
                         lineOfSight.SetPosition(lineOfSight.positionCount - 1, mirrorHitPoint + Vector2.Reflect(mirrorHitPoint, mirrorHitNormal).normalized * (actualDistance - length));
