@@ -21,6 +21,7 @@ TagManager:
   - Coin
   - endMinecart
   - minecartOnly
+  - Switch
   layers:
   - Default
   - TransparentFX

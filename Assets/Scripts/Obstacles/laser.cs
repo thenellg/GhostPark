@@ -138,10 +138,14 @@ public class laser : MonoBehaviour
                     }
                     else if (hitInfo.collider.CompareTag("Switch") && lswitch != null){
                         //something
+                        length = Vector2.Distance(hitInfo.point, (Vector2)lineOfSight.GetPosition(0));
                         lswitch.active = true;
                     }
                     else
+                    {
+                        length = Vector2.Distance(hitInfo.point, (Vector2)lineOfSight.GetPosition(0));
                         break;
+                    }
                 }
                 else
                 {
