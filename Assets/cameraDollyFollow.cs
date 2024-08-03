@@ -19,5 +19,6 @@ public class cameraDollyFollow : MonoBehaviour
     void Update()
     {
         cart.m_Position = test = path.FindClosestPoint(player.transform.position, 0, -1, 10);
+        
     }
 }
