@@ -10136,8 +10136,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6375462750937859177, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: moveables.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6375462750937859177, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
+      propertyPath: moveables.Array.data[0]
+      value: 
+      objectReference: {fileID: 8627672946726257982}
     - target: {fileID: 6375462751187515723, guid: 04ce3db6dff174b40ae57e2e72d30f0b, type: 3}
       propertyPath: m_Layer
       value: 7
